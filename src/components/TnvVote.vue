@@ -109,7 +109,7 @@ export default {
   created () {
     if (this.test) {
       this.td = new TestData()
-      this.haveData(this.td.genData(40, 10, 10).top)
+      this.haveData(this.td.genData(6, 6, 6).top)
     } else {
       this.getData()
     }
@@ -152,6 +152,8 @@ export default {
       'setExpand'
     ]),
     sortSum (a, b) {
+      a.lockVal = a.value / a.parent.value
+      b.lockVal = b.value / b.parent.value
       if (a.sum > b.sum) { return -1 }
       if (a.sum < b.sum) { return 1 }
       return 0

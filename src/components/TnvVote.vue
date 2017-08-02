@@ -133,7 +133,7 @@ export default {
         let str = ''
         str += node.name + '<br />'
         str += node.value + '<br />'
-
+        str += Math.round(node.lockVal * 1000000) / 10000 + '% of total budget'
 //        str += Math.round(obj.loc.x * 100) / 100 +
 //          ', ' + Math.round(obj.loc.y * 100) / 100 +
 //          ', ' + Math.round(obj.loc.z * 100) / 100
@@ -152,13 +152,14 @@ export default {
       'setExpand'
     ]),
     sortSum (a, b) {
-      a.lockVal = a.value / a.parent.value
-      b.lockVal = b.value / b.parent.value
       if (a.sum > b.sum) { return -1 }
       if (a.sum < b.sum) { return 1 }
       return 0
     },
-
+    setLockVal (itm, idx) {
+      itm.lockVal = itm.value / itm.parent.default
+      console.log(itm.value, itm.parent.default)
+    },
     groupData (nodes, filterCB) {
       let map = {}
       let total = 0
@@ -191,16 +192,19 @@ export default {
       })
 
       top.total = total
-      top.value = total / 2
+      top.value = total
       top.default = total
       tree.sort((a, b) => this.sortSum(a, b))
+      tree.forEach((itm, idx) => this.setLockVal(itm, idx))
       for (let a of tree) {
         let achld = Object.values(a.children)
         achld.sort((a, b) => this.sortSum(a, b))
+        achld.forEach((itm, idx) => this.setLockVal(itm, idx))
         a.children = achld
         for (let b of achld) {
           let bchld = b.children
           bchld.sort((a, b) => this.sortSum(a, b))
+          bchld.forEach((itm, idx) => this.setLockVal(itm, idx))
           b.children = bchld
         }
       }
@@ -340,6 +344,7 @@ export default {
   margin-left: 1em;
   float: right;
   width: 45%;
+  height: 800px;
   text-align: left;
 }
 .right {

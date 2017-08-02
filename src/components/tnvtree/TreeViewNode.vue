@@ -76,7 +76,7 @@ export default {
     this.change = true
   },
   updated () {
-    console.log('tnodeUpdate')
+    this.dbgPrt('tnodeUpdate')
   },
 
   methods: {

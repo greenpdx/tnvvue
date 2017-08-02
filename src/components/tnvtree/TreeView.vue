@@ -9,13 +9,15 @@
         v-bind:value="difVal">
       <span>{{ difVal }}</span>
     </div>
-    <div v-for="node in nodes" class="tv-node">
+    <div class="tnvtree">
+      <div v-for="node in nodes" class="tv-node">
         <tree-view-node
           :node="node"
           v-on:chgParent="top.chgParent">
           <!-- slider-node v-show="selected":node="node"></slider-node -->
         </tree-view-node>
         <br>
+      </div>
     </div>
   </div>
 </template>
@@ -78,14 +80,19 @@ export default {
 <style scoped>
 .tree-view {
   display: inline-block;
-  width: auto;
-  height: 600px;
+  width: 100%;
+  height: 100%;
 }
 .tv-node {
   display: block;
   float: left;
-  width: 45em
-},
+  width: 45em;
+}
+.tnvtree {
+  display: inline-block;
+  height: 100%;
+  overflow-y: scroll;
+}
 .top-slide {
   float: left;
 }

@@ -103,6 +103,9 @@ export default {
       expandNode2: 'expandNode2'
     }),
     nodes: function () {
+      if (this.active === null) {
+        this.dbgPrt('TNV3D nodes', this)
+      }
       return this.active.children
     }
   },

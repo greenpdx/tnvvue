@@ -1,8 +1,17 @@
 # tnvvue
-
 > Tax N Vote App
+This web application allows the people of America to "vote" where their Tax Dollar should go. The main site is at [Tax N Vote](https://taxnvote.org) and [github TNV](https://github.com/greenpdx/taxnvote)
+
+## Why TNV is important
+When the system is broken, just changing the colors of the players does not help. It takes changing the rules. TNV adds another feedback to the US government by creating hard data that can be used to create a peoples budget that is given to congress after the tax season.
+
+## Why Open Source
+I want the system and software to be transparent. The whole process has privacy and security built in to the system. It should be fun and easy to use.
 
 ## Build Setup
+
+git clone https://github.com/greenpdx/tnvvue.git
+cd tnvvue
 
 ``` bash
 # install dependencies

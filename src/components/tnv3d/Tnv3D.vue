@@ -59,8 +59,8 @@ export default {
   },
 
   props: {
-    nodes: {
-      type: Array
+    top: {
+      type: Object
     },
     size: {},
     camPos: {},
@@ -74,7 +74,8 @@ export default {
         'y': 10,
         'z': 0
       },
-      controls: null
+      controls: null,
+      active: {}
     }
   },
 
@@ -83,6 +84,7 @@ export default {
 
   created () {
     console.log('TNV3D', this.size)
+    this.active = this.top
   },
 
   mounted () {
@@ -93,58 +95,26 @@ export default {
   },
 
   computed: {
-/*    ...mapGetters('three3d', {
-      renderer: 'renderer',
-      scene: 'scene',
-      cameraV: 'camera'
-    }), */
     ...mapGetters({
-      hoverObj: 'hoverObj',
-      selectObj: 'selectObj'
+      hoverNode: 'hoverNode',
+      selectNode: 'selectNode',
+      activeNode: 'activeNode',
+      expandNode1: 'expandNode1',
+      expandNode2: 'expandNode2'
     }),
-/*    ...mapGetters('nodes', {
-      dumpNodes: 'dumpNodes',
-      getNodes: 'nodes'
-    }), */
-    showInfo: function () {
-      if (this.hoverObj !== null) {
-        let obj = this.hoverObj
-        let str = ''
-        let node = obj.node
-        str += obj.id3d + ' ' + node.value + '<br />'
-        str += node.name + '<br />'
-        str += Math.round(obj.loc.x * 100) / 100 +
-          ', ' + Math.round(obj.loc.y * 100) / 100 +
-          ', ' + Math.round(obj.loc.z * 100) / 100
-        this.objInfo = str
-        return true
-      } else {
-        this.objInfo = ''
-        return false
-      }
-    },
-    mySize: function () {
-      let ren = this.$refs.renderer.$el
-      return {
-        top: ren.offsetTop,
-        left: ren.offsetLeft,
-        width: ren.offsetWidth,
-        height: ren.offsetHeight,
-        bottom: ren.offsetTop + ren.offsetHeight,
-        right: ren.offsetLeft + ren.offsetWidth
-      }
+    nodes: function () {
+      return this.active.children
+    }
+  },
+
+  watch: {
+    expandNode1: function () {
+      this.active = this.expandNode1
     }
   },
 
   methods: {
-/*    ...mapActions('three3d', [
-      'setThree3d'
-    ]),
-    ...mapActions('nodes', [
-      'setNodes',
-      'clearNodes',
-      'getNodeById'
-    ]), */
+
     sizeClass () {
       return {
         'width': this.size.x + 'px',

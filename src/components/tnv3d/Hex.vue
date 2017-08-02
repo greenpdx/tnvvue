@@ -57,8 +57,8 @@ export default {
   },
   created () {
     this.curObj = this.obj
-    console.log(this.node.name, this.index)
-
+//    console.log(this.node.name, this.index)
+    this.node.index = this.index
     // create new hex Object
     let group = new THREE.Group()
     group.vue = this
@@ -176,15 +176,19 @@ export default {
     /* eslint no-fallthrough: ["warn"] */
     idx2pos (idx) {
       let lvl = 0
-      for (lvl = 1; (lvl * 6) <= idx; lvl++) {
-        idx = idx - (lvl * 6)
+      let chg = 0
+      let sub = 0
+      for (lvl = 0; chg <= idx; lvl++) {
+        sub = chg
+        chg = (lvl * 6) + chg
       }
+      lvl = lvl - 1
+//      let cir = lvl * 6
+      let dif = idx - sub
 //      let dif = idx - HEXLAYER[lvl]
-      let side = idx / lvl
-//      console.log(side, idx, lvl)
-      idx = idx - side
-      let off = idx % lvl
-//      console.log('idx', idx, 'lvl', lvl, 'sid', side, 'off', off)
+      let side = Math.floor(dif / lvl)
+      let off = dif % lvl
+//      console.log('idx', idx, 'dif', dif, 'lvl', lvl, 'sid', side, 'off', off)
       let sign = 1
       let y
       let x
@@ -195,27 +199,28 @@ export default {
 // eslint-disable-next-line
         case 3:
           y = lvl * sign
-          x = off * sign
-          z = x - y
+          x = -off * sign
+          z = -x - y
           break
         case 4:
           sign = -1
 // eslint-disable-next-line
         case 1:
           x = lvl * sign
-          z = off * sign * -1
-          y = z - x
+          z = -off * sign
+          y = -z - x
           break
         case 2:
           sign = -1
 // eslint-disable-next-line
         case 5:
           z = lvl * sign
-          y = off * sign * -1
-          x = y - z
+          y = -off * sign
+          x = -y - z
           break
         default:
       }
+//      console.log('HEXQRS', idx, lvl, side, off, x, y, z)
       return ({x: x, y: y, z: z})
     },
     positionHex (q = 0, r = 0, s = 0) {
@@ -224,6 +229,7 @@ export default {
       loc.y = this.height / 2
       loc.z = (q) * this.size * SQRT3 * (SQRT3 / 2)
       this.curObj.position.set(loc.x, loc.y, loc.z)
+//      console.log('HEXPOS', q, r, s, loc)
       return loc
     },
     addMat (mat) {
@@ -247,7 +253,7 @@ export default {
   watch: {
     hovered () {
       let val = this.hovered
-      console.log('hovered', val, this)
+//      console.log('hovered', val, this)
       this.cyl.material.wireframe = val
       this.top.material.wireframe = val
     },

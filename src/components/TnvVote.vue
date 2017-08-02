@@ -7,8 +7,8 @@
       <span>{{ howTo1 }}</span>
     </div>
       <div class="render-area">
-        <tnv-3d
-          :nodes="nodes"
+        <tnv-3d v-if="top"
+          :top="top"
           :size="threeSize"
           :camPos="camPos"
           :freeze="freeze">
@@ -48,9 +48,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 // import * as THREE from 'three'
 import axios from 'axios'
+import Node from '@/lib/Node'
 
 import Tnv3D from './tnv3d/Tnv3D'
 import TreeView from './tnvtree/TreeView'
@@ -96,7 +97,9 @@ export default {
         z: 100
       },
       freeze: {},
-      top: {}
+      top: null,
+      test: false,
+      rawTree: {}
     }
   },
 
@@ -104,14 +107,14 @@ export default {
   },
 
   created () {
-    this.td = new TestData()
-    this.data = this.td.genData().top
+    if (this.test) {
+      this.td = new TestData()
+      this.haveData(this.td.genData(40, 10, 10).top)
+    } else {
+      this.getData()
+    }
 
-//    this.beacat.add('Discretionary')
 //    let rand = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1))
-    this.nodes = this.data.children
-    this.top = this.data
-    console.log(this.nodes)
   },
 
   mounted () {
@@ -128,8 +131,9 @@ export default {
       if (this.hoverNode !== null) {
         let node = this.hoverNode
         let str = ''
-        str += node.value + '<br />'
         str += node.name + '<br />'
+        str += node.value + '<br />'
+
 //        str += Math.round(obj.loc.x * 100) / 100 +
 //          ', ' + Math.round(obj.loc.y * 100) / 100 +
 //          ', ' + Math.round(obj.loc.z * 100) / 100
@@ -143,6 +147,78 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'setActive',
+      'setExpand'
+    ]),
+    sortSum (a, b) {
+      if (a.sum > b.sum) { return -1 }
+      if (a.sum < b.sum) { return 1 }
+      return 0
+    },
+
+    groupData (nodes, filterCB) {
+      let map = {}
+      let total = 0
+//      Node.clrNodes()
+      let top = new Node('Total', 0, null)
+      let tree = top.children
+      nodes.forEach((itm, idx) => {
+        if (!filterCB(itm)) {
+          return
+        }
+        let val = itm[this.selectedYear.toString()]
+        total += val
+        let parent = top
+        if (!map[itm.agencycode]) {
+          let tmp = map[itm.agencycode] =
+          new Node(itm.agencyname, idx, parent)
+          tree.push(tmp)
+        }
+        parent = map[itm.agencycode]
+        map[itm.agencycode].sum += val
+        if (!map[itm.agencycode].children[itm.bureaucode]) {
+          map[itm.agencycode].children[itm.bureaucode] =
+          new Node(itm.bureauname, idx, parent)
+        }
+        parent = map[itm.agencycode].children[itm.bureaucode]
+        map[itm.agencycode].children[itm.bureaucode].sum += val
+        let tmp = new Node(itm.acctname, idx, parent)
+        tmp.sum = val
+        map[itm.agencycode].children[itm.bureaucode].children.push(tmp)
+      })
+
+      top.total = total
+      top.value = total / 2
+      top.default = total
+      tree.sort((a, b) => this.sortSum(a, b))
+      for (let a of tree) {
+        let achld = Object.values(a.children)
+        achld.sort((a, b) => this.sortSum(a, b))
+        a.children = achld
+        for (let b of achld) {
+          let bchld = b.children
+          bchld.sort((a, b) => this.sortSum(a, b))
+          b.children = bchld
+        }
+      }
+      this.rawTree.total = total
+      this.rawTree.tree = tree
+      this.rawTree.top = top
+      return {total: total, tree: top}
+    },
+
+    haveData (data) {
+      this.data = data
+      if (this.test) {
+        this.top = this.data
+        this.setExpand(this.top)
+      } else {
+        let rslt = this.groupData(data, this.filterData)
+        console.log(rslt.tree.children.length)
+        this.top = rslt.tree
+      }
+    },
     range (min, max) {
       let ary = []
       for (let i = max; i >= min; i--) {
@@ -151,16 +227,8 @@ export default {
       return ary
     },
     onClick (evt) {
-
     },
-/*    ...mapActions('three3d', [
-      'setThree3d'
-    ]),
-    ...mapActions('nodes', [
-      'setNodes',
-      'clearNodes',
-      'getNodeById'
-    ]), */
+
     filterData (itm, idx) {
       let set = new Set(this.beacat)
       if (!set.has(itm.beacat.toLowerCase())) {
@@ -179,12 +247,6 @@ export default {
       return true
     },
 
-/*    filterNodes (itm, idx) {
-      return {
-        idx: idx,
-        id: itm._id
-      }
-    }, */
     loadClick (evt) { // try bezier  gre/bezier-easing
       let camera = this.$refs.camera0
       let sel = this.selectObj
@@ -227,14 +289,14 @@ export default {
     },
     getData () {
       let self = this
-      axios.get('http://10.0.42.81:8181/docs/local/budget/full')
+      axios.get('http://10.0.42.81:8181/docs/local/budget/full?limit=0')
         .then(response => {
           let rslt = response.data
           let data = rslt.data
-          self.setNodes(data)
+          self.haveData(data)
+//          self.setNodes(data)
         })
     }
-
   }
 }
 </script>

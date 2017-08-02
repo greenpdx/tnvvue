@@ -2,15 +2,17 @@
   <div
     v-on:addChild="addChild"
     v-on:addMaterial="addMat">
-    <slot></slot>
-    <div v-for="(node, index) in children" >
+    <div>
       <hex
-        :node="node"
+        v-for="(node, index) in children"
+        v-bind:node="node"
+        v-bind:key="node.value"
         v-bind:index="index"
-        :scale="scale"
+        v-bind:scale="scale"
         size="5"
         @click="clickHex">
       </hex>
+      <slot></slot>
     </div>
   </div>
 </template>

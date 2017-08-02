@@ -14,7 +14,9 @@ const state = {
   selectNode: null,
   expandNode1: null,
   expandNode2: null,
+  activeNode: null,
   rawData: null,
+  rawNodes: {},
   nodes: null,
   display3d: null
 }
@@ -25,13 +27,19 @@ const getters = {
   expandNode1: state => state.expandNode1,
   expandNode2: state => state.expandNode2,
   rawData: state => state.rawData,
-  nodes: state => state.nodes,
-  display3d: state => state.display3d
+  activeNode: state => state.nodes,
+  display3d: state => state.display3d,
+  getNodeByIdx: state => (idx) => {
+    return state.rawData[idx]
+  },
+  getNodeByKey: state => (key) => {
+    return state.rawData[state.rawNodes[key].idx]
+  }
 }
 
 const mutations = {
   HOVER (state, self) {
-    console.log('HOVER', self, state.hoverNode)
+//    console.log('HOVER', self, state.hoverNode)
     if (self === null) {
       if (state.hoverNode !== null) {
         state.hoverNode.hover = false
@@ -39,7 +47,7 @@ const mutations = {
       }
       return
     }
-    console.log(self.hover)
+//    console.log(self.hover)
     if (state.hoverNode !== null && state.hoverNode !== self) {
       state.hoverNode.hover = false
     }
@@ -82,7 +90,18 @@ const mutations = {
         state.expandNode2 = self
       }
     }
+  },
+  ACTIVE (state, self) {
+//    state.activeNode = self
+  },
+  RAWDATA (state, ary) {
+    // do somethings with stored cache for offline
+    state.rawData = ary
+    ary.forEach((itm, idx) => {
+      state.rawNodes[itm._id] = idx
+    })
   }
+
 }
 const actions = {
   hover ({commit}, obj) {
@@ -99,6 +118,12 @@ const actions = {
   },
   setSelect ({commit}, node) {
     commit('SELECT', node)
+  },
+  setActive ({commit}, node) {
+    commit('ACTIVE', node)
+  },
+  setRawData ({commit}, ary) {
+    commit('RAWDATA', ary)
   }
 }
 

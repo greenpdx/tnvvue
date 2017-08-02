@@ -23,7 +23,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import Node from '@/lib/Node'
+// import Node from '@/lib/Node'
 import SliderNode from './SliderNode'
 import TreeViewNode from './TreeViewNode'
 
@@ -36,7 +36,7 @@ export default {
 
   props: {
     top: {
-      type: Node
+//      type: Node
     }
   },
 
@@ -53,6 +53,7 @@ export default {
   },
 
   created () {
+    console.log(top)
     this.nodes = this.top.children
     this.total = this.top.total
     this.top.vue.push(this)

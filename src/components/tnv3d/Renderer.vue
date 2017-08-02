@@ -170,7 +170,7 @@ export default {
         console.log('select', node)
         this.setSelect(node)
       } else {    // change mode
-        console.log('Change Mode', this.orbit.enabled())
+//        console.log('Change Mode', this.orbit.enabled())
       }
       this.animate()
     },

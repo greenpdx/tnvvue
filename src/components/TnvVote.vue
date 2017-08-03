@@ -296,6 +296,7 @@ export default {
     getData () {
       let self = this
       axios.get('http://10.0.42.81:8181/docs/local/budget/full?limit=0')
+//      axios.get('/mongodb')
         .then(response => {
           let rslt = response.data
           let data = rslt.data

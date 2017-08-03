@@ -1,8 +1,16 @@
 <template>
   <header class="tnvheader">
-
-    <h1>{{ name }}</h1>
-    <h4>{{ motto }}</h4>
+    <div id="tophead">
+      <div id="name">
+        <span>{{ name }}</span>
+      </div>
+      <div id="motto">
+        <span>{{ motto }}</span>
+      </div>
+    </div>
+    <div id="explain">
+      <p>{{ explain }}</p>
+    </div>
   </header>
 </template>
 
@@ -12,7 +20,13 @@ export default {
   data () {
     return {
       name: 'Tax N Vote',
-      motto: 'Tax N Vote repesents you Tax Dollar every year'
+      motto: 'Your Tax Dollar repesents your ideas for a People\'s Budget',
+      explain: 'Tax N Vote allows you to turn your ideas about how the ' +
+        'US Government should spend your Tax Dollar.  A Tax Dollar is a vote ' +
+        'that can be divided between any agency, bureau and department. Every ' +
+        'Tax Dollar is data that is added up together to create a budget that ' +
+        'is submitted to Congress. Now Congress has the President’s budget and ' +
+        'the people’s budget to fight over.'
     }
   }
 }
@@ -20,21 +34,34 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+#tnvheader {
+  display: flex;
+  flex-direction: column;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
+#name {
+  float: left;
+  width: 6em;
+  font-size: 3em;
+  font-weight: bold;
 }
-
-li {
+#motto {
+  font-size: 1.5em;
+  text-align: center;
+  margin: auto;
+  margin-left: 1em;
+  width: 33em;
+}
+#tophead {
+  display: inline-flex;
+  flex-direction: row;
+  float: left;
+}
+#explain {
   display: inline-block;
-  margin: 0 10px;
+  float: left;
+  clear: left;
+  width: 60em;
+  border: 1px solid black;
 }
 
-a {
-  color: #42b983;
-}
 </style>

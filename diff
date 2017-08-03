@@ -1,0 +1,219 @@
+diff --git a/build/webpack.prod.conf.js b/build/webpack.prod.conf.js
+index 54a3aaa..99713cc 100644
+--- a/build/webpack.prod.conf.js
++++ b/build/webpack.prod.conf.js
+@@ -35,7 +35,7 @@ var webpackConfig = merge(baseWebpackConfig, {
+       compress: {
+         warnings: false
+       },
+-      sourceMap: false
++      sourceMap: true
+     }),
+     // extract css into its own file
+     new ExtractTextPlugin({
+diff --git a/config/index.js b/config/index.js
+index 842df71..196da1f 100644
+--- a/config/index.js
++++ b/config/index.js
+@@ -8,12 +8,12 @@ module.exports = {
+     assetsRoot: path.resolve(__dirname, '../dist'),
+     assetsSubDirectory: 'static',
+     assetsPublicPath: '/',
+-    productionSourceMap: false,
++    productionSourceMap: true,
+     // Gzip off by default as many popular static hosts such as
+     // Surge or Netlify already gzip all static assets for you.
+     // Before setting to `true`, make sure to:
+     // npm install --save-dev compression-webpack-plugin
+-    productionGzip: true,
++    productionGzip: false,
+     productionGzipExtensions: ['js', 'css'],
+     // Run the build command with an extra argument to
+     // View the bundle analyzer report after build finishes:
+diff --git a/package.json b/package.json
+index 086ac66..ec36b81 100644
+--- a/package.json
++++ b/package.json
+@@ -27,26 +27,20 @@
+     "babel-core": "^6.22.1",
+     "babel-eslint": "^7.1.1",
+     "babel-loader": "^7.1.1",
+-    "babel-plugin-istanbul": "^4.1.1",
+     "babel-plugin-transform-runtime": "^6.22.0",
+     "babel-preset-env": "^1.3.2",
+     "babel-preset-stage-2": "^6.22.0",
+     "babel-register": "^6.22.0",
+-    "chai": "^3.5.0",
+     "chalk": "^2.0.1",
+-    "chromedriver": "^2.27.2",
+-    "compression-webpack-plugin": "^1.0.0",
+     "connect-history-api-fallback": "^1.3.0",
+     "copy-webpack-plugin": "^4.0.1",
+-    "cross-env": "^5.0.1",
+-    "cross-spawn": "^5.0.1",
+     "css-loader": "^0.28.0",
+     "cssnano": "^3.10.0",
+     "eslint": "^3.19.0",
+-    "eslint-config-standard": "^6.2.1",
+     "eslint-friendly-formatter": "^3.0.0",
+     "eslint-loader": "^1.7.1",
+     "eslint-plugin-html": "^3.0.0",
++    "eslint-config-standard": "^6.2.1",
+     "eslint-plugin-promise": "^3.4.0",
+     "eslint-plugin-standard": "^2.0.1",
+     "eventsource-polyfill": "^0.9.6",
+@@ -56,7 +50,8 @@
+     "friendly-errors-webpack-plugin": "^1.1.3",
+     "html-webpack-plugin": "^2.28.0",
+     "http-proxy-middleware": "^0.17.3",
+-    "inject-loader": "^3.0.0",
++    "webpack-bundle-analyzer": "^2.2.1",
++    "cross-env": "^5.0.1",
+     "karma": "^1.4.1",
+     "karma-coverage": "^1.1.1",
+     "karma-mocha": "^1.3.0",
+@@ -68,23 +63,27 @@
+     "karma-webpack": "^2.0.2",
+     "lolex": "^1.5.2",
+     "mocha": "^3.2.0",
++    "chai": "^3.5.0",
++    "sinon": "^2.1.0",
++    "sinon-chai": "^2.8.0",
++    "inject-loader": "^3.0.0",
++    "babel-plugin-istanbul": "^4.1.1",
++    "phantomjs-prebuilt": "^2.1.14",
++    "chromedriver": "^2.27.2",
++    "cross-spawn": "^5.0.1",
+     "nightwatch": "^0.9.12",
++    "selenium-server": "^3.0.1",
++    "semver": "^5.3.0",
++    "shelljs": "^0.7.6",
+     "opn": "^5.1.0",
+     "optimize-css-assets-webpack-plugin": "^2.0.0",
+     "ora": "^1.2.0",
+-    "phantomjs-prebuilt": "^2.1.14",
+     "rimraf": "^2.6.0",
+-    "selenium-server": "^3.0.1",
+-    "semver": "^5.3.0",
+-    "shelljs": "^0.7.6",
+-    "sinon": "^2.1.0",
+-    "sinon-chai": "^2.8.0",
+     "url-loader": "^0.5.8",
+     "vue-loader": "^12.1.0",
+     "vue-style-loader": "^3.0.1",
+     "vue-template-compiler": "^2.3.3",
+     "webpack": "^2.6.1",
+-    "webpack-bundle-analyzer": "^2.2.1",
+     "webpack-dev-middleware": "^1.10.0",
+     "webpack-hot-middleware": "^2.18.0",
+     "webpack-merge": "^4.1.0"
+diff --git a/src/App.vue b/src/App.vue
+index e93e53d..fba143c 100644
+--- a/src/App.vue
++++ b/src/App.vue
+@@ -27,6 +27,6 @@ export default {
+   -moz-osx-font-smoothing: grayscale;
+   text-align: center;
+   color: #2c3e50;
+-  margin-top: 10px;
++  margin-top: 60px;
+ }
+ </style>
+diff --git a/src/components/TnvHeader.vue b/src/components/TnvHeader.vue
+index ee13dda..f225a32 100644
+--- a/src/components/TnvHeader.vue
++++ b/src/components/TnvHeader.vue
+@@ -1,16 +1,8 @@
+ <template>
+-  <header id="tnvheader">
+-    <div id="tophead">
+-      <div id="name">
+-        <span>{{ name }}</span>
+-      </div>
+-      <div id="motto">
+-        <span>{{ motto }}</span>
+-      </div>
+-    </div>
+-    <div id="explain">
+-      <p>{{ explain }}</p>
+-    </div>
++  <header class="tnvheader">
++
++    <h1>{{ name }}</h1>
++    <h4>{{ motto }}</h4>
+   </header>
+ </template>
+ 
+@@ -20,13 +12,7 @@ export default {
+   data () {
+     return {
+       name: 'Tax N Vote',
+-      motto: 'Your Tax Dollar repesents your ideas for a People\'s Budget',
+-      explain: 'Tax N Vote allows you to turn your ideas about how the ' +
+-        'US Government should spend your Tax Dollar.  A Tax Dollar is a vote ' +
+-        'that can be divided between any agency, bureau and department. Every ' +
+-        'Tax Dollar is data that is added up together to create a budget that ' +
+-        'is submitted to Congress. Now Congress has the President’s budget and ' +
+-        'the people’s budget to fight over.'
++      motto: 'Tax N Vote repesents you Tax Dollar every year'
+     }
+   }
+ }
+@@ -34,33 +20,21 @@ export default {
+ 
+ <!-- Add "scoped" attribute to limit CSS to this component only -->
+ <style scoped>
+-#tnvheader {
+-  display: flex;
+-  flex-direction: column;
+-}
+-#name {
+-  float: left;
+-  width: 6em;
+-  font-size: 3em;
+-  font-weight: bold;
+-}
+-#motto {
+-  font-size: 1.5em;
+-  text-align: center;
+-  margin: auto;
+-  margin-left: 1em;
+-  width: 33em;
++h1, h2 {
++  font-weight: normal;
+ }
+-#tophead {
+-  display: inline-flex;
+-  flex-direction: row;
++
++ul {
++  list-style-type: none;
++  padding: 0;
+ }
+-#explain {
++
++li {
+   display: inline-block;
+-  float: left;
+-  clear: left;
+-  width: 60em;
+-  border: 1px solid black;
++  margin: 0 10px;
+ }
+ 
++a {
++  color: #42b983;
++}
+ </style>
+diff --git a/src/components/TnvVote.vue b/src/components/TnvVote.vue
+index c051b86..1a0a545 100644
+--- a/src/components/TnvVote.vue
++++ b/src/components/TnvVote.vue
+@@ -296,7 +296,6 @@ export default {
+     getData () {
+       let self = this
+       axios.get('http://10.0.42.81:8181/docs/local/budget/full?limit=0')
+-//      axios.get('/mongodb')
+         .then(response => {
+           let rslt = response.data
+           let data = rslt.data

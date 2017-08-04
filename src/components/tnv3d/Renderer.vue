@@ -203,14 +203,12 @@ export default {
     },
 
     animate () {
-      if (!this.camera) {
-        this.dbgPrt('RENnoCAM')
-        return
-      }
+      requestAnimationFrame(() => {
+        requestAnimationFrame(this.animate)
+      })
       if (this.controls) {
         this.controls.update()
       }
-      requestAnimationFrame(this.animate)
       this.curObj.render(this.scene.curObj, this.camera.curObj)
     }
   }

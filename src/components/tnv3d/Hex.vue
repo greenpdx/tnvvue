@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- img class="heximg" ref="heximg" src="../../assets/hextop.svg" / -->
   </div>
 </template>
 <script>
@@ -54,6 +55,7 @@ export default {
 
   beforeCreate () {
     this.edgeMat = new THREE.LineBasicMaterial({color: 0x000000})
+    this.topMat = new THREE.MeshNormalMaterial({})
   },
   created () {
     this.curObj = this.obj
@@ -69,21 +71,30 @@ export default {
     this.color = '#00ff00'
 
     let cylGeo = new THREE.CylinderGeometry(this.size, this.size, this.height, 6, 1, true)
-    let cylMat = new THREE.MeshStandardMaterial({
+    this.cylMat = new THREE.MeshStandardMaterial({
       color: this.color,
       side: THREE.DoubleSide
     })
-    let cyl = new THREE.Mesh(cylGeo, cylMat)
+    let cyl = new THREE.Mesh(cylGeo, this.cylMat)
     cyl.vue = this
     let edg = this.drawEdges(cylGeo, this.edgeMat)
     edg.vue = this
     cyl.add(edg)
-//    console.log(edg)
     cyl.position.y = 0
-//    let baseSz = 0.1
+
+    let texture = new THREE.TextureLoader().load(this.heximg)
+    texture.needsUpdate = true
+    this.selMat = new THREE.MeshBasicMaterial({
+      map: texture
+    })
+    let selText = new THREE.TextureLoader().load(this.heximg)
+    selText.flipY = false
+    this.selCyl = new THREE.MeshBasicMaterial({
+      map: selText
+    })
+
     let topGeo = new THREE.CylinderGeometry(0.1, this.size, -5, 6, 1, true)
-    let topMat = new THREE.MeshNormalMaterial({side: THREE.DoubleSide})
-    let top = new THREE.Mesh(topGeo, topMat)
+    let top = new THREE.Mesh(topGeo, this.topMat)
     top.position.y = this.height / 2 - 2.5
     top.vue = this
 
@@ -108,6 +119,9 @@ export default {
   mounted () {
     this.dbgPrt('mountHex', this.id3d)
     this.$parent.$emit('addChild', this)
+
+//    this.heximg = this.$refs.heximg
+//    console.log('hexing', this.heximg)
   },
 
   updated () {
@@ -115,9 +129,20 @@ export default {
 //    this.$parent.$emit('addGroup', this.curObj)
   },
 
+  beforeDestroy () {
+    this.$parent.$emit('rmChild', this)
+  },
+
+  destroyed () {
+
+  },
+
   computed: {
     ...mapGetters({
     }),
+    heximg () {
+      return require('@/assets/cyltop.svg')
+    },
     pos: function () {
       let ary = JSON.parse(this.position.replace(/'/g, '"'))
       return ary
@@ -253,9 +278,14 @@ export default {
   watch: {
     hovered () {
       let val = this.hovered
+      if (val) {
 //      console.log('hovered', val, this)
-      this.cyl.material.wireframe = val
-      this.top.material.wireframe = val
+        this.cyl.material = this.selCyl
+        this.top.material = this.selMat
+      } else {
+        this.cyl.material = this.cylMat
+        this.top.material = this.topMat
+      }
     },
     selected () {
       let val = this.selected
@@ -264,3 +294,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.heximg {
+  visibility: hidden;
+}
+</style>

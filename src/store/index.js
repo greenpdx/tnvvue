@@ -27,7 +27,7 @@ const getters = {
   expandNode1: state => state.expandNode1,
   expandNode2: state => state.expandNode2,
   rawData: state => state.rawData,
-  activeNode: state => state.nodes,
+  activeNode: state => state.activeNode,
   display3d: state => state.display3d,
   getNodeByIdx: state => (idx) => {
     return state.rawData[idx]
@@ -64,19 +64,22 @@ const mutations = {
     state.selectNode = self
   },
   EXPAND (state, self, lvl) {
-    console.log(self.level, self.expand, self)
+//    console.log(self.level, self.expand, self)
     if (self.level === 1) {
       if (state.expandNode1 !== null) {
         state.expandNode1.expand = false
         if (state.expandNode2 !== null) {
           state.expandNode2.expand = false
           state.expandNode2 = null
+          state.activeNode = null
         }
       }
       if (self.expand === false) {
         state.expandNode1 = null
+        state.activeNode = null
       } else {
         state.expandNode1 = self
+        state.activeNode = self
       }
       return
     }
@@ -86,13 +89,15 @@ const mutations = {
       }
       if (self.expand === false) {
         state.expandNode2 = null
+        state.activeNode = state.expandNode1
       } else {
         state.expandNode2 = self
+        state.activeNode = self
       }
     }
   },
   ACTIVE (state, self) {
-//    state.activeNode = self
+    state.activeNode = self
   },
   RAWDATA (state, ary) {
     // do somethings with stored cache for offline

@@ -1,19 +1,19 @@
 <template>
   <div class="worm-hole">
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-      <g v-if="show1">
-        <polygon :points="hex1" fill-opacity="0" stroke="black"/>
-        <polygon :points="mask00" :fill="green" />
-        <polygon :points="mask01" :fill="green" />
-        <text x="300" y="60" >{{ name0 }}</text>
-        <polygon v-for="edge in edges1" :points="edge" fill="black" stroke="black"/>
-      </g>
       <g v-if="show2">
-        <polygon :points="hex0" fill-opacity="0" stroke="black"/>
-        <polygon :points="mask10" :fill="red" />
-        <polygon :points="mask11" :fill="red" />
-        <text x="300" y="20" >{{ name1 }}</text>
-        <polygon v-for="edge in edges0" :points="edge" fill="black" stroke="black"/>
+        <polygon :points="hex1.hex.str" fill-opacity="0" stroke="black"/>
+        <polygon :points="hex1.mask.top.str" :fill="green" />
+        <polygon :points="hex1.mask.bot.str" :fill="green" />
+        <text x="300" y="60" >{{ hex1.node.name }}</text>
+        <polygon v-for="edge in hex1.edges" :points="edge" fill="black" stroke="black"/>
+      </g>
+      <g v-if="show1">
+        <polygon :points="hex0.hex.str" fill-opacity="0" stroke="black"/>
+        <polygon :points="hex0.mask.top.str" :fill="red" />
+        <polygon :points="hex0.mask.bot.str" :fill="red" />
+        <text x="300" y="20" >{{ hex0.node.name }}</text>
+        <polygon v-for="edge in hex0.edges" :points="edge" fill="black" stroke="black"/>
       </g>
     </svg>
   </div>
@@ -55,18 +55,20 @@ export default {
 
   data () {
     return {
-      mask00: '', // '-40,0 -40,400, 180,19 620,19 840,400 840,0',
-      mask01: '', // '-40,800 -40,400 180,781, 620,781 840,400, 840,800',
-      mask10: '', // '-40,400 0,400, 200,53.59 600,53.59 800,400 840,400 620,19 180,19',
-      mask11: '', // '-40,400 0,400 200,746.11, 600,746.11 800,400, 840,400 620,781 180,781',
-//      mask0: [this.mask00, this.mask01],
-//      mask1: [this.mask10, this.mask11],
-      hex1: '', // '0,400 200,53.59 600,53.59 800,400 600,746.11 200,746.11',
-      edges0: [],
-      edges1: [],
-      hex0: '', // '-40,400 180,19 620,19 840,400 620,781.11 180,781',
-//      show0: true,   // smallest inside
-//      show1: true,    // largest outside
+      hex0: {
+        mask: {
+          top: {},
+          bot: {}
+        },
+        node: null
+      },
+      hex1: {
+        mask: {
+          top: {},
+          bot: {}
+        },
+        node: null
+      },
       red: '#f00',
       green: '#0f0',
       black: '#000',
@@ -75,9 +77,7 @@ export default {
         center: {x: 0, y: 0},
         xdm: 0
       },
-      edgePts: [],
-      name1: 'NAME1',
-      name0: 'NAME0'
+      edgePts: []
     }
   },
 
@@ -102,23 +102,19 @@ export default {
     this.edgePts = e.pts
     console.log(this.edgePts, this.hexConst)
 
-    let dsz = {x: asz.w * 0.55, y: asz.h * 0.55}
+    let hex = this.mkHex({x: (asz.w * 0.55), y: asz.h * 0.55}, center)
+    this.hex0.hex = hex
+    let mask = this.mkMask(asz, hex)
+    this.hex0.mask = mask
+    console.log('HEX0', Object.assign({}, this.hex0))
+    this.hex0.edges = this.mkEdges(asz, this.hex0.hex.pts)
 
-    let hex1 = this.mkHex({x: (asz.w / 2), y: asz.h / 2}, center)
-    let hex0 = this.mkHex(dsz, center)
-
-    this.hex0 = hex0.str.join(' ')
-    this.hex1 = hex1.str.join(' ')
-
-    let msk1 = this.mkMask(asz, hex1)
-    let msk0 = this.mkMask(asz, hex0)
-
-    this.mask00 = msk1.top.str.join(' ')
-    this.mask01 = msk1.bot.str.join(' ')
-    this.mask10 = msk0.top.str.join(' ')
-    this.mask11 = msk0.bot.str.join(' ')
-    this.edges0 = this.mkEdges(asz, hex0.pts)
-    this.edges1 = this.mkEdges(asz, hex1.pts)
+    hex = this.mkHex({x: (asz.w * 0.5), y: asz.h * 0.5}, center)
+    this.hex1.hex = hex
+    mask = this.mkMask(asz, this.hex1.hex)
+    this.hex1.mask = mask
+    console.log('HEX1', Object.assign({}, this.hex0))
+    this.hex1.edges = this.mkEdges(asz, this.hex1.hex.pts)
   },
 
   methods: {
@@ -133,7 +129,7 @@ export default {
         str.push([pt.x, pt.y])
         pts.push(pt)
       }
-      return {pts: pts, str: str}
+      return {pts: pts, str: str.join(' ')}
     },
 
     mkMask (sz, hex) {
@@ -143,11 +139,11 @@ export default {
       str.push([0, 0])
       for (let i = 0; i < 4; i++) {
         pts.push(hex.pts[i])
-        str.push(hex.str[i])
+        str.push([hex.pts[i].x, hex.pts[i].y])
       }
       pts.push({x: sz.w, y: 0})
       str.push([sz.w, 0])
-      let top = {pts: pts, str: str}
+      let top = {pts: pts, str: str.join(' ')}
 
       str = []
       pts = []
@@ -155,11 +151,11 @@ export default {
       str.push([sz.w, sz.h])
       for (let i = 3; i < 7; i++) {
         pts.push(hex.pts[i % 6])
-        str.push(hex.str[i % 6])
+        str.push([hex.pts[i % 6].x, hex.pts[i % 6].y])
       }
       pts.push({x: 0, y: sz.h})
       str.push([0, sz.h])
-      let bot = {pts: pts, str: str}
+      let bot = {pts: pts, str: str.join(' ')}
       return {top: top, bot: bot}
     },
 
@@ -190,16 +186,17 @@ export default {
       expandNode2: 'expandNode2'
     }),
     show1: function () {
-      if (this.expandNode2 !== null) {
-        this.name0 = this.expandNode2.name
+      if (this.expandNode1 !== null) {
+        console.log('show1 Node2')
+        this.hex0.node = this.expandNode1
         return true
       } else {
         return false
       }
     },
     show2: function () {
-      if (this.expandNode1 !== null) {
-        this.name1 = this.expandNode1.name
+      if (this.expandNode2 !== null) {
+        this.hex1.node = this.expandNode2
         return true
       } else {
         return false

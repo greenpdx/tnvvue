@@ -4,7 +4,7 @@
     v-on:addMaterial="addMat">
     <div>
       <hex
-        v-for="(node, index) in children"
+        v-for="(node, index) in nodes"
         v-bind:node="node"
         v-bind:key="node.value"
         v-bind:index="index"
@@ -17,10 +17,11 @@
   </div>
 </template>
 <script>
+import Vue from 'vue'
 import * as THREE from 'three'
 // import axios from 'axios'
 // import Object3D from './Object3D'
-// import bus from '@/lib/bus'
+
 import Hex from './Hex'
 import Group from './Group'
 import Mesh from './Mesh'
@@ -62,15 +63,15 @@ export default {
     position: {
       default: '{"x": 0, "y": 0, "z": 0}'
     },
-    nodes: {
+//    nodes: {
 //      type: []
-    }
+//    },
+    top: {}
   },
 
   data () {
     return {
-      node: null,
-      children: [],
+      nodes: null,
       data: {}
     }
   },
@@ -85,14 +86,13 @@ export default {
     this.curObj.vue = this
     this.id3d = this.curObj.name || this.curObj.uuid
     this.curObj.name = this.id3d
-    console.log(this.nodes)
-    this.scale = this.nodes[0].value / 80
-    this.children = this.nodes
+//    console.log(this.top)
+//    this.scale = this.nodes[0].value / 80
     this.curObj.position.y = -40
 //    Object.assign(this.curObj.position, this.pos)
+    this.$on('rmChild', this.rmChild)
     this.$on('addChild', this.addChild)
 //    console.log('NODE', this.nodes)
-    this.children = this.nodes
     this.dbgPrt('createGrd', this.id3d)
   },
 
@@ -114,6 +114,25 @@ export default {
     }
   },
 
+  watch: {
+    top: function () {
+      console.log('grid new top', this.top)
+      let itm = this.grps.pop()
+      while (itm) {
+        console.log('while', itm)
+        this.curObj.remove(itm.curObj)
+        Vue.delete(itm)
+        itm = this.grps.pop()
+      }
+      if (this.top === null) {
+        this.top = this.old
+      }
+      this.old = this.top
+      this.scale = this.top.children[0].value / 80
+      this.nodes = this.top.children
+    }
+  },
+
   methods: {
 /*    getData () {
       axios.get('http://10.0.42.81:8181/docs')
@@ -122,6 +141,9 @@ export default {
         })
     },
 */
+    rmChild (child) {
+      console.log('rmChild Grid')
+    },
     addMat (mat) {
       this.dbgPrt('addMat2Grd', mat.uuid, this.id3d)
       this.mats.push(mat)

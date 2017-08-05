@@ -98,7 +98,7 @@ export default {
       },
       freeze: {},
       top: null,
-      test: false,
+      test: true,
       rawTree: {}
     }
   },

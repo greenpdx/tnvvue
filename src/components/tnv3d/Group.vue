@@ -45,6 +45,7 @@ export default {
     this.id3d = this.curObj.name || this.curObj.uuid
     this.curObj.name = this.id3d
 //    Object.assign(this.curObj.position, this.pos)
+    this.$on('rmChild', this.rmChild)
     this.$on('addChild', this.addChild)
 //    this.$on('addMaterial', this.addMat)
     this.dbgPrt('createGrp', this.id3d)
@@ -72,6 +73,10 @@ export default {
     addMat (mat) {
       this.dbgPrt('addMat2Grp', mat.uuid, this.id3d)
       this.mats.push(mat)
+    },
+    rmChild (child) {
+      console.log('rmChild Group', this.curObj, child)
+      this.curObj.remove(child.curObj)
     },
     addChild (child) {    // also Mesh
       this.dbgPrt('addChild2Grp', child.id3d, this.id3d)

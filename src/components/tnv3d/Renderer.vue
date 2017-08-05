@@ -110,7 +110,8 @@ export default {
   computed: {
     ...mapGetters({
       renderer: 'renderer',
-      selectObj: 'selectObj'
+      selectObj: 'selectObj',
+      activeNode: 'activeNode'
     }),
     domElement: function () {
       return this.domEle
@@ -121,6 +122,12 @@ export default {
     },
     scene3D: function () {
       return this.scene.curObj
+    }
+  },
+
+  watch: {
+    activeNode: () => {
+      this.animate()
     }
   },
 
@@ -202,10 +209,15 @@ export default {
       this.camera = camera
     },
 
+    expand () {
+
+    },
     animate () {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(this.animate)
-      })
+      requestAnimationFrame(this.render)
+//      this.render()
+    },
+    render () {
+      this.expand()
       if (this.controls) {
         this.controls.update()
       }

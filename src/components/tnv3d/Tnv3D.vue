@@ -13,7 +13,7 @@
           </v3d-orbit-controls>
           <v3d-light color="#ffffff"></v3d-light>
           <v3d-group>
-            <v3d-grid :nodes="nodes">
+            <v3d-grid :top="active">
             </v3d-grid>
           </v3d-group>
         </v3d-scene>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 // import * as THREE from 'three'
 // import axios from 'axios'
 
@@ -75,7 +75,7 @@ export default {
         'z': 0
       },
       controls: null,
-      active: {}
+      active: null
     }
   },
 
@@ -83,8 +83,9 @@ export default {
   },
 
   created () {
-    console.log('TNV3D', this.size)
-    this.active = this.top
+    console.log('TNV3D', this.size, this.top)
+    this.base = this.top
+    this.setActive(this.top)
   },
 
   mounted () {
@@ -101,23 +102,24 @@ export default {
       activeNode: 'activeNode',
       expandNode1: 'expandNode1',
       expandNode2: 'expandNode2'
-    }),
-    nodes: function () {
-      if (this.active === null) {
-        this.dbgPrt('TNV3D nodes', this)
-      }
-      return this.active.children
-    }
+    })
   },
 
   watch: {
-    expandNode1: function () {
-      this.active = this.expandNode1
+    activeNode: function () {
+      console.log('New active', this.active)
+      if (this.activeNode === null) {
+        this.active = this.base
+      } else {
+        this.active = this.activeNode
+      }
     }
   },
 
   methods: {
-
+    ...mapActions([
+      'setActive'
+    ]),
     sizeClass () {
       return {
         'width': this.size.x + 'px',

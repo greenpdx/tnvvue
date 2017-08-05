@@ -9,6 +9,7 @@
         v-bind:key="node.value"
         v-bind:index="index"
         v-bind:scale="scale"
+        v-bind:mats="mats"
         size="5"
         @click="clickHex">
       </hex>
@@ -78,9 +79,28 @@ export default {
 
   beforeCreate () {
     this.grps = []
-    this.mats = []
+    this.mats = {}
   },
+
   created () {
+    this.color = '#00ff00'
+    this.mats['edgeMat'] = new THREE.LineBasicMaterial({color: 0x000000})
+    this.mats['topMat'] = new THREE.MeshNormalMaterial({})
+    this.mats['cylMat'] = new THREE.MeshStandardMaterial({
+      color: this.color,
+      side: THREE.DoubleSide
+    })
+    let t0 = new THREE.TextureLoader().load(this.heximg)
+    t0.needsUpdate = true
+    this.mats['selMat'] = new THREE.MeshBasicMaterial({
+      map: t0
+    })
+    let t1 = new THREE.TextureLoader().load(this.heximg)
+    t1.flipY = false
+    this.mats['selCyl'] = new THREE.MeshBasicMaterial({
+      map: t1
+    })
+
     this.curObj = this.obj
     this.curObj = new THREE.Group()
     this.curObj.vue = this
@@ -108,6 +128,9 @@ export default {
   },
 
   computed: {
+    heximg () {
+      return require('@/assets/cyltop.svg')
+    },
     pos: function () {
       let ary = JSON.parse(this.position.replace(/'/g, '"'))
       return ary
@@ -119,7 +142,6 @@ export default {
       console.log('grid new top', this.top)
       let itm = this.grps.pop()
       while (itm) {
-        console.log('while', itm)
         this.curObj.remove(itm.curObj)
         itm = null
 //        Vue.delete(itm)

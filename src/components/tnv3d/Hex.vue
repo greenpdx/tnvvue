@@ -40,6 +40,13 @@ export default {
     },
     scale: {
       default: 1000
+    },
+    mats: {
+      edgeMat: null,
+      topMat: null,
+      cylMat: null,
+      selMat: null,
+      selCyl: null
     }
   },
 
@@ -59,7 +66,6 @@ export default {
   },
   created () {
     this.curObj = this.obj
-//    console.log(this.node.name, this.index)
     this.node.index = this.index
     // create new hex Object
     let group = new THREE.Group()
@@ -68,33 +74,17 @@ export default {
     group.name = this.id3d
 
     this.height = this.node.value / this.scale
-    this.color = '#00ff00'
 
     let cylGeo = new THREE.CylinderGeometry(this.size, this.size, this.height, 6, 1, true)
-    this.cylMat = new THREE.MeshStandardMaterial({
-      color: this.color,
-      side: THREE.DoubleSide
-    })
-    let cyl = new THREE.Mesh(cylGeo, this.cylMat)
+    let cyl = new THREE.Mesh(cylGeo, this.mats.cylMat)
     cyl.vue = this
-    let edg = this.drawEdges(cylGeo, this.edgeMat)
+    let edg = this.drawEdges(cylGeo, this.mats.edgeMat)
     edg.vue = this
     cyl.add(edg)
     cyl.position.y = 0
 
-    let texture = new THREE.TextureLoader().load(this.heximg)
-    texture.needsUpdate = true
-    this.selMat = new THREE.MeshBasicMaterial({
-      map: texture
-    })
-    let selText = new THREE.TextureLoader().load(this.heximg)
-    selText.flipY = false
-    this.selCyl = new THREE.MeshBasicMaterial({
-      map: selText
-    })
-
     let topGeo = new THREE.CylinderGeometry(0.1, this.size, -5, 6, 1, true)
-    let top = new THREE.Mesh(topGeo, this.topMat)
+    let top = new THREE.Mesh(topGeo, this.mats.topMat)
     top.position.y = this.height / 2 - 2.5
     top.vue = this
 
@@ -280,11 +270,11 @@ export default {
       let val = this.hovered
       if (val) {
 //      console.log('hovered', val, this)
-        this.cyl.material = this.selCyl
-        this.top.material = this.selMat
+        this.cyl.material = this.mats.selCyl
+        this.top.material = this.mats.selMat
       } else {
-        this.cyl.material = this.cylMat
-        this.top.material = this.topMat
+        this.cyl.material = this.mats.cylMat
+        this.top.material = this.mats.topMat
       }
     },
     selected () {

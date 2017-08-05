@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import Vue from 'vue'
+// import Vue from 'vue'
 import * as THREE from 'three'
 // import axios from 'axios'
 // import Object3D from './Object3D'
@@ -121,7 +121,8 @@ export default {
       while (itm) {
         console.log('while', itm)
         this.curObj.remove(itm.curObj)
-        Vue.delete(itm)
+        itm = null
+//        Vue.delete(itm)
         itm = this.grps.pop()
       }
       if (this.top === null) {

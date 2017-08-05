@@ -126,7 +126,7 @@ export default {
   },
 
   watch: {
-    activeNode: () => {
+    activeNode: function () {
       this.animate()
     }
   },

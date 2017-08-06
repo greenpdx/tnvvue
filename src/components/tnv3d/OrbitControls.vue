@@ -38,6 +38,7 @@ export default {
   mounted () {
     this.dbgPrt('mountOrbt', this.id3d)
     this.$parent.$emit('addCamera', this.camera)
+    this.$parent.$emit('addOrbit', this)
   },
 
   computed: {

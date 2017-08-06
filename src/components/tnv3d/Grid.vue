@@ -19,6 +19,7 @@
 </template>
 <script>
 // import Vue from 'vue'
+import { mapGetters } from 'vuex'
 import * as THREE from 'three'
 // import axios from 'axios'
 // import Object3D from './Object3D'
@@ -120,6 +121,7 @@ export default {
     this.dbgPrt('mountGrd', this.id3d)
 //    this.curObj.position.y = 10
     this.$parent.$emit('addChild', this)
+    this.renderer = this.$parent.$parent
   },
 
   updated () {
@@ -128,6 +130,8 @@ export default {
   },
 
   computed: {
+    ...mapGetters([
+    ]),
     heximg () {
       return require('@/assets/cyltop.svg')
     },

@@ -80,6 +80,7 @@ export default {
     this.curObj.setClearColor(this.clearColor)
     this.scene = null
     this.camera = null
+    this.orbit = null
 
     this.raycast = new THREE.Raycaster()
 
@@ -126,7 +127,25 @@ export default {
   },
 
   watch: {
-    activeNode: function () {
+    activeNode: function (node) {
+/*
+      let cam = cams[0].curObj
+      cam.position.set(itm.loc.x, itm.loc.y + 50, itm.loc.z)
+      console.log('MATCH', itm.hexpos, itm.loc, cam, cam.getWorldDirection())
+      cam.lookAt(itm.loc.x, itm.loc.y, itm.loc.z)
+      this.renderer.animate()
+*/
+      this.orbit.curObj.reset()
+      let cam = this.camera.curObj
+      if (node === null) {
+        cam.position.set(this.campos)
+      } else {
+        let hex = node.hex
+        let loc = hex.loc
+        cam.position.set(loc.x, loc.y + 100, loc.z)
+//        cam.lookAt(loc.x, loc.y, loc.z)
+      }
+      this.orbit.curObj.reset()
       this.animate()
     }
   },
@@ -197,6 +216,7 @@ export default {
 
     addScene (scene) {
       this.scene = scene
+      console.log('REN as', scene)
       this.dbgPrt('addScn2Ren', scene.id3d, this.id3d)
       if (process.env.NODE_ENV === 'development') {
         window.THREE = THREE
@@ -207,6 +227,7 @@ export default {
     addCamera (camera) {
       this.dbgPrt('addCam2Ren', camera.id3d, this.id3d)
       this.camera = camera
+      this.campos = camera.position
     },
 
     expand () {

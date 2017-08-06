@@ -12,10 +12,7 @@
             <v3d-camera ref="camera0" :position="camPos"></v3d-camera>
           </v3d-orbit-controls>
           <v3d-light color="#ffffff"></v3d-light>
-          <v3d-group>
-            <v3d-grid :top="active">
-            </v3d-grid>
-          </v3d-group>
+          <v3d-grid :top="active" ref="grid"></v3d-grid>
         </v3d-scene>
       </v3d-renderer>
     </div>
@@ -90,7 +87,7 @@ export default {
 
   mounted () {
 //    let ele = this.$refs.infopop
-//    this.controls = this.$refs.controls
+    this.controls = this.$refs.controls
 //    ele.style.top = this.mySize.top + 'px'
 //    ele.style.left = this.mySize.left + 'px'
   },
@@ -107,10 +104,12 @@ export default {
 
   watch: {
     activeNode: function () {
-      console.log('New active', this.active)
+      console.log('New active', this.activeNode)
       if (this.activeNode === null) {
         this.active = this.base
       } else {
+        let node = this.activeNode
+        console.log(node)
         this.active = this.activeNode
       }
     }

@@ -99,7 +99,7 @@ export default {
     this.hexpos = pos
     this.loc = this.positionHex(pos.x, pos.y, pos.z)
 //    console.log('hex pos', this.hexpos, this.loc)
-    this.node.vue.push(this)
+    this.node.hex = this
 
     this.$on('addChild', this.addChild)
     this.$on('addMaterial', this.addMat)

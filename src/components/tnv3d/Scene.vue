@@ -18,9 +18,10 @@ export default {
 
   data () {
     return {
-      lights: {},
-      childs: {},
-      cameras: {}
+      lights: [],
+      childs: [],
+      cameras: [],
+      orbit: null
     }
   },
 
@@ -32,13 +33,12 @@ export default {
     this.id3d = this.name || Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16)
 
     this.curObj.name = this.id3d
-    this.lights = {}
-    this.cameras = {}
     this.curObj.vue = this
 
     this.$on('addCamera', this.addCamera)
     this.$on('addLight', this.addLight)
     this.$on('addChild', this.addChild)
+    this.$on('addOrbit', this.addOrbit)
     this.dbgPrt('createScn', this.id3d)
 //    this.setScene(this)
   },
@@ -53,20 +53,23 @@ export default {
 //    ...mapActions('three3d', [
 //      'setScene'
 //    ]),
+    addOrbit (orbit) {
+      this.orbit = orbit
+    },
     addCamera (camera) {
       this.dbgPrt('addCam2Scn', camera.id3d, this.id3d)
-      this.cameras[camera.name] = camera
+      this.cameras.push(camera)
       this.curObj.add(camera.curObj)
       this.$parent.$emit('addCamera', camera)
     },
     addLight (light) {
       this.dbgPrt('addLight2Scn', light.id3d, this.id3d)
-      this.lights[light.name] = light
+      this.lights.push(light)
       this.curObj.add(light.curObj)
     },
     addChild (child) {
       this.dbgPrt('addChild2Scn', child.id3d, this.id3d)
-      this.childs[child.name] = child
+      this.childs.push(child)
       this.curObj.add(child.curObj)
     }
   },

@@ -18,7 +18,8 @@ const state = {
   rawData: null,
   rawNodes: {},
   nodes: null,
-  display3d: null
+  display3d: null,
+  animateTrig: false
 }
 
 const getters = {
@@ -34,6 +35,9 @@ const getters = {
   },
   getNodeByKey: state => (key) => {
     return state.rawData[state.rawNodes[key].idx]
+  },
+  animateDone: state => {
+    state.animateTrig = false
   }
 }
 
@@ -105,6 +109,9 @@ const mutations = {
     ary.forEach((itm, idx) => {
       state.rawNodes[itm._id] = idx
     })
+  },
+  ANIMATE (state) {
+    state.animateTrig = true
   }
 
 }
@@ -129,6 +136,9 @@ const actions = {
   },
   setRawData ({commit}, ary) {
     commit('RAWDATA', ary)
+  },
+  animateNow ({commit}) {
+    commit('ANIMATE')
   }
 }
 

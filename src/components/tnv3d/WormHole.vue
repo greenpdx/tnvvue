@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 const TAU = (Math.sqrt(3) / 2)
 const PHI = Math.tan(Math.PI / 6)
@@ -118,6 +118,9 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'animateNow'
+    ]),
     mkHex (sz, dif) {
       let pts = []
       let str = []
@@ -180,10 +183,15 @@ export default {
     }
   },
 
+  watch: {
+    activeNode: function (node) {
+    }
+  },
   computed: {
     ...mapGetters({
       expandNode1: 'expandNode1',
-      expandNode2: 'expandNode2'
+      expandNode2: 'expandNode2',
+      activeNode: 'activeNode'
     }),
     show1: function () {
       if (this.expandNode1 !== null) {

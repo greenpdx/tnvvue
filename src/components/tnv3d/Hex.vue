@@ -14,9 +14,19 @@ import Group from './Group'
 import Geometry from './Geometry'
 import Material from './Material'
 
+/* good reference
+http://www.redblobgames.com/grids/hexagons/
+ */
 const SQRT3 = Math.sqrt(3)
 // const HEXLAYER = [0, 6, 18, 36, 60, 90, 126]
-
+/* const cubeCoord = [
+  {x: 0, y: -1, z: 1},
+  {x: 1, y: -1, z: 0},
+  {x: 1, y: 0, z: -1},
+  {x: 0, y: 1, z: -1},
+  {x: -1, y: 1, z: 0},
+  {x: -1, y: 0, z: 1}
+] */
 export default {
   name: 'Hex',
 //   mixins: [Object3D],
@@ -245,7 +255,10 @@ export default {
       loc.z = (q) * this.size * SQRT3 * (SQRT3 / 2)
       this.curObj.position.set(loc.x, loc.y, loc.z)
 //      console.log('HEXPOS', q, r, s, loc)
-      return loc
+      return {
+        x: loc.x - this.size * SQRT3 / 2,
+        y: loc.y,
+        z: loc.z - this.size / 2}
     },
     addMat (mat) {
       this.dbgPrt('addMat2Grp', mat.uuid, this.id3d)

@@ -80,7 +80,7 @@ export default {
     this.curObj.setClearColor(this.clearColor)
     this.scene = null
     this.camera = null
-    this.orbit = null
+//    this.orbit = null
 
     this.raycast = new THREE.Raycaster()
 
@@ -239,8 +239,8 @@ export default {
     },
     render () {
       this.expand()
-      if (this.controls) {
-        this.controls.update()
+      if (this.orbit) {
+        this.orbit.animate()
       }
       this.curObj.render(this.scene.curObj, this.camera.curObj)
     }

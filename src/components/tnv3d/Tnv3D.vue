@@ -6,9 +6,9 @@
       <div ref="overlay" id="overlay" @click="clickIt($event)" :size="size">
         <worm-hole></worm-hole>
       </div>
-      <v3d-renderer id="renderer" ref="renderer" :size="size" :orbit="controls">
+      <v3d-renderer id="renderer" ref="renderer" :size="size" :orbit="orbit">
         <v3d-scene ref="scene">
-          <v3d-orbit-controls ref="controls">
+          <v3d-orbit-controls ref="orbit" :render="renderer">
             <v3d-camera ref="camera0" :position="camPos"></v3d-camera>
           </v3d-orbit-controls>
           <v3d-light color="#ffffff"></v3d-light>
@@ -71,8 +71,9 @@ export default {
         'y': 10,
         'z': 0
       },
-      controls: null,
-      active: null
+      orbit: null,
+      active: null,
+      renderer: null
     }
   },
 
@@ -87,7 +88,8 @@ export default {
 
   mounted () {
 //    let ele = this.$refs.infopop
-    this.controls = this.$refs.controls
+    this.orbit = this.$refs.orbit
+    this.renderer = this.$refs.renderer
 //    ele.style.top = this.mySize.top + 'px'
 //    ele.style.left = this.mySize.left + 'px'
   },

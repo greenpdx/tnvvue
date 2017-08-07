@@ -215,23 +215,22 @@ export default {
     activeNode: function (node) {
     },
     expandNode1: function (node) {
-      console.log('hex0', node, this.hex0)
-      if (node === null) {
+/*      if (node === null) {
         this.zoomOut(this.hex0)
       } else {
         this.hex0.show = true
         this.hex0.name = node.name
         this.zoomIn(this.hex0)
-      }
+      } */
     },
     expandNode2: function (node) {
-      if (node === null) {
+/*      if (node === null) {
         this.zoomOut(this.hex1)
       } else {
         this.hex1.show = true
         this.hex1.name = node.name
         this.zoomIn(this.hex1)
-      }
+      } */
     }
   },
   computed: {

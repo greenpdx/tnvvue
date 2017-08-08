@@ -1,7 +1,6 @@
 <template>
   <div id="renderer">
     <slot></slot>
-    <div ref="container"></div>
   </div>
 </template>
 
@@ -42,7 +41,7 @@ export default {
     name: {
       default: null
     },
-    orbit: {}
+    tnv3d: null
   },
 
   data () {
@@ -67,25 +66,23 @@ export default {
     this.curObj.name = this.id3d
     if (typeof (this.size) === 'string') {
       let str = this.size.replace(/'/gi, '"')
-//      console.log(str)
       this.sz = JSON.parse(str)
     } else {
       this.sz = this.size
     }
     console.log(this.sz)
     this.curObj.setSize(this.sz.x, this.sz.y)
-//    this.curObj.setSize(800, 800)
 
     this.domEle = this.curObj.domElement
     this.curObj.setClearColor(this.clearColor)
     this.scene = null
     this.camera = null
     this.orbit = null
+    this.animate = this.tnv3d.animate
+    this.grid = this.tnv3d.gridFunc
 
     this.raycast = new THREE.Raycaster()
 
-//    let odom = this.$el.children.overlay
-//    this.overlay = odom
     this.domEle.addEventListener('mousemove', this.onMouseMove, true)
     this.domEle.addEventListener('dblclick', this.onClick, false)
     this.domEle.addEventListener('wheel', this.onWheel, false)
@@ -93,13 +90,12 @@ export default {
     this.$on('addScene', this.addScene)
     this.$on('addCamera', this.addCamera)
     this.dbgPrt('createRen', this.id3d)
-//    this.setRenderer(this)
   },
 
   mounted () {
     this.dbgPrt('mountRen', this.id3d)
-//    console.log(this.$refs)
-    this.$refs.container.appendChild(this.domEle)
+    this.$el.appendChild(this.domEle)
+    this.scene = this.tnv3d.grid
     this.animate()
   },
 
@@ -110,7 +106,6 @@ export default {
 
   computed: {
     ...mapGetters({
-      renderer: 'renderer',
       selectObj: 'selectObj',
       activeNode: 'activeNode'
     }),
@@ -121,8 +116,8 @@ export default {
       console.log('id func')
       return this.name || 'renderer'
     },
-    scene3D: function () {
-      return this.scene.curObj
+    grid3D: function () {
+      return this.grid.curObj
     }
   },
 
@@ -135,17 +130,11 @@ export default {
       cam.lookAt(itm.loc.x, itm.loc.y, itm.loc.z)
       this.renderer.animate()
 */
-      this.orbit.curObj.reset()
-      let cam = this.camera.curObj
       if (node === null) {
-        cam.position.set(this.campos)
+        this.cam.position.set(this.campos)
       } else {
-        let hex = node.hex
-        let loc = hex.loc
-        cam.position.set(loc.x, loc.y + 100, loc.z)
-//        cam.lookAt(loc.x, loc.y, loc.z)
       }
-      this.orbit.curObj.reset()
+//      this.orbit.curObj.reset()
       this.animate()
     }
   },
@@ -168,7 +157,8 @@ export default {
       // - 40 is grid offest Grid.vue: 82
       mouse.y = -((evt.layerY - dom.y - 40) / dom.h) * 2 + 1
       this.raycast.setFromCamera(mouse, this.camera.curObj)
-      let rslt = this.raycast.intersectObjects(this.scene3D.children, true)
+      let grid = this.grid().curObj
+      let rslt = this.raycast.intersectObjects(grid.children, true)
       return rslt
     },
     onMouseMove (evt) {
@@ -176,13 +166,13 @@ export default {
       let intersect = this._getIntersect(evt)
       let obj = null
       if (intersect.length > 0) {  // this app the selection is group
-//        obj = intersect[0].object.vue.$parent
         obj = intersect[0].object.parent
-//        console.log('hover', obj, obj.vue)
+        while (obj.vue === null) {
+          obj = obj.parent
+        }
         obj = obj.vue.node
         obj.hover = true
       }
-//      console.log('hover', obj)
       this.setHover(obj)
       this.animate()
     },
@@ -215,7 +205,7 @@ export default {
     },
 
     addScene (scene) {
-      this.scene = scene
+      this.scene = this.tnv3d.grid
       console.log('REN as', scene)
       this.dbgPrt('addScn2Ren', scene.id3d, this.id3d)
       if (process.env.NODE_ENV === 'development') {
@@ -227,23 +217,10 @@ export default {
     addCamera (camera) {
       this.dbgPrt('addCam2Ren', camera.id3d, this.id3d)
       this.camera = camera
-      this.campos = camera.position
-    },
-
-    expand () {
-
-    },
-    animate () {
-      requestAnimationFrame(this.render)
-//      this.render()
-    },
-    render () {
-      this.expand()
-      if (this.controls) {
-        this.controls.update()
-      }
-      this.curObj.render(this.scene.curObj, this.camera.curObj)
+      this.cam = camera.curObj
+      this.campos = this.cam.position
     }
+
   }
 }
 

@@ -1,24 +1,16 @@
 <template>
-<div class="tnv3d" v-bind:class="sizeClass()">
-
-  <!-- div id="three3d" class="three3d" ref="three3d" -->
-    <div id="container">
-      <div ref="overlay" id="overlay" @click="clickIt($event)" :size="size">
-        <worm-hole></worm-hole>
-      </div>
-      <v3d-renderer id="renderer" ref="renderer" :size="size" :orbit="controls">
-        <v3d-scene ref="scene">
-          <v3d-orbit-controls ref="controls">
-            <v3d-camera ref="camera0" :position="camPos"></v3d-camera>
-          </v3d-orbit-controls>
-          <v3d-light color="#ffffff"></v3d-light>
-          <v3d-grid :top="active" ref="grid"></v3d-grid>
-        </v3d-scene>
-      </v3d-renderer>
-    </div>
-  <!-- /div -->
-
-</div>
+  <div class="tnv3d" v-bind:class="sizeClass()">
+    <v3d-renderer id="renderer" ref="renderer" :size="size" :tnv3d="this">
+      <worm-hole id="wormhole" ref="wormhole" :tnv3d="this"></worm-hole>
+      <v3d-scene ref="scene">
+        <v3d-orbit-controls ref="orbit">
+          <v3d-camera ref="camera0" :position="camPos"></v3d-camera>
+        </v3d-orbit-controls>
+        <v3d-light color="#ffffff" id="light"></v3d-light>
+        <v3d-grid :top="active" ref="grid" id="grid"></v3d-grid>
+      </v3d-scene>
+    </v3d-renderer>
+  </div>
 </template>
 
 <script>
@@ -71,8 +63,12 @@ export default {
         'y': 10,
         'z': 0
       },
-      controls: null,
-      active: null
+      orbit: null,
+      active: null,
+      renderer: null,
+      camera: null,
+      wormhole: null,
+      grid: null
     }
   },
 
@@ -86,10 +82,12 @@ export default {
   },
 
   mounted () {
-//    let ele = this.$refs.infopop
-    this.controls = this.$refs.controls
-//    ele.style.top = this.mySize.top + 'px'
-//    ele.style.left = this.mySize.left + 'px'
+    this.orbit = this.$refs.orbit
+    this.scene = this.$refs.scene
+    this.renderer = this.$refs.renderer
+    this.camera = this.$refs.camera0
+    this.wormhole = this.$refs.wormhole
+    this.grid = this.$refs.grid
   },
 
   computed: {
@@ -104,12 +102,9 @@ export default {
 
   watch: {
     activeNode: function () {
-      console.log('New active', this.activeNode)
       if (this.activeNode === null) {
         this.active = this.base
       } else {
-        let node = this.activeNode
-        console.log(node)
         this.active = this.activeNode
       }
     }
@@ -125,9 +120,22 @@ export default {
         'height': this.size.y + 'px'
       }
     },
-
-    zoomIn (node) {
-
+    gridFunc () {
+      return this.grid
+    },
+    animate () {
+//      requestAnimationFrame(this.animate)
+      requestAnimationFrame(this.render)
+//    this.render()
+    },
+    render () {
+      if (this.orbit) {
+        this.orbit.animate()
+      }
+      if (this.wormhole) {
+//        this.wormhole(this.camera.curObj)
+      }
+      this.renderer.curObj.render(this.scene.curObj, this.camera.curObj)
     }
 
   }
@@ -140,7 +148,7 @@ export default {
   display: inline-block;
 }
 
-.three3d {
+#tnv3d {
   float: left;
   width: 48%;
   height: 800px;
@@ -176,7 +184,7 @@ export default {
   margin-top: 40;
 }
 
-#overlay {
+#wormhole {
   position: absolute;
   z-index: 10;
   top: -20;

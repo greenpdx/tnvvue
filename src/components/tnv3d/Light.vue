@@ -1,5 +1,5 @@
 <template>
-  <div><slot></slot></div>
+  <div id="light"></div>
 </template>
 <script>
 import {

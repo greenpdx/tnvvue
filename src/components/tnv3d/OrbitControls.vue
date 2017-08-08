@@ -1,5 +1,5 @@
 <template>
-  <div><slot></slot></div>
+  <div id="orbit"><slot></slot></div>
 </template>
 
 <script>
@@ -31,7 +31,9 @@ export default {
   data () {
     return {
       curObj: null,
-      id3d: ''
+      id3d: '',
+      orbit: null,
+      grp: null
     }
   },
 
@@ -41,40 +43,33 @@ export default {
     this.$parent.$emit('addOrbit', this)
   },
 
-  computed: {
-    domEle: function () {
-      return this.$parent.domElement
-    }
-  },
-
   methods: {
     addCamera (camera) {
       this.camera = camera
       if (!(this.curObj instanceof OrbitControls)) {
-        this.controls = new OrbitControls(this.camera.curObj, this.domEle)
+        this.orbit = new OrbitControls(this.camera.curObj, this.domEle)
       }
-      this.controls.name = this.id3d
-      this.curObj = this.controls
+      this.orbit.name = this.id3d
+      this.curObj = this.orbit
       this.curObj.maxPolarAngle = Math.PI / 2
 
       this.dbgPrt('addCam2Orbt', camera.id3d, this.id3d)
-//      assign(this.curObj.position, this.position)
-//      assign(this.curObj.rotation, this.rotation)
     },
 
     enabled (val = null) {
       if (val !== null) {
-        this.curObj.enabled = val
+        this.orbit.enabled = val
       }
-      return this.curObj.enabled
+      return this.orbit.enabled
     },
 
     animate () {
-
-    },
-
-    render () {
-
+      this.orbit.update()
+    }
+  },
+  computed: {
+    domEle: function () {
+      return this.$parent.domElement
     }
   }
 }

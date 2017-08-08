@@ -1,8 +1,7 @@
 <template>
-  <div
+  <div id="grid"
     v-on:addChild="addChild"
     v-on:addMaterial="addMat">
-    <div>
       <hex
         v-for="(node, index) in nodes"
         v-bind:node="node"
@@ -14,7 +13,6 @@
         @click="clickHex">
       </hex>
       <slot></slot>
-    </div>
   </div>
 </template>
 <script>

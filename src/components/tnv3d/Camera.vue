@@ -1,13 +1,10 @@
 <template>
-  <div><slot></slot></div>
+  <div id="camera"></div>
 </template>
 
 <script>
-import {
-  Camera,
-  PerspectiveCamera,
-  OrthographicCamera
-} from 'three'
+import * as THREE from 'three'
+``
 // import Object3D from './Object3D'
 // import OrbitControls from 'three-orbitcontrols'  // move to own component
 import { mapGetters } from 'vuex'
@@ -18,7 +15,7 @@ export default {
 
   props: {
     obj: {
-      type: Camera
+      type: THREE.Camera
     },
     fov: {
       default: 45
@@ -42,7 +39,8 @@ export default {
   data () {
     return {
       controls: null,
-      id3d: ''
+      id3d: '',
+      helper: null
     }
   },
 
@@ -50,15 +48,17 @@ export default {
     this.curObj = this.obj
     this.dbgPrt(typeof this.position, this.position)
     //    let { w, h } = this.$root.__rendererSize // fixme
-    if (!(this.curObj instanceof Camera)) {
+    if (!(this.curObj instanceof THREE.Camera)) {
       switch (this.type) {
         case 'Orthographic':
-          this.curObj = new OrthographicCamera(this.fov, this.aspect, this.near, this.far)
+          this.curObj = new THREE.OrthographicCamera(this.fov, this.aspect, this.near, this.far)
           break
         case 'Perspective':
         default:
-          this.curObj = new PerspectiveCamera(this.fov, this.aspect, this.near, this.far)
+          this.curObj = new THREE.PerspectiveCamera(this.fov, this.aspect, this.near, this.far)
       }
+// debug
+//    this.helper = new THREE.CameraHelper(this.curObj)
       this.curObj.vue = this
       this.curObj.position.set(this.position.x, this.position.y, this.position.z)
 
@@ -73,6 +73,7 @@ export default {
     this.curObj.name = this.id3d
     this.dbgPrt('createCam', this.id3d)
     this.$parent.$emit('addCamera', this)
+//  this.$parent.$emit('addChild', this.helper)
   },
 
   beforeMount () {

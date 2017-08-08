@@ -21,6 +21,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import * as THREE from 'three'
 
 const TAU = (Math.sqrt(3) / 2)
 const PHI = Math.tan(Math.PI / 6)
@@ -55,7 +56,9 @@ export default {
       }
     },
     clearColor: 0,
-    color: null
+    color: null,
+    camera: null,
+    tnv3d: null
   },
 
   data () {
@@ -82,7 +85,9 @@ export default {
       green: '#0f0',
       black: '#000',
       center: {x: 0, y: 0},
-      edgePts: []
+      edgePts: [],
+      zoom1: null,
+      zoom2: null
     }
   },
 
@@ -105,7 +110,8 @@ export default {
       {x: center.y - xdm, y: asz.y}
     ]
     this.edgePts = e.pts
-
+    this.cnt = -1
+    this.animate = this.tnv3d.animate
 //    this.mksvg(start)
   },
 
@@ -208,6 +214,69 @@ export default {
         edgs.push(ply.join(' '))
       }
       return edgs
+    },
+
+    zoomStep (idx, camPath, lookPath, camera) {
+      let loc = lookPath
+      let whr = camPath[idx]
+//      camera.up = new THREE.Vector3(0, 1, 0)
+      camera.lookAt(new THREE.Vector3(loc.x, loc.y, loc.z))
+      console.log(idx, loc, whr, 'cam', camera.position)
+      camera.position.set(whr.x, whr.y, whr.z)
+//      self.update()
+    },
+
+    camZoom (node) {
+      if (node === null) {
+
+      } else {
+        let hex = node.hex
+        let loc = hex.loc
+        loc.y = hex.height - 40
+        let camera = this.tnv3d.camera.curObj
+        let start = camera.position
+        let c0 = new THREE.Vector3(loc.x, loc.y + 50, loc.z)
+        let c1 = new THREE.Vector3(loc.x, loc.y + 10, loc.z)
+        let end = new THREE.Vector3(loc.x, loc.y + 10, loc.z)
+        let curve = new THREE.CubicBezierCurve3(end, c1, c0, start)
+        let pts = curve.getSpacedPoints(6)
+
+        let look = new THREE.LineCurve3(end, start)
+        let lks = look.getSpacedPoints(6)
+        lks = end
+        //        console.log('CURVE', start, c0, c1, end)
+      // visual cone to hex
+//        let ptrGeo = new THREE.ConeGeometry(2, -16)
+//        let ptrMat = new THREE.MeshBasicMaterial({color: '#f00'})
+//        let ptr = new THREE.Mesh(ptrGeo, ptrMat)
+//        this.$parent.$emit('rawChild', ptr)
+//        let ptr = this.ptr
+//        ptr.visible = true
+//        ptr.position.set(start.x, start.y, start.z)
+
+//        console.log('cam', camera.getWorldDirection(), camera.getWorldPosition())
+        this.pts = pts
+        this.lks = lks
+        this.cnt = 5
+//        this.zoomLoop(pts, lks, camera)
+        let self = this
+        let timer = setInterval(function () {
+          if (self.cnt < 0) {
+            clearInterval(timer)
+            self.done = true
+            return
+          }
+          self.animate()
+        }, 3000)
+        console.log('OC node1', end, pts.length)
+      }
+    },
+    update (camera) {
+      console.log('WH update')
+      if (this.cnt >= 0) {
+        this.zoomStep(this.cnt, this.pts, this.lks, camera)
+        this.cnt -= 1
+      }
     }
   },
 
@@ -215,13 +284,14 @@ export default {
     activeNode: function (node) {
     },
     expandNode1: function (node) {
-/*      if (node === null) {
-        this.zoomOut(this.hex0)
+      if (node === null) {
+//        this.zoomOut(this.hex0)
       } else {
-        this.hex0.show = true
-        this.hex0.name = node.name
-        this.zoomIn(this.hex0)
-      } */
+        this.camZoom(node)
+//        this.hex0.show = true
+//        this.hex0.name = node.name
+//        this.zoomIn(this.hex0)
+      }
     },
     expandNode2: function (node) {
 /*      if (node === null) {
@@ -231,6 +301,12 @@ export default {
         this.hex1.name = node.name
         this.zoomIn(this.hex1)
       } */
+    },
+    zoom1: function () {
+
+    },
+    zoom2: function () {
+
     }
   },
   computed: {

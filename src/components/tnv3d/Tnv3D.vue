@@ -1,9 +1,9 @@
 <template>
 <div id="tnv3d" v-bind:class="sizeClass()">
-  <v3d-renderer id="renderer" ref="renderer" :size="size" :orbit="orbit">
-    <worm-hole  id="wormhole" ref="wormhole"></worm-hole>
+  <v3d-renderer id="renderer" ref="renderer" :size="size" :tnv3d="this">
+    <worm-hole  id="wormhole" ref="wormhole" :tnv3d="this"></worm-hole>
     <v3d-scene ref="scene">
-      <v3d-orbit-controls ref="orbit" :render="renderer">
+      <v3d-orbit-controls ref="orbit">
         <v3d-camera ref="camera0" :position="camPos"></v3d-camera>
       </v3d-orbit-controls>
       <v3d-light color="#ffffff"></v3d-light>
@@ -65,7 +65,10 @@ export default {
       },
       orbit: null,
       active: null,
-      renderer: null
+      renderer: null,
+      camera: null,
+      wormhole: null,
+      grid: null
     }
   },
 
@@ -81,7 +84,11 @@ export default {
   mounted () {
 //    let ele = this.$refs.infopop
     this.orbit = this.$refs.orbit
+    this.scene = this.$refs.scene
     this.renderer = this.$refs.renderer
+    this.camera = this.$refs.camera0
+    this.wormhole = this.$refs.wormhole
+    this.grid = this.$refs.grid
 //    ele.style.top = this.mySize.top + 'px'
 //    ele.style.left = this.mySize.left + 'px'
   },
@@ -110,6 +117,9 @@ export default {
     ...mapActions([
       'setActive'
     ]),
+    gridFunc () {
+      return this.grid
+    },
     sizeClass () {
       return {
         'width': this.size.x + 'px',
@@ -117,8 +127,21 @@ export default {
       }
     },
 
-    zoomIn (node) {
+    animate () {
+//      requestAnimationFrame(this.animate)
+      requestAnimationFrame(this.render)
+//      this.render()
+    },
 
+    render () {
+      if (this.orbit) {
+        this.orbit.animate()
+      }
+      if (this.wormhole) {
+        this.wormhole.update(this.camera.curObj)
+      }
+      console.log('REN', this.camera.curObj.position)
+      this.renderer.curObj.render(this.scene.curObj, this.camera.curObj)
     }
 
   }

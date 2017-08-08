@@ -61,7 +61,7 @@ export default {
         default:
           this.curObj = new PerspectiveCamera(this.fov, this.aspect, this.near, this.far)
       }
-      let dbg = false
+      let dbg = true
       if (dbg) {  //  on hover this is the only object hover sees
         this.helper = new CameraHelper(this.curObj)
       }
@@ -82,6 +82,7 @@ export default {
     this.curObj.name = this.id3d
     this.dbgPrt('createCam', this.id3d)
     this.$parent.$emit('addCamera', this)
+    this.$parent.$emit('rawChild', this.helper)
   },
 
   beforeMount () {

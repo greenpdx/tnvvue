@@ -75,15 +75,15 @@ const mutations = {
         if (state.expandNode2 !== null) {
           state.expandNode2.expand = false
           state.expandNode2 = null
-          state.activeNode = null
+//          state.activeNode = null
         }
       }
       if (self.expand === false) {
         state.expandNode1 = null
-        state.activeNode = null
+//        state.activeNode = null
       } else {
         state.expandNode1 = self
-        state.activeNode = self
+//        state.activeNode = self
       }
       return
     }
@@ -93,10 +93,10 @@ const mutations = {
       }
       if (self.expand === false) {
         state.expandNode2 = null
-        state.activeNode = state.expandNode1
+//        state.activeNode = state.expandNode1
       } else {
         state.expandNode2 = self
-        state.activeNode = self
+//        state.activeNode = self
       }
     }
   },

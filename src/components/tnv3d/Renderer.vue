@@ -41,7 +41,7 @@ export default {
     name: {
       default: null
     },
-    orbit: {}
+    tnv3d: null
   },
 
   data () {
@@ -52,7 +52,8 @@ export default {
       id3d: '',
       sz: {},
       cam: null,
-      camPos: {}
+      camPos: {},
+      grid: this.tnv3d.grid
     }
   },
 
@@ -82,7 +83,8 @@ export default {
     this.scene = null
     this.camera = null
 //    this.orbit = null
-
+    this.grid0 = this.tnv3d.gridFunc
+    this.animate = this.tnv3d.animate
     this.raycast = new THREE.Raycaster()
 
 //    let odom = this.$el.children.overlay
@@ -101,6 +103,7 @@ export default {
     this.dbgPrt('mountRen', this.id3d)
 //    console.log(this.$refs)
     this.$el.appendChild(this.domEle)
+    this.scene = this.tnv3d.grid
     this.animate()
   },
 
@@ -111,7 +114,6 @@ export default {
 
   computed: {
     ...mapGetters({
-      renderer: 'renderer',
       selectObj: 'selectObj',
       activeNode: 'activeNode'
     }),
@@ -124,6 +126,9 @@ export default {
     },
     scene3D: function () {
       return this.scene.curObj
+    },
+    grid3D: function () {
+      return this.grid0.curObj
     }
   },
 
@@ -138,7 +143,7 @@ export default {
 */
       if (node === null) {
         this.cam.position.set(this.campos)
-        this.orbit.curObj.reset()
+//        this.orbit.curObj.reset()
         console.log('renact', this.cam.position)
       } else {
 //        let hex = node.hex
@@ -147,7 +152,7 @@ export default {
 //        cam.lookAt(loc.x, loc.y, loc.z)
       }
 //      this.orbit.curObj.reset()
-      console.log('renact ani')
+      console.log('renact ani', this.animate)
       this.animate()
     },
     campos: {
@@ -183,7 +188,8 @@ export default {
       mouse.y = -((evt.layerY - dom.y - 40) / dom.h) * 2 + 1
       this.raycast.setFromCamera(mouse, this.camera.curObj)
       // Try using grid as object.
-      let rslt = this.raycast.intersectObjects(this.scene3D.children, true)
+      let obj = this.grid0().curObj
+      let rslt = this.raycast.intersectObjects(obj.children, true)
       return rslt
     },
     onMouseMove (evt) {
@@ -193,17 +199,14 @@ export default {
       if (intersect.length > 0) {  // this app the selection is group
 //        obj = intersect[0].object.vue.$parent
         obj = intersect[0].object.parent
+        console.log('hover', obj)
         while (obj.vue === null) {
           obj = obj.parent
-        }
-        if (obj.type !== null) {
-          return
         }
 //        console.log('hover', obj.vue.node.hex)
         obj = obj.vue.node
         obj.hover = true
       }
-//      console.log('hover', obj)
       this.setHover(obj)
       this.animate()
     },
@@ -236,7 +239,7 @@ export default {
     },
 
     addScene (scene) {
-      this.scene = scene
+      this.scene = this.tnv3d.grid
       this.dbgPrt('addScn2Ren', scene.id3d, this.id3d)
       if (process.env.NODE_ENV === 'development') {
         window.THREE = THREE
@@ -253,8 +256,8 @@ export default {
 
     expand () {
 
-    },
-    animate () {
+    }
+/*    animate () {
       requestAnimationFrame(this.render)
 //      this.render()
     },
@@ -263,9 +266,12 @@ export default {
       if (this.orbit) {
         this.orbit.animate()
       }
+      if (this.wormhole) {
+        this.wormhole.update(this.camera)
+      }
       console.log('REN', this.cam.position)
       this.curObj.render(this.scene.curObj, this.cam)
-    }
+    } */
   }
 }
 

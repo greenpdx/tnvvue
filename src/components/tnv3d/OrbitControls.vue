@@ -16,7 +16,6 @@ export default {
 //  mixins: [Object3D],
 
   props: {
-    render: {},
     obj: { type: OrbitControls },
     enable: { default: true },
     minPolarAngle: { default: 0 },
@@ -75,31 +74,6 @@ export default {
 
     animate () {
       this.orbit.update()
-    },
-
-    zoomCam (camPath, lookPath, ptr) {
-      let idx = 0
-      let self = this
-      let loc = lookPath[lookPath.length - 1]
-      let timer = setInterval(function () {
-        if (idx > camPath.length - 1) {
-          clearInterval(timer)
-          console.log('done', self.camera.curObj.position)
-          self.done = true
-//          self.ptr.visible = false
-          return
-        }
-//        let loc = lookPath[idx]
-        if (idx > camPath.length - 1) {
-          idx = camPath.length - 1
-        }
-        let whr = camPath[idx]
-        ptr.lookAt(loc.x, loc.y, loc.z)
-        console.log(idx, loc, whr, 'cam', self.camera.curObj.position)
-        ptr.position.set(whr.x, whr.y, whr.z)
-        self.render.animate()
-        idx += 1
-      }, 300)
     }
 
   },
@@ -114,46 +88,6 @@ export default {
   },
   /* eslint-disable no-unused-vars */
   watch: {
-    expandNode1: function (node) {
-//      this.camera = this.renderer
-      this.enabled(false)
-      if (node === null) {
-
-      } else {
-        let hex = node.hex
-        let loc = hex.loc
-        loc.y = hex.height - 40
-        let camera = this.camera.curObj
-        let start = camera.position
-        let c0 = new THREE.Vector3(loc.x, loc.y + 50, loc.z)
-        let c1 = new THREE.Vector3(loc.x, loc.y + 10, loc.z)
-        let end = new THREE.Vector3(loc.x, loc.y, loc.z)
-        let curve = new THREE.CubicBezierCurve3(start, c0, c1, end)
-        let pts = curve.getSpacedPoints(6)
-
-        let look = new THREE.LineCurve3(start, end)
-        let lks = look.getSpacedPoints(6)
-
-        //        console.log('CURVE', start, c0, c1, end)
-      // visual cone to hex
-//        let ptrGeo = new THREE.ConeGeometry(2, -16)
-//        let ptrMat = new THREE.MeshBasicMaterial({color: '#f00'})
-//        let ptr = new THREE.Mesh(ptrGeo, ptrMat)
-//        this.$parent.$emit('rawChild', ptr)
-//        let ptr = this.ptr
-//        ptr.visible = true
-//        ptr.position.set(start.x, start.y, start.z)
-
-//        console.log('cam', camera.getWorldDirection(), camera.getWorldPosition())
-
-        this.zoomCam(pts, lks, camera)
-        console.log('OC node1', end, pts.length)
-      }
-    },
-    expandNode2: function (node) {
-
-    }
-
   }
 }
 </script>

@@ -1,23 +1,15 @@
 <template>
-<div class="tnv3d" v-bind:class="sizeClass()">
-
-  <!-- div id="three3d" class="three3d" ref="three3d" -->
-    <div id="container">
-      <div ref="overlay" id="overlay" @click="clickIt($event)" :size="size">
-        <worm-hole></worm-hole>
-      </div>
-      <v3d-renderer id="renderer" ref="renderer" :size="size" :orbit="orbit">
-        <v3d-scene ref="scene">
-          <v3d-orbit-controls ref="orbit" :render="renderer">
-            <v3d-camera ref="camera0" :position="camPos"></v3d-camera>
-          </v3d-orbit-controls>
-          <v3d-light color="#ffffff"></v3d-light>
-          <v3d-grid :top="active" ref="grid"></v3d-grid>
-        </v3d-scene>
-      </v3d-renderer>
-    </div>
-  <!-- /div -->
-
+<div id="tnv3d" v-bind:class="sizeClass()">
+  <v3d-renderer id="renderer" ref="renderer" :size="size" :orbit="orbit">
+    <worm-hole  id="wormhole" ref="wormhole"></worm-hole>
+    <v3d-scene ref="scene">
+      <v3d-orbit-controls ref="orbit" :render="renderer">
+        <v3d-camera ref="camera0" :position="camPos"></v3d-camera>
+      </v3d-orbit-controls>
+      <v3d-light color="#ffffff"></v3d-light>
+      <v3d-grid :top="active" ref="grid"></v3d-grid>
+    </v3d-scene>
+  </v3d-renderer>
 </div>
 </template>
 
@@ -106,12 +98,9 @@ export default {
 
   watch: {
     activeNode: function () {
-      console.log('New active', this.activeNode)
       if (this.activeNode === null) {
         this.active = this.base
       } else {
-        let node = this.activeNode
-        console.log(node)
         this.active = this.activeNode
       }
     }
@@ -141,8 +130,12 @@ export default {
 .tnvvote {
   display: inline-block;
 }
-
-.three3d {
+#tnv3d {
+  display: inline-block;
+  width: 100%;
+  height: 100%
+}
+#three3d {
   float: left;
   width: 48%;
   height: 800px;
@@ -178,7 +171,7 @@ export default {
   margin-top: 40;
 }
 
-#overlay {
+#wormhole {
   position: absolute;
   z-index: 10;
   top: -20;

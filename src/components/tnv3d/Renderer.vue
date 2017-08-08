@@ -1,7 +1,6 @@
 <template>
   <div id="renderer">
     <slot></slot>
-    <div ref="container"></div>
   </div>
 </template>
 
@@ -51,7 +50,9 @@ export default {
       lights: [],
       domEle: null,
       id3d: '',
-      sz: {}
+      sz: {},
+      cam: null,
+      camPos: {}
     }
   },
 
@@ -99,7 +100,7 @@ export default {
   mounted () {
     this.dbgPrt('mountRen', this.id3d)
 //    console.log(this.$refs)
-    this.$refs.container.appendChild(this.domEle)
+    this.$el.appendChild(this.domEle)
     this.animate()
   },
 
@@ -135,18 +136,31 @@ export default {
       cam.lookAt(itm.loc.x, itm.loc.y, itm.loc.z)
       this.renderer.animate()
 */
-      this.orbit.curObj.reset()
-      let cam = this.camera.curObj
       if (node === null) {
-        cam.position.set(this.campos)
+        this.cam.position.set(this.campos)
+        this.orbit.curObj.reset()
+        console.log('renact', this.cam.position)
       } else {
-        let hex = node.hex
-        let loc = hex.loc
-        cam.position.set(loc.x, loc.y + 100, loc.z)
+//        let hex = node.hex
+//        let loc = hex.loc
+//        cam.position.set(loc.x, loc.y + 100, loc.z)
 //        cam.lookAt(loc.x, loc.y, loc.z)
       }
-      this.orbit.curObj.reset()
+//      this.orbit.curObj.reset()
+      console.log('renact ani')
       this.animate()
+    },
+    campos: {
+      x: function (n, o) {
+        console.log('cp.x', n, o)
+      },
+      y: function (n, o) {
+        console.log('cp.y', n, o)
+      },
+      z: function (n, o) {
+        console.log('cp.z', n, o)
+      },
+      deep: true
     }
   },
 
@@ -168,6 +182,7 @@ export default {
       // - 40 is grid offest Grid.vue: 82
       mouse.y = -((evt.layerY - dom.y - 40) / dom.h) * 2 + 1
       this.raycast.setFromCamera(mouse, this.camera.curObj)
+      // Try using grid as object.
       let rslt = this.raycast.intersectObjects(this.scene3D.children, true)
       return rslt
     },
@@ -178,7 +193,13 @@ export default {
       if (intersect.length > 0) {  // this app the selection is group
 //        obj = intersect[0].object.vue.$parent
         obj = intersect[0].object.parent
-//        console.log('hover', obj, obj.vue)
+        while (obj.vue === null) {
+          obj = obj.parent
+        }
+        if (obj.type !== null) {
+          return
+        }
+//        console.log('hover', obj.vue.node.hex)
         obj = obj.vue.node
         obj.hover = true
       }
@@ -216,7 +237,6 @@ export default {
 
     addScene (scene) {
       this.scene = scene
-      console.log('REN as', scene)
       this.dbgPrt('addScn2Ren', scene.id3d, this.id3d)
       if (process.env.NODE_ENV === 'development') {
         window.THREE = THREE
@@ -227,7 +247,8 @@ export default {
     addCamera (camera) {
       this.dbgPrt('addCam2Ren', camera.id3d, this.id3d)
       this.camera = camera
-      this.campos = camera.position
+      this.cam = camera.curObj
+      this.campos = this.cam.position
     },
 
     expand () {
@@ -238,11 +259,12 @@ export default {
 //      this.render()
     },
     render () {
-      this.expand()
+//      this.expand()
       if (this.orbit) {
         this.orbit.animate()
       }
-      this.curObj.render(this.scene.curObj, this.camera.curObj)
+      console.log('REN', this.cam.position)
+      this.curObj.render(this.scene.curObj, this.cam)
     }
   }
 }

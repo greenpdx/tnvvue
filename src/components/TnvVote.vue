@@ -92,9 +92,9 @@ export default {
         y: 800
       },
       camPos: {
-        x: 50,
+        x: -50,
         y: 150,
-        z: 100
+        z: -100
       },
       freeze: {},
       top: null,

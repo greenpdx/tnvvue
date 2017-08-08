@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="hex">
     <!-- img class="heximg" ref="heximg" src="../../assets/hextop.svg" / -->
   </div>
 </template>
@@ -256,9 +256,9 @@ export default {
       this.curObj.position.set(loc.x, loc.y, loc.z)
 //      console.log('HEXPOS', q, r, s, loc)
       return {
-        x: loc.x - this.size * SQRT3 / 2,
+        x: loc.x,
         y: loc.y,
-        z: loc.z - this.size / 2}
+        z: loc.z}
     },
     addMat (mat) {
       this.dbgPrt('addMat2Grp', mat.uuid, this.id3d)

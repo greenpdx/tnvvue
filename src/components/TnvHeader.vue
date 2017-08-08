@@ -20,13 +20,16 @@ export default {
   data () {
     return {
       name: 'Tax N Vote',
-      motto: 'Your Tax Dollar repesents your ideas for a People\'s Budget',
-      explain: 'Tax N Vote allows you to turn your ideas about how the ' +
+      motto: 'Your Tax Dollar repesents your ideas in a People\'s Budget',
+/*      explain: 'Tax N Vote allows you to turn your ideas about how the ' +
         'US Government should spend your Tax Dollar.  A Tax Dollar is a vote ' +
         'that can be divided between any agency, bureau and department. Every ' +
         'Tax Dollar is data that is added up together to create a budget that ' +
         'is submitted to Congress. Now Congress has the President’s budget and ' +
-        'the people’s budget to fight over.'
+        'the people’s budget to fight over.' */
+      explain:
+        'Adjust the 2016 US Discretionary Budget ' +
+        'to how you want your Tax Dollar Spent'
     }
   }
 }
@@ -45,11 +48,11 @@ export default {
   font-weight: bold;
 }
 #motto {
-  font-size: 1.5em;
+  font-size: 2em;
   text-align: center;
   margin: auto;
   margin-left: 1em;
-  width: 33em;
+  width: 28em;
 }
 #tophead {
   display: inline-flex;
@@ -60,7 +63,8 @@ export default {
   display: inline-block;
   float: left;
   clear: left;
-  width: 60em;
+  width: 37em;
+  font-size: 2em;
   border: 1px solid black;
 }
 

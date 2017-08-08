@@ -1,12 +1,13 @@
 <template>
-  <div><slot></slot></div>
+  <div id="camera"></div>
 </template>
 
 <script>
 import {
   Camera,
   PerspectiveCamera,
-  OrthographicCamera
+  OrthographicCamera,
+  CameraHelper
 } from 'three'
 // import Object3D from './Object3D'
 // import OrbitControls from 'three-orbitcontrols'  // move to own component
@@ -42,7 +43,8 @@ export default {
   data () {
     return {
       controls: null,
-      id3d: ''
+      id3d: '',
+      helper: null
     }
   },
 
@@ -59,9 +61,16 @@ export default {
         default:
           this.curObj = new PerspectiveCamera(this.fov, this.aspect, this.near, this.far)
       }
-      this.curObj.vue = this
-      this.curObj.position.set(this.position.x, this.position.y, this.position.z)
+      let dbg = false
+      if (dbg) {  //  on hover this is the only object hover sees
+        this.helper = new CameraHelper(this.curObj)
+      }
+      let cam = this.curObj
+      cam.vue = this
+      cam.position.set(this.position.x, this.position.y, this.position.z)
 
+      cam.onBeforeRender = this.beforeRender
+      cam.onAfterRender = this.afterRender
 //      this.setCamera()
 /*      if (this.control) {
         this.domEle = this.$parent.$parent.domEle
@@ -96,6 +105,12 @@ export default {
     setCamera (cam) {
 //      this.$store.dispatch('cameraReady', this.curObj)
 //      this.$state.camera = cam
+    },
+    beforeRender (ren, scn, cam, geo, mat, grp) {
+      console.log('cam before')
+    },
+    afterRender (ren, scn, cam, geo, mat, grp) {
+      console.log('cam after')
     }
   }
 }

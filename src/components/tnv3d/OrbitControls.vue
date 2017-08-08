@@ -1,5 +1,5 @@
 <template>
-  <div><slot></slot></div>
+  <div id="orbit"><slot></slot></div>
 </template>
 
 <script>
@@ -34,7 +34,8 @@ export default {
     return {
       curObj: null,
       id3d: '',
-      orbit: {}
+      orbit: {},
+      grp: null
     }
   },
 
@@ -57,6 +58,12 @@ export default {
       this.dbgPrt('addCam2Orbt', camera.id3d, this.id3d)
 //      assign(this.curObj.position, this.position)
 //      assign(this.curObj.rotation, this.rotation)
+      let ptrGeo = new THREE.ConeGeometry(2, -16)
+      let ptrMat = new THREE.MeshBasicMaterial({color: '#f00'})
+      let ptr = new THREE.Mesh(ptrGeo, ptrMat)
+      ptr.visible = false
+      this.$parent.$emit('rawChild', ptr)
+      this.ptr = ptr
     },
 
     enabled (val = null) {
@@ -70,27 +77,29 @@ export default {
       this.orbit.update()
     },
 
-    zoomCam (camPath, lookPath) {
+    zoomCam (camPath, lookPath, ptr) {
       let idx = 0
       let self = this
-      let camera = this.camera.curObj
+      let loc = lookPath[lookPath.length - 1]
       let timer = setInterval(function () {
-        if (idx >= camPath.length) {
+        if (idx > camPath.length - 1) {
           clearInterval(timer)
+          console.log('done', self.camera.curObj.position)
           self.done = true
-          console.log('done')
+//          self.ptr.visible = false
           return
         }
-        let loc = camPath[idx]
-        camera.position.set(loc.x, loc.y, loc.z)
-        loc = lookPath[idx]
-        if (idx >= lookPath.length) {
-          loc = lookPath[lookPath.length - 1]
+//        let loc = lookPath[idx]
+        if (idx > camPath.length - 1) {
+          idx = camPath.length - 1
         }
-        camera.lookAt(loc.x, loc.y, loc.z)
-        idx += 1
+        let whr = camPath[idx]
+        ptr.lookAt(loc.x, loc.y, loc.z)
+        console.log(idx, loc, whr, 'cam', self.camera.curObj.position)
+        ptr.position.set(whr.x, whr.y, whr.z)
         self.render.animate()
-      }, 30)
+        idx += 1
+      }, 300)
     }
 
   },
@@ -103,31 +112,42 @@ export default {
       return this.$parent.domElement
     }
   },
+  /* eslint-disable no-unused-vars */
   watch: {
     expandNode1: function (node) {
+//      this.camera = this.renderer
+      this.enabled(false)
       if (node === null) {
 
       } else {
         let hex = node.hex
         let loc = hex.loc
+        loc.y = hex.height - 40
         let camera = this.camera.curObj
         let start = camera.position
-        let tgt = this.orbit.target
-        let c0 = new THREE.Vector3(loc.x, loc.y + 100, loc.z)
+        let c0 = new THREE.Vector3(loc.x, loc.y + 50, loc.z)
         let c1 = new THREE.Vector3(loc.x, loc.y + 10, loc.z)
         let end = new THREE.Vector3(loc.x, loc.y, loc.z)
         let curve = new THREE.CubicBezierCurve3(start, c0, c1, end)
-        let pts = curve.getSpacedPoints(66)
+        let pts = curve.getSpacedPoints(6)
 
-        this.orbit.saveState()
+        let look = new THREE.LineCurve3(start, end)
+        let lks = look.getSpacedPoints(6)
 
-        let look = new THREE.LineCurve3(tgt, end)
-        let lks = look.getSpacedPoints(33)
-//        this.animate()
-//        camera.position.set(pts[99].x, pts[99].y, pts[99].z)
-//        this.animate()
-        this.zoomCam(pts, lks)
-        console.log('OC node1', end)
+        //        console.log('CURVE', start, c0, c1, end)
+      // visual cone to hex
+//        let ptrGeo = new THREE.ConeGeometry(2, -16)
+//        let ptrMat = new THREE.MeshBasicMaterial({color: '#f00'})
+//        let ptr = new THREE.Mesh(ptrGeo, ptrMat)
+//        this.$parent.$emit('rawChild', ptr)
+//        let ptr = this.ptr
+//        ptr.visible = true
+//        ptr.position.set(start.x, start.y, start.z)
+
+//        console.log('cam', camera.getWorldDirection(), camera.getWorldPosition())
+
+        this.zoomCam(pts, lks, camera)
+        console.log('OC node1', end, pts.length)
       }
     },
     expandNode2: function (node) {

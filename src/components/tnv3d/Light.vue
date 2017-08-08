@@ -1,5 +1,5 @@
 <template>
-  <div><slot></slot></div>
+  <div id="light"></div>
 </template>
 <script>
 import {
@@ -67,3 +67,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+#light {
+  width: 100%;
+  height: 100%;
+}
+</style>

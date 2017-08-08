@@ -1,20 +1,19 @@
 <template>
   <div
     v-on:addChild="addChild"
-    v-on:addMaterial="addMat">
-    <div>
-      <hex
-        v-for="(node, index) in nodes"
-        v-bind:node="node"
-        v-bind:key="node.value"
-        v-bind:index="index"
-        v-bind:scale="scale"
-        v-bind:mats="mats"
-        size="5"
-        @click="clickHex">
-      </hex>
-      <slot></slot>
-    </div>
+    v-on:addMaterial="addMat"
+    id="grid">
+    <hex
+      v-for="(node, index) in nodes"
+      v-bind:node="node"
+      v-bind:key="node.value"
+      v-bind:index="index"
+      v-bind:scale="scale"
+      v-bind:mats="mats"
+      size="5"
+      @click="clickHex">
+   </hex>
+   <slot></slot>
   </div>
 </template>
 <script>
@@ -111,6 +110,9 @@ export default {
 //    this.scale = this.nodes[0].value / 80
     this.curObj.position.y = -40
 //    Object.assign(this.curObj.position, this.pos)
+    this.curObj.onBeforeRender = this.beforeRender
+    this.curObj.onAfterRender = this.afterRender
+
     this.$on('rmChild', this.rmChild)
     this.$on('addChild', this.addChild)
 //    console.log('NODE', this.nodes)
@@ -168,6 +170,13 @@ export default {
         })
     },
 */
+    beforeRender (ren, scn, cam, geo, mat, grp) {
+      console.log('grid before')
+    },
+    afterRender (ren, scn, cam, geo, mat, grp) {
+      console.log('grid after')
+    },
+
     rmChild (child) {
       console.log('rmChild Grid')
     },

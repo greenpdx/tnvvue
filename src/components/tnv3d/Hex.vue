@@ -110,7 +110,6 @@ export default {
     let pos = this.idx2pos(this.index)
     this.hexpos = pos
     this.loc = this.positionHex(pos.x, pos.y, pos.z)
-//    console.log('hex pos', this.hexpos, this.loc)
     this.node.hex = this
 
     this.$on('addChild', this.addChild)
@@ -121,14 +120,10 @@ export default {
   mounted () {
     this.dbgPrt('mountHex', this.id3d)
     this.$parent.$emit('addChild', this)
-
-//    this.heximg = this.$refs.heximg
-//    console.log('hexing', this.heximg)
   },
 
   updated () {
     this.dbgPrt('updateHex', this.id3d)
-//    this.$parent.$emit('addGroup', this.curObj)
   },
 
   beforeDestroy () {
@@ -210,12 +205,9 @@ export default {
         chg = (lvl * 6) + chg
       }
       lvl = lvl - 1
-//      let cir = lvl * 6
       let dif = idx - sub
-//      let dif = idx - HEXLAYER[lvl]
       let side = Math.floor(dif / lvl)
       let off = dif % lvl
-//      console.log('idx', idx, 'dif', dif, 'lvl', lvl, 'sid', side, 'off', off)
       let sign = 1
       let y
       let x
@@ -247,7 +239,6 @@ export default {
           break
         default:
       }
-//      console.log('HEXQRS', idx, lvl, side, off, x, y, z)
       return ({x: x, y: y, z: z})
     },
     positionHex (q = 0, r = 0, s = 0) {
@@ -256,7 +247,6 @@ export default {
       loc.y = this.height / 2
       loc.z = (q) * this.size * SQRT3 * (SQRT3 / 2)
       this.curObj.position.set(loc.x, loc.y, loc.z)
-//      console.log('HEXPOS', q, r, s, loc)
       return loc
     },
     addMat (mat) {

@@ -53,7 +53,7 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-const debug = false
+const debug = true
 
 Vue.mixin({
   methods: {

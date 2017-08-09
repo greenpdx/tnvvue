@@ -37,24 +37,7 @@ export default {
     'hex': Hex,
     'v3d-group': Group
   },
-/*  render: function (createElement) {
-    return createElement(
-      'mesh', [
-        createElement('geometry', {
-          attrs: {
-            type: 'Cylinder',
-            args: '20,20,15,6,1,true'
-          }
-        }),
-        createElement('material', {
-          attrs: {
-            type: 'Normal'
-          }
-        }),
-        this.$slots.default
-      ]
-    )
-  }, */
+
 //   mixins: [Object3D],
   props: {
     obj: {
@@ -63,9 +46,6 @@ export default {
     position: {
       default: '{"x": 0, "y": 0, "z": 0}'
     },
-//    nodes: {
-//      type: []
-//    },
     top: {}
   },
 
@@ -105,26 +85,21 @@ export default {
     this.curObj.vue = this
     this.id3d = this.curObj.name || this.curObj.uuid
     this.curObj.name = this.id3d
-//    console.log(this.top)
-//    this.scale = this.nodes[0].value / 80
     this.curObj.position.y = -40
-//    Object.assign(this.curObj.position, this.pos)
     this.$on('rmChild', this.rmChild)
     this.$on('addChild', this.addChild)
-//    console.log('NODE', this.nodes)
     this.dbgPrt('createGrd', this.id3d)
   },
 
   mounted () {
     this.dbgPrt('mountGrd', this.id3d)
-//    this.curObj.position.y = 10
     this.$parent.$emit('addChild', this)
     this.renderer = this.$parent.$parent
   },
 
   updated () {
     this.dbgPrt('updateGrd', this.id3d)
-//    this.$parent.$emit('addGroup', this.curObj)
+    console.log(this.grps)
   },
 
   computed: {
@@ -146,7 +121,6 @@ export default {
       while (itm) {
         this.curObj.remove(itm.curObj)
         itm = null
-//        Vue.delete(itm)
         itm = this.grps.pop()
       }
       if (this.top === null) {
@@ -159,15 +133,8 @@ export default {
   },
 
   methods: {
-/*    getData () {
-      axios.get('http://10.0.42.81:8181/docs')
-        .then(response => {
-          console.log('DATA', response)
-        })
-    },
-*/
     rmChild (child) {
-      console.log('rmChild Grid')
+      this.dbgPrt('rmChild Grid', child.id3d)
     },
     addMat (mat) {
       this.dbgPrt('addMat2Grd', mat.uuid, this.id3d)

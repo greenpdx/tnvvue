@@ -1,5 +1,5 @@
 <template>
-  <div class="tnv3d" v-bind:class="sizeClass()">
+  <div id="tnv3d" v-bind:class="sizeClass()">
     <v3d-renderer id="renderer" ref="renderer" :size="size" :tnv3d="this">
       <worm-hole id="wormhole" ref="wormhole" :tnv3d="this"></worm-hole>
       <v3d-scene ref="scene">
@@ -101,9 +101,14 @@ export default {
   },
 
   watch: {
-    activeNode: function () {
+    activeNode: function (node) {
+      console.log('tnv3d active', node, this.camera.curObj.position)
       if (this.activeNode === null) {
         this.active = this.base
+//        let pos = this.camPos
+//        let cam = this.camera.curObj
+  //      cam.lookAt(new THREE.Vector3())
+//        cam.position.set(pos.x, pos.y, pos.z)
       } else {
         this.active = this.activeNode
       }

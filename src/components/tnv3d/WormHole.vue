@@ -114,6 +114,7 @@ export default {
 
   methods: {
     ...mapActions([
+      'setActive'
     ]),
     zoomIn (hex) {
       let cnt = 0.05
@@ -121,6 +122,7 @@ export default {
       let timer = setInterval(function () {
         if (cnt >= hex.size) {
           clearInterval(timer)
+          return
         }
         let dom = self.mksvg({x: self.size.x * cnt, y: self.size.y * cnt})
         hex.hex = dom.hex
@@ -137,6 +139,7 @@ export default {
         if (cnt <= 0.05) {
           clearInterval(timer)
           hex.show = false
+          return
         }
         let dom = self.mksvg({x: self.size.x * cnt, y: self.size.y * cnt})
         hex.hex = dom.hex
@@ -222,14 +225,14 @@ export default {
 //    self.update
     },
     camZoom (node) {
+      let camera = this.tnv3d.camera.curObj
+      let start = camera.position
       if (node === null) {
-
+        console.log('CZ', start)
       } else {
         let hex = node.hex
         let loc = hex.loc
-        loc = hex.height - 40
-        let camera = this.tnv3d.camera.curObj
-        let start = camera.position
+        loc.y = hex.height - 40
         let c0 = new THREE.Vector3(loc.x, loc.y + 50, loc.z)
         let c1 = new THREE.Vector3(loc.x, loc.y + 10, loc.z)
         let end = new THREE.Vector3(loc.x, loc.y + 10, loc.z)
@@ -239,7 +242,7 @@ export default {
         let look = new THREE.LineCurve3(end, start)
         let lks = look.getSpacedPoints(6)
         lks = end
-        console.log('camZoom', end, pts, lks)
+        console.log('camZoom', end, pts, lks, start)
         // visual cone to hex
 //        let ptrGeo = new THREE.ConeGeometry(2, -16)
 //        let ptrMat = new THREE.MeshBasicMaterial({color: '#f00'})
@@ -253,15 +256,15 @@ export default {
         this.lks = lks
         this.cnt = 5
 //        this.zoomLoop(pts, lks, camera)
-        let self = this
-        let timer = setInterval(function () {
+//        let self = this
+/*        let timer = setInterval(function () {
           if (self.cnt < 0) {
             clearInterval(timer)
             self.done = true
             return
           }
           self.animate()
-        }, 3000)
+        }, 3000) */
         console.log('OC node1', end, pts.length)
       }
     },
@@ -277,11 +280,24 @@ export default {
     activeNode: function (node) {
     },
     expandNode1: function (node) {
+      if (node === null) {
+        this.camZoom(node)
+      } else {
+        this.camZoom(node)
+      }
+      this.zoom1 = node
     },
     expandNode2: function (node) {
+      if (node === null) {
+        this.camZoom(node)
+      } else {
+        this.camZoom(node)
+      }
+      this.zoom2 = node
     },
     zoom1: function (node) {
       console.log('hex0', node, this.hex0)
+      this.setActive(node)
       if (node === null) {
         this.zoomOut(this.hex0)
       } else {
@@ -291,6 +307,7 @@ export default {
       }
     },
     zoom2: function (node) {
+      this.setActive(node)
       if (node === null) {
         this.zoomOut(this.hex1)
       } else {

@@ -1,7 +1,8 @@
 <template>
   <footer class="tnvfooter">
 
-    <span>{{ copyright }}</span>
+    <span>{{ copyright }}</span><br>
+    <span>{{ contact }}</span>
   </footer>
 </template>
 
@@ -10,7 +11,8 @@ export default {
   name: 'TnvFooter',
   data () {
     return {
-      copyright: 'Tax N Vote 2017'
+      copyright: 'Tax N Vote 2017',
+      contact: 'Contact: info AT taxnvote DOT org'
     }
   }
 }

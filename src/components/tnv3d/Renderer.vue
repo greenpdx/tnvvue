@@ -95,7 +95,7 @@ export default {
   mounted () {
     this.dbgPrt('mountRen', this.id3d)
     this.$el.appendChild(this.domEle)
-    this.scene = this.tnv3d.grid
+//    this.scene = this.tnv3d.grid
     this.animate()
   },
 
@@ -131,7 +131,8 @@ export default {
       this.renderer.animate()
 */
       if (node === null) {
-        this.cam.position.set(this.campos)
+        let pos = this.campos
+        this.cam.position.set(pos.x, pos.y, pos.z)
       } else {
       }
 //      this.orbit.curObj.reset()
@@ -205,8 +206,7 @@ export default {
     },
 
     addScene (scene) {
-      this.scene = this.tnv3d.grid
-      console.log('REN as', scene)
+      this.scene = scene
       this.dbgPrt('addScn2Ren', scene.id3d, this.id3d)
       if (process.env.NODE_ENV === 'development') {
         window.THREE = THREE

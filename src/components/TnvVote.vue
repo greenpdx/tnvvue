@@ -11,7 +11,8 @@
           :top="top"
           :size="threeSize"
           :camPos="camPos"
-          :freeze="freeze">
+          :freeze="freeze"
+          id="tnv3d">
         </tnv-3d>
         <div v-show="showInfo" class="infopop" ref="infopop">
           <div v-html="objInfo"></div>

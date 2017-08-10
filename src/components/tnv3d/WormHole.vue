@@ -34,14 +34,14 @@ const hexBase = [
   {x: -0.5, y: TAU}
 ]
 /*
-  mask0  mask array size 2 from corner to first/largest hex (hex0)
-  mask1  mask array size 2 from hex0 to second/smallest hex (hex1)
-  hex0        polygon points of first/largest hex
-  hex1        polygon points of second/smallest hex
-  edge0       array size 6 of edge lines (polygon to show depth) for hex0
-  edge1       array size 6 of edge lines (polygon to show depth) for hex1
-  show0       boolean for v-if for hex0 and mask0
-  show1       boolean for v-if for hex1 and mask1
+  expand:
+    start cam zoom in, start create new grid
+    finish can zoom, start svg grow, blank 3d, change cam infinity
+    finish svg, turn on 3d and zoom to position
+  colapse:
+    cam zoom infinity, start creat new grid
+    svg start, blank 3d,
+    enable 3d, zoom cam from hex out to pos
 
   start with small hex and over time 1-5 sec expand to final size
 */
@@ -265,7 +265,7 @@ export default {
           }
           self.animate()
         }, 3000) */
-        console.log('OC node1', end, pts.length)
+//        console.log('OC node1', end, pts.length)
       }
     },
     update (camera) {

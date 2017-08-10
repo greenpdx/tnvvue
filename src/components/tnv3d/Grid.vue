@@ -52,7 +52,9 @@ export default {
   data () {
     return {
       nodes: null,
-      data: {}
+      data: {},
+      grid: [],
+      actGrid: 0
     }
   },
 
@@ -80,12 +82,18 @@ export default {
       map: t1
     })
 
-    this.curObj = this.obj
-    this.curObj = new THREE.Group()
-    this.curObj.vue = this
-    this.id3d = this.curObj.name || this.curObj.uuid
-    this.curObj.name = this.id3d
-    this.curObj.position.y = -40
+    for (let i = 0; i < 2; i++) {
+      let grid = this.obj
+      grid = new THREE.Group()
+      grid.vue = this
+      grid.id3d = grid.uuid
+      grid.position.y = -40
+      this.grid[i] = grid
+    }
+    this.actGrid = 0
+    this.curObj = this.grid[0]
+    this.id3d = this.curObj.id3d
+
     this.$on('rmChild', this.rmChild)
     this.$on('addChild', this.addChild)
     this.dbgPrt('createGrd', this.id3d)
@@ -99,7 +107,6 @@ export default {
 
   updated () {
     this.dbgPrt('updateGrd', this.id3d)
-    console.log(this.grps)
   },
 
   computed: {
@@ -117,12 +124,11 @@ export default {
   watch: {
     top: function () {
       console.log('grid new top', this.top)
-      let itm = this.grps.pop()
-      while (itm) {
-        this.curObj.remove(itm.curObj)
-        itm = null
-        itm = this.grps.pop()
-      }
+      // alt between 1 and 0
+//      let act = this.actGrid + 1 % 2
+      // switch curObj
+      let chldn = this.curObj.children
+      this.curObj.remove(...chldn)
       if (this.top === null) {
         this.top = this.old
       }
@@ -143,7 +149,6 @@ export default {
 
     addChild (child) {    // also Mesh
       this.dbgPrt('addChild2Grd', child.id3d, this.id3d)
-      this.grps.push(child)
       this.curObj.add(child.curObj)
     },
 

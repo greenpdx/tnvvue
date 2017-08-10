@@ -15,7 +15,9 @@
           id="tnv3d">
         </tnv-3d>
         <div v-show="showInfo" class="infopop" ref="infopop">
-          <div v-html="objInfo"></div>
+          <span>{{ info.name }}</span><br>
+          <span>{{ info.value / 1000 }} Billion</span><br>
+          <span>{{ info.percent }}</span> % of {{ info.parent }} Budget
         </div>
       </div>
 
@@ -99,8 +101,14 @@ export default {
       },
       freeze: {},
       top: null,
-      test: true,
-      rawTree: {}
+      test: false,
+      rawTree: {},
+      info: {
+        name: '',
+        value: 0,
+        percent: 0,
+        parent: ''
+      }
     }
   },
 
@@ -131,14 +139,10 @@ export default {
     showInfo: function () {
       if (this.hoverNode !== null) {
         let node = this.hoverNode
-        let str = ''
-        str += node.name + '<br />'
-        str += node.value + '<br />'
-        str += Math.round(node.lockVal * 1000000) / 10000 + '% of total budget'
-//        str += Math.round(obj.loc.x * 100) / 100 +
-//          ', ' + Math.round(obj.loc.y * 100) / 100 +
-//          ', ' + Math.round(obj.loc.z * 100) / 100
-        this.objInfo = str
+        this.info.name = node.name
+        this.info.value = node.value
+        this.info.percent = Math.round(node.lockVal * 1000000) / 10000
+        this.info.parent = node.parent.name
         return true
       } else {
         this.objInfo = ''

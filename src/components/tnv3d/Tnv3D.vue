@@ -138,7 +138,7 @@ export default {
         this.orbit.animate()
       }
       if (this.wormhole) {
-//        this.wormhole(this.camera.curObj)
+        this.wormhole.update(this.camera.curObj)
       }
       this.renderer.curObj.render(this.scene.curObj, this.camera.curObj)
     }

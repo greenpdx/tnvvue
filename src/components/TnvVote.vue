@@ -16,7 +16,7 @@
         </tnv-3d>
         <div v-show="showInfo" class="infopop" ref="infopop">
           <span>{{ info.name }}</span><br>
-          <span>{{ info.value / 1000 }} Billion</span><br>
+          <span>{{ info.value / 1000 }} Million</span><br>
           <span>{{ info.percent }}</span> % of {{ info.parent }} Budget
         </div>
       </div>
@@ -163,7 +163,7 @@ export default {
     },
     setLockVal (itm, idx) {
       itm.lockVal = itm.value / itm.parent.default
-      console.log(itm.value, itm.parent.default)
+//      console.log(itm.value, itm.parent.default)
     },
     groupData (nodes, filterCB) {
       let map = {}
@@ -300,8 +300,10 @@ export default {
     },
     getData () {
       let self = this
-      axios.get('http://10.0.42.81:8181/docs/local/budget/full?limit=0')
+//      axios.get('http://10.0.42.81:8181/docs/local/budget/full?limit=0')
 //      axios.get('/mongodb')
+      axios.get(process.dbURL)
+
         .then(response => {
           let rslt = response.data
           let data = rslt.data

@@ -131,16 +131,19 @@ export default {
     animate () {
 //      requestAnimationFrame(this.animate)
       requestAnimationFrame(this.render)
-//    this.render()
+//      this.render()
     },
     render () {
+//      console.log(this.renderer, this.scene, this.camera)
+      if (this.wormhole && this.camera) {
+        this.wormhole.update(this.camera.curObj)
+      }
       if (this.orbit) {
         this.orbit.animate()
       }
-      if (this.wormhole) {
-        this.wormhole.update(this.camera.curObj)
+      if (this.renderer && this.scene && this.camera) {
+        this.renderer.curObj.render(this.scene.curObj, this.camera.curObj)
       }
-      this.renderer.curObj.render(this.scene.curObj, this.camera.curObj)
     }
 
   }

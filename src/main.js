@@ -50,6 +50,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import config from './config'
+
+process.dbURL = config.dev.env.DBURL
+
+console.log(config, process)
 
 Vue.config.productionTip = false
 

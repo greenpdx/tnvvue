@@ -1,7 +1,7 @@
 <template>
 <div class="tnvvote">
   <div class="split">
-    <div id="three3d" class="three3d" ref="three3d">
+    <div v-if="webglEnabled" id="three3d" class="three3d" ref="three3d">
     <div>
       <span>{{ howTo0 }}</span><br />
       <span>{{ howTo1 }}</span>
@@ -101,7 +101,7 @@ export default {
       },
       freeze: {},
       top: null,
-      test: false,
+      test: true,
       rawTree: {},
       info: {
         name: '',
@@ -113,6 +113,9 @@ export default {
   },
 
   beforeCreate () {
+    if (!window.WebGLRenderingContext) {
+      this.noWebgl()
+    }
   },
 
   created () {
@@ -129,11 +132,17 @@ export default {
   mounted () {
   },
 
+  watch: {
+//    top is the start of the tree
+//    expandNode: function (node) {
+//    }
+  },
   computed: {
     ...mapGetters({
       hoverNode: 'hoverNode',
       selectNode: 'selectNode',
-      expandNode: 'expandNode'
+      expandNode: 'expandNode',
+      webglEnabled: 'webglEnabled'
     }),
 
     showInfo: function () {
@@ -154,7 +163,8 @@ export default {
   methods: {
     ...mapActions([
       'setActive',
-      'setExpand'
+      'setExpand',
+      'noWebgl'
     ]),
     sortSum (a, b) {
       if (a.sum > b.sum) { return -1 }

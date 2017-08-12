@@ -1,19 +1,20 @@
 <template>
   <div id="tnv3d" v-bind:class="sizeClass()">
     <v3d-renderer id="renderer" ref="renderer" :size="size" :tnv3d="this">
-      <worm-hole id="wormhole" ref="wormhole" :tnv3d="this"></worm-hole>
+      <worm-hole id="wormhole" ref="wormhole" :tnv3d="levels"></worm-hole>
       <v3d-scene ref="scene">
         <v3d-orbit-controls ref="orbit">
           <v3d-camera ref="camera0" :position="camPos"></v3d-camera>
         </v3d-orbit-controls>
         <v3d-light color="#ffffff" id="light"></v3d-light>
-        <v3d-grid :top="active" ref="grid" id="grid"></v3d-grid>
+        <v3d-grid :top="top3d" ref="grid" id="grid"></v3d-grid>
       </v3d-scene>
     </v3d-renderer>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 // import * as THREE from 'three'
 // import axios from 'axios'
@@ -64,11 +65,16 @@ export default {
         'z': 0
       },
       orbit: null,
-      active: null,
+      top3d: null,
       renderer: null,
       camera: null,
       wormhole: null,
-      grid: null
+      grid: null,
+      levels: {
+        lvl1: false,
+        lvl2: false,
+        animate: this.animate
+      }
     }
   },
 
@@ -78,7 +84,11 @@ export default {
   created () {
     console.log('TNV3D', this.size, this.top)
     this.base = this.top
-    this.setActive(this.top)
+    this.top3d = this.top
+    Vue.nextTick(() => {
+      this.animate()
+    })
+    this.animate()
   },
 
   mounted () {
@@ -94,14 +104,14 @@ export default {
     ...mapGetters({
       hoverNode: 'hoverNode',
       selectNode: 'selectNode',
-      activeNode: 'activeNode',
-      expandNode1: 'expandNode1',
-      expandNode2: 'expandNode2'
+//      activeNode: 'activeNode',
+      expandNode: 'expandNode',
+      expanded: 'expanded'
     })
   },
 
   watch: {
-    activeNode: function (node) {
+/*    activeNode: function (node) {
       console.log('tnv3d active', node, this.camera.curObj.position)
       if (this.activeNode === null) {
         this.active = this.base
@@ -112,12 +122,43 @@ export default {
       } else {
         this.active = this.activeNode
       }
+    }, */
+    expanded: function () {
+      let node = this.expandNode
+//      console.log(node.level, node.expand)
+      switch (node.level) {
+        case 3:
+        case 2:
+          if (node.expand) {
+            this.top3d = node
+            this.levels.lvl2 = node
+          } else {
+            this.top3d = node.parent
+            this.levels.lvl2 = null
+          }
+          break
+        case 1:
+          if (node.expand) {
+            this.top3d = node
+            this.levels.lvl1 = node
+          } else {
+            this.top3d = node.parent
+            this.levels.lvl1 = null
+          }
+          break
+        case 0:
+        default:
+          this.levels.lvl1 = null
+          this.levels.lvl2 = null
+          this.top3d = this.base
+      }
+      this.animate()
     }
   },
 
   methods: {
     ...mapActions([
-      'setActive'
+//      'setActive'
     ]),
     sizeClass () {
       return {

@@ -108,9 +108,7 @@ export default {
   computed: {
     ...mapGetters([
       'rawData',
-      'getNodeByIdx',
-      'expandNode2',
-      'expandNode1'
+      'getNodeByIdx'
     ]),
     expanded: function () {
       return this.node.expand

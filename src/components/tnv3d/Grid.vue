@@ -51,7 +51,6 @@ export default {
 
   data () {
     return {
-      nodes: null,
       data: {},
       grid: [],
       actGrid: 0
@@ -94,6 +93,8 @@ export default {
     this.curObj = this.grid[0]
     this.id3d = this.curObj.id3d
 
+    this.scale = this.top.children[0].value / 80
+
     this.$on('rmChild', this.rmChild)
     this.$on('addChild', this.addChild)
     this.dbgPrt('createGrd', this.id3d)
@@ -118,23 +119,22 @@ export default {
     pos: function () {
       let ary = JSON.parse(this.position.replace(/'/g, '"'))
       return ary
+    },
+    nodes: function () {
+      return this.top.children
     }
   },
 
   watch: {
-    top: function () {
+    top: function (node) {
       console.log('grid new top', this.top)
       // alt between 1 and 0
 //      let act = this.actGrid + 1 % 2
       // switch curObj
       let chldn = this.curObj.children
       this.curObj.remove(...chldn)
-      if (this.top === null) {
-        this.top = this.old
-      }
-      this.old = this.top
+
       this.scale = this.top.children[0].value / 80
-      this.nodes = this.top.children
     }
   },
 

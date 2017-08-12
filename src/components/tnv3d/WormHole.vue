@@ -109,7 +109,7 @@ export default {
       {x: center.y - xdm, y: asz.y}
     ]
     this.edgePts = e.pts
-    this.animate = this.tnv3d.animate
+    this.animate = this.tnv3d.animate()
   },
 
   methods: {
@@ -277,23 +277,28 @@ export default {
   },
 
   watch: {
-    activeNode: function (node) {
-    },
-    expandNode1: function (node) {
-      if (node === null) {
-        this.camZoom(node)
-      } else {
-        this.camZoom(node)
+    // this needs to made better
+    expanded: function () {
+      let node = this.expandNode
+      let lvl1 = this.tnv3d.lvl1
+      let lvl2 = this.tnv3d.lvl2
+      if (lvl1 && !this.hex0.show) {
+        this.hex0.name = this.expandNode.name
+        this.hex0.show = true
+        this.zoomIn(this.hex0)
       }
-      this.zoom1 = node
-    },
-    expandNode2: function (node) {
-      if (node === null) {
-        this.camZoom(node)
-      } else {
-        this.camZoom(node)
+      if (!lvl1 && this.hex0.show) {
+        this.zoomOut(this.hex0)
       }
-      this.zoom2 = node
+      if (lvl2 && !this.hex1.show) {
+        this.hex1.name = this.expandNode.name
+        this.hex1.show = true
+        this.zoomIn(this.hex1)
+      }
+      if (!lvl2 && this.hex1.show) {
+        this.zoomOut(this.hex1)
+      }
+      console.log('WH exp', lvl1, lvl2, node)
     },
     zoom1: function (node) {
       console.log('hex0', node, this.hex0)
@@ -319,8 +324,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      expandNode1: 'expandNode1',
-      expandNode2: 'expandNode2',
+      expandNode: 'expandNode',
+      expanded: 'expanded',
       activeNode: 'activeNode'
     })
   }

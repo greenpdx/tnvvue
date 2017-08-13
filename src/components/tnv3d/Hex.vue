@@ -68,13 +68,12 @@ export default {
       id: '',
       height: 0,
       argCyl: '10,10,15,6,1,true',
-      argTop: '10,0.1,10,6,1,true'
+      argTop: '10,0.1,10,6,1,true',
+      id3d: ''
     }
   },
 
   beforeCreate () {
-    this.edgeMat = new THREE.LineBasicMaterial({color: 0x000000})
-    this.topMat = new THREE.MeshNormalMaterial({})
   },
   created () {
     this.curObj = {}
@@ -143,16 +142,7 @@ export default {
       return ary
     },
     hovered: function () {
-      let hover = this.node.hover
-      if (hover) {
-        console.log('hovered', hover, this)
-        this.cyl.material = this.mats.selCyl
-        this.top.material = this.mats.selTop
-      } else {
-        this.cyl.material = this.mats.cylMat
-        this.top.material = this.mats.topMat
-      }
-      return hover
+      return this.node.hover
     },
     selected: function () {
       let select = this.node.select
@@ -271,21 +261,21 @@ export default {
     }
   },
   watch: {
-/*    hovered () {
+    hovered () {
       let val = this.node.hover
       if (val) {
         console.log('hovered', val, this)
         this.cyl.material = this.mats.selCyl
-        this.top.material = this.mats.selMat
+        this.top.material = this.mats.selTop
       } else {
         this.cyl.material = this.mats.cylMat
         this.top.material = this.mats.topMat
       }
-    }, */
-/*    selected () {
+    },
+    selected () {
       let val = this.selected
       console.log(val, this)
-    } */
+    }
   }
 }
 </script>

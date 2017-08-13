@@ -264,7 +264,7 @@ export default {
     hovered () {
       let val = this.node.hover
       if (val) {
-        console.log('hovered', val, this)
+//        console.log('hovered', val, this)
         this.cyl.material = this.mats.selCyl
         this.top.material = this.mats.selTop
       } else {

@@ -10,10 +10,11 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('#app', 5000)
-      .assert.elementPresent('.hello')
-      .assert.containsText('h1', 'Welcome to Your Vue.js App')
-      .assert.elementCount('img', 1)
+      .waitForElementVisible('#tnvapp', 5000)
+      .assert.elementPresent('.tnvvote')
+      .assert.containsText('span', 'Tax N Vote')
+      .waitForElementVisible('#renderer', 10000)
+      .assert.elementCount('canvas', 1)
       .end()
   }
 }

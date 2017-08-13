@@ -1,3 +1,12 @@
+/*
+  check location
+  check height
+  check grow
+  check hover
+  check select
+  check wheel
+ */
+
 import Vue from 'vue'
 import Hex from '@/components/tnv3d/Hex'
 import Node from '@/lib/Node'
@@ -55,7 +64,7 @@ describe('Hex.vue', () => {
         size: 5
       }
     }).$mount()
-    console.log(hex.mats, hex._test)
+//    console.log(hex.mats, hex._test)
     expect(hex.mats.topMat.id).to.equal(mats.topMat.id)
 //    expect(vm.$el.querySelector('.hello h1').textContent)
 //      .to.equal('Welcome to Your Vue.js App')

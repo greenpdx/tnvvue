@@ -106,7 +106,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      selectObj: 'selectObj',
+      selectNode: 'selectNode',
       activeNode: 'activeNode'
     }),
     domElement: function () {
@@ -194,12 +194,12 @@ export default {
     onWheel (evt) {  // change to wheel selected if mouse over
       let intersect = this._getIntersect(evt)
       if (intersect.length > 0) {
-        let obj = intersect[0].object.parent.vue
-        console.log('wheel', evt.deltaY, obj, this.selectObj)
-        if (obj === this.selectObj) {
+        let node = intersect[0].object.parent.vue.node
+        console.log('wheel', evt.deltaY, node, this.selectObj)
+        if (node === this.selectNode) {
           evt.preventDefault()
           evt.stopImmediatePropagation()
-          obj.wheelChg(evt.deltaY)
+          node.wheelChg(evt.deltaY)
           this.animate()
         }
       }

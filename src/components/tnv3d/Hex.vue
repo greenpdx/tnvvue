@@ -44,7 +44,8 @@ export default {
       default: '{"z":0,"y":0."y":0}'
     },
     node: {
-      type: Node
+      type: Node,
+      required: true
     },
     index: 0,
     size: {
@@ -66,7 +67,6 @@ export default {
     return {
       id: '',
       height: 0,
-      grp: null,
       argCyl: '10,10,15,6,1,true',
       argTop: '10,0.1,10,6,1,true'
     }
@@ -77,7 +77,7 @@ export default {
     this.topMat = new THREE.MeshNormalMaterial({})
   },
   created () {
-    this.curObj = this.obj
+    this.curObj = {}
     this.node.index = this.index
     // create new hex Object
     let group = new THREE.Group()
@@ -112,8 +112,6 @@ export default {
     this.loc = this.positionHex(pos.x, pos.y, pos.z)
     this.node.hex = this
 
-    this.$on('addChild', this.addChild)
-    this.$on('addMaterial', this.addMat)
     this.dbgPrt('createHex', this.id3d, this.node.value, this.height, this.scale)
   },
 
@@ -145,13 +143,27 @@ export default {
       return ary
     },
     hovered: function () {
-      return this.node.hover
+      let hover = this.node.hover
+      if (hover) {
+        console.log('hovered', hover, this)
+        this.cyl.material = this.mats.selCyl
+        this.top.material = this.mats.selTop
+      } else {
+        this.cyl.material = this.mats.cylMat
+        this.top.material = this.mats.topMat
+      }
+      return hover
     },
     selected: function () {
-      return this.node.select
+      let select = this.node.select
+      console.log(select, this)
+      return select
     },
     expanded: function () {
       return this.node.expand
+    },
+    _test: function () {
+      return this.curObj
     }
   },
 
@@ -249,15 +261,6 @@ export default {
       this.curObj.position.set(loc.x, loc.y, loc.z)
       return loc
     },
-    addMat (mat) {
-      this.dbgPrt('addMat2Grp', mat.uuid, this.id3d)
-      this.mats.push(mat)
-    },
-    addChild (child) {    // also Mesh
-      this.dbgPrt('addChild2Grp', child.id3d, this.id3d)
-      this.grp = child
-      this.curObj.add(child.curObj)
-    },
     onHover () {
       let self = this
       this.$store.dispatch('hover', { self })
@@ -268,8 +271,8 @@ export default {
     }
   },
   watch: {
-    hovered () {
-      let val = this.hovered
+/*    hovered () {
+      let val = this.node.hover
       if (val) {
         console.log('hovered', val, this)
         this.cyl.material = this.mats.selCyl
@@ -278,11 +281,11 @@ export default {
         this.cyl.material = this.mats.cylMat
         this.top.material = this.mats.topMat
       }
-    },
-    selected () {
+    }, */
+/*    selected () {
       let val = this.selected
       console.log(val, this)
-    }
+    } */
   }
 }
 </script>

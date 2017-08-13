@@ -72,7 +72,7 @@ export default {
     })
     let t0 = new THREE.TextureLoader().load(this.heximg)
     t0.needsUpdate = true
-    this.mats['selMat'] = new THREE.MeshBasicMaterial({
+    this.mats['selTop'] = new THREE.MeshBasicMaterial({
       map: t0
     })
     let t1 = new THREE.TextureLoader().load(this.heximg)

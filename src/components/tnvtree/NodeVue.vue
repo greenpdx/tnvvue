@@ -2,10 +2,10 @@
 </template>
 
 <script>
-import Node from '@/api/Node'
+import Node from '@/lib/Node'
 
 var _active = []
-export const ONE_VAL = (2 ** 30)
+const ONE_VAL = (2 ** 30)
 
 export default {
   name: 'NodeVue',

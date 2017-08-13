@@ -4,7 +4,7 @@
 
 <script>
 import * as THREE from 'three'
-import { assign } from '@/lib/util'
+// import { assign } from '@/lib/util'
 const Object3D = THREE.Object3D
 
 export default {
@@ -32,10 +32,10 @@ export default {
 
   watch: {
     position (v) {
-      assign(this.curObj.position, v)
+//      assign(this.curObj.position, v)
     },
     rotation (v) {
-      assign(this.curObj.rotation, v)
+//      assign(this.curObj.rotation, v)
     }
   },
 
@@ -81,8 +81,8 @@ export default {
   },
 
   mounted () {
-    assign(this.curObj.position, this.position)
-    assign(this.curObj.rotation, this.rotation)
+//    assign(this.curObj.position, this.position)
+//    assign(this.curObj.rotation, this.rotation)
     this.dbgPrt('mountO3D', this.id)
     this.$parent.$emit('addChild', this)
   },

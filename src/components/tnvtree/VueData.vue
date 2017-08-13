@@ -55,7 +55,7 @@ import {
 } from 'vuex'
 import axios from 'axios'
 
-import Node from '@/api/Node'
+import Node from '@/lib/Node'
 import TreeView from './TreeView'
 
 export default {

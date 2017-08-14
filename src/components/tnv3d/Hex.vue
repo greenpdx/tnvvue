@@ -146,7 +146,7 @@ export default {
     },
     selected: function () {
       let select = this.node.select
-      console.log(select, this)
+//      console.log(select, this)
       return select
     },
     expanded: function () {
@@ -159,8 +159,8 @@ export default {
 
   methods: {
     wheelChg (delta) {
-      let node = this.node
-      console.log(node.value, this.height, this.scale)
+//      let node = this.node
+//      console.log(node.value, this.height, this.scale)
     },
 
     grow (h) {
@@ -273,8 +273,8 @@ export default {
       }
     },
     selected () {
-      let val = this.selected
-      console.log(val, this)
+//      let val = this.selected
+//      console.log(val, this)
     }
   }
 }

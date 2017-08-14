@@ -25,7 +25,8 @@ export default class Node {
     this.level = (parent !== null) ? parent.level + 1 : 0
     this.children = []
     this.test = _active
-    this.vue = []
+    this.hex = null
+    this.tree = null
   }
 
   /*

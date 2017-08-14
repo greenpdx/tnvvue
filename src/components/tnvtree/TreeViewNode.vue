@@ -67,7 +67,7 @@ export default {
   },
 
   created () {
-    this.node.vue.push(this)
+    this.node.tree = this
     this.total = this.node.total
     this.children = this.node.children
   },

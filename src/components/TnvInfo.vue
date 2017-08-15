@@ -1,6 +1,6 @@
 <template>
   <div id="tnvinfo">
-
+    <img src=""></img>
   </div>
 </template>
 

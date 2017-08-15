@@ -3,8 +3,20 @@
   <div class="split">
     <div v-if="webglEnabled" id="three3d" class="three3d" ref="three3d">
     <div>
-      <span>{{ howTo0 }}</span><br />
-      <span>{{ howTo1 }}</span>
+      <span>{{ showWhat }}</span>
+      <div class="help3d">
+        <div
+          @click="popHelp">
+          <span>{{ helpLabel }}</span>
+        </div>
+        <div v-if="showHelp" id="popHelp">
+          <div v-for="line in helpLines">
+            <span>
+              {{ line }}
+            </span><br/>
+          </div>
+        </div>
+      </div>
     </div>
       <div class="render-area">
         <tnv-3d v-if="top"
@@ -76,10 +88,18 @@ export default {
         x: '800',
         y: '800'
       },
-      howTo0:
-        'MouseDown to change view, ScrollWheel to zoom, Hover displays Agency',
-      howTo1:
-        'DoubleClick on hex to select agency, DoubleClick on 3D back ground to freeze',
+      helpLabel: '3D Navigation Help',
+      showHelp: false,
+      showWhat: '97 Agencies in the US government budget',
+      helpLines: [
+        '> Move MouseDown to rotate view',
+        '> ScrollWheel to zoom',
+        '> Mouse Hover displays information about agency, bureau,or department',
+        '> Right click on hex to select / unselect the agency, bureau or dept',
+        '> Adjust value of selected object by ScrollWheel',
+        '> Double click on hex to zoom to next level',
+        '> Double click on outside hex to unzoom'
+      ],
       grppos: {
         'x': 0,
         'y': 10,
@@ -249,7 +269,9 @@ export default {
     },
     onClick (evt) {
     },
-
+    popHelp (evt) {
+      this.showHelp = !this.showHelp
+    },
     filterData (itm, idx) {
       let set = new Set(this.beacat)
       if (!set.has(itm.beacat.toLowerCase())) {
@@ -392,7 +414,25 @@ export default {
   height: 800px;
   pointer-events: none;
 }
-
+.help3d {
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+  border: 1 solid #000;
+  background-color: #c88;
+  position: static;
+}
+#popHelp {
+  position: absolute;
+  display: block;
+  right: auto;
+  top: auto;
+  z-index: 20;
+  background-color: #448;
+  color: #fff;
+  font-size: 1em;
+  text-align: left;
+}
 h1,
 h2 {
   font-weight: normal;

@@ -7,10 +7,18 @@
       <div id="motto">
         <span>{{ motto }}</span>
       </div>
+      <div id="rightdiv">
+        <router-link to="/help">{{ rightdiv }}</router-link>
+      </div>
     </div>
-    <div id="explain">
-      <p>{{ explain }}</p>
+    <div id="line2">
+      <div id="explain">
+        <p>{{ explain }}</p>
+      </div>
     </div>
+    <nav>
+      
+    </nav>
   </header>
 </template>
 
@@ -28,8 +36,9 @@ export default {
         'is submitted to Congress. Now Congress has the President’s budget and ' +
         'the people’s budget to fight over.' */
       explain:
-      'Adjust the 2016 US Discretionary Budget ' +
-      'to how you want your Tax Dollar Spent'
+        'Adjust the 2016 US Discretionary Budget ' +
+        'to how you want your Tax Dollar Spent',
+      rightdiv: 'Need Your Help'
     }
   }
 }
@@ -38,8 +47,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #tnvheader {
-  display: flex;
+  display: block;
   flex-direction: column;
+  width: 100%;
 }
 #name {
   float: left;
@@ -58,14 +68,30 @@ export default {
   display: inline-flex;
   flex-direction: row;
   float: left;
+  width: 100%;
+}
+#line2 {
+  width: 100%;
+  display: block;
 }
 #explain {
   display: inline-block;
   float: left;
   clear: left;
   width: 37em;
-  font-size: 2em;
+  font-size: 1.5em;
   border: 1px solid black;
+}
+.smaller {
+  font-size: .8em;
+}
+#rightdiv {
+  float: right;
+  display: inline-block;
+  border: 2px solid red;
+  font-size: 2em;
+  background-color: yellow;
+
 }
 
 </style>

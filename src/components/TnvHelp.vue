@@ -1,18 +1,15 @@
 <template>
-  <footer class="tnvfooter">
-
-    <span>{{ copyright }}</span><br>
-    <span>{{ contact }}</span>
-  </footer>
+  <div id="tnvhelp">
+    {{ helpwrite }}
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'TnvFooter',
+  name: 'TnvHelp',
   data () {
     return {
-      copyright: 'Tax N Vote 2017',
-      contact: 'Contact: info AT taxnvote DOT org'
+      helpwrite: 'We need help writting information about Tac N Vote'
     }
   }
 }
@@ -20,10 +17,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.tnvfooter {
-  position: fixed;
-  bottom: 0;
+#tnvhelp {
+  display: block;
+  height: 100%;
   width: 100%;
+  text-align: left;
+  margin-top: 2em;
 }
 h1, h2 {
   font-weight: normal;

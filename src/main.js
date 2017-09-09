@@ -6,8 +6,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import config from './config'
+// import config from './config'
 
+/*
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker.register('/sw.js').then(function (registration) {
@@ -17,7 +18,7 @@ if ('serviceWorker' in navigator) {
     })
   })
 }
-
+*/
 var CACHE_NAME = 'tax-n-vote-v1'
 var urlsToCache = [
   '/',
@@ -53,9 +54,11 @@ self.addEventListener('fetch', function (event) {
   )
 })
 
-process.dbURL = config.dev.env.DBURL
+// workon auto url
+// process.dbURL = '/mongodb'
+// process.dbURL = config.dev.env.DBURL
 
-console.log(config, process)
+// console.log(config, process)
 
 Vue.config.productionTip = false
 

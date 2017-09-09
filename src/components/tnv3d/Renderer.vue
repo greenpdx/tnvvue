@@ -139,7 +139,6 @@ export default {
       this.animate()
     }
   },
-
   methods: {
     ...mapActions([
       'setHover',
@@ -154,9 +153,9 @@ export default {
         w: this.domEle.offsetWidth
       }
       let mouse = {}
-      mouse.x = ((evt.layerX - dom.x) / dom.w) * 2 - 1
+      mouse.x = ((evt.offsetX - dom.x) / dom.w) * 2 - 1
       // - 40 is grid offest Grid.vue: 82
-      mouse.y = -((evt.layerY - dom.y - 40) / dom.h) * 2 + 1
+      mouse.y = -((evt.offsetY - dom.y) / dom.h) * 2 + 1
       this.raycast.setFromCamera(mouse, this.camera.curObj)
       let grid = this.grid().curObj
       let rslt = this.raycast.intersectObjects(grid.children, true)

@@ -1,24 +1,24 @@
 <template>
-<div class="tnvvote">
-  <div class="split">
-    <div v-if="webglEnabled" id="three3d" class="three3d" ref="three3d">
-    <div>
-      <span>{{ showWhat }}</span>
-      <div class="help3d">
-        <div
-          @click="popHelp">
-          <span>{{ helpLabel }}</span>
-        </div>
-        <div v-if="showHelp" id="popHelp">
-          <div v-for="line in helpLines">
-            <span>
-              {{ line }}
-            </span><br/>
+  <div class="tnvvote">
+    <div class="split">
+      <div v-if="webglEnabled" id="three3d" class="three3d" ref="three3d">
+        <div>
+          <span>{{ showWhat }}</span>
+          <div class="help3d">
+            <div
+              @click="popHelp">
+              <span>{{ helpLabel }}</span>
+            </div>
+            <div v-if="showHelp" id="popHelp">
+              <div v-for="line in helpLines">
+                <span>
+                  {{ line }}
+                </span><br/>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-      <div class="render-area">
+        <div class="render-area">
         <tnv-3d v-if="top"
           :top="top"
           :size="threeSize"
@@ -332,15 +332,21 @@ export default {
     },
     getData () {
       let self = this
-//      axios.get('http://10.0.42.81:8181/docs/local/budget/full?limit=0')
+//      axios.get('http://localhost:8181/budget/full/_find?batch_size=5000')
 //      axios.get('/mongodb')
-      axios.get(process.dbURL)
+//      axios.get('http://10.0.42.104:8181/mongodb')
+//      axios.get(process.dbURL)
+      axios.get('http://10.0.42.126/full.json')
 
         .then(response => {
+          console.log(response)
           let rslt = response.data
-          let data = rslt.data
+          let data = rslt
           self.haveData(data)
 //          self.setNodes(data)
+        })
+        .catch(error => {
+          console.log(error)
         })
     }
   }
@@ -420,7 +426,7 @@ export default {
   cursor: pointer;
   border: 1 solid #000;
   background-color: #c88;
-  position: static;
+  position: relative;
 }
 #popHelp {
   position: absolute;
@@ -432,6 +438,7 @@ export default {
   color: #fff;
   font-size: 1em;
   text-align: left;
+  right: 0;
 }
 h1,
 h2 {

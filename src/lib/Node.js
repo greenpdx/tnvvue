@@ -113,7 +113,7 @@ export default class Node {
   }
 
   showVal (val = this.value) {
-    return Math.floor(parseInt(val) + 0.5)
+    return Math.floor(parseInt(val) / 1000 + 0.5)
   }
 
   static clrNodes () {

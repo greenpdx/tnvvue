@@ -11,13 +11,18 @@
         <router-link to="/help">{{ rightdiv }}</router-link>
       </div>
     </div>
-    <div id="line2">
-      <div id="explain">
-        <p>{{ explain }}</p>
+    <div>
+      <div id="line2" @click="expand">
+        <span>{{ header }}</span><br>
+        <span style="font-size: .4em;">{{ moreText }}</span>
+      </div>
+      <div v-if="more" class="line3">
+        <div class="explain" v-html="explain0"></div>
+        <div class="explain" v-html="explain1"></div>
       </div>
     </div>
     <nav>
-      
+
     </nav>
   </header>
 </template>
@@ -28,17 +33,43 @@ export default {
   data () {
     return {
       name: 'Tax N Vote',
-      motto: 'Your Tax Dollar repesents your ideas in a People\'s Budget',
+      motto: 'Taxation with Representation',
 /*      explain: 'Tax N Vote allows you to turn your ideas about how the ' +
         'US Government should spend your Tax Dollar.  A Tax Dollar is a vote ' +
         'that can be divided between any agency, bureau and department. Every ' +
         'Tax Dollar is data that is added up together to create a budget that ' +
         'is submitted to Congress. Now Congress has the President’s budget and ' +
         'the people’s budget to fight over.' */
-      explain:
-        'Adjust the 2016 US Discretionary Budget ' +
-        'to how you want your Tax Dollar Spent',
-      rightdiv: 'Need Your Help'
+      header:
+        'Using Tax N Vote, each taxpayer can select how their taxes are spent in the U.S. Budget.',
+      explain0:
+        'Every taxpayer has one <span style="font-weight: bold">Tax Dollar</span> ' +
+        'to divide up any way they want for any ' +
+        'federal agency, bureau, and/or department. For example if 10 cents of the ' +
+        '<span style="font-weight: bold">Tax Dollar</span> is allocated to the ' +
+        'Department of Education, 10% of the total U.S. Budget goes to that department.',
+      explain1:
+        'At the end of the tax season, the data created for everybody Tax N Vote\'s ' +
+        '<span style="font-weight: bold">Tax Dollar</span> is added together to get a ' +
+        '<span style="font-weight: bold">People\'s Budget</span> that is given to ' +
+        'Congress. It does not matter whether a person is a Democrat, a Republican, ' +
+        'or an Independent because their ideas are heard.  The result is that the ' +
+        '<span style="font-weight: bold">People\'s Budget</span> gives Congress a ' +
+        'true representation of what is important ' +
+        'to the American people, giving true <span style="font-weight: bold">Taxation with Representation.</span>',
+      rightdiv: 'Need Your Help',
+      more: false,
+      moreText: 'MORE'
+    }
+  },
+  methods: {
+    expand (evt) {
+      this.more = !this.more
+      if (this.more) {
+        this.moreText = 'LESS'
+      } else {
+        this.moreText = 'MORE'
+      }
     }
   }
 }
@@ -71,16 +102,28 @@ export default {
   width: 100%;
 }
 #line2 {
-  width: 100%;
-  display: block;
-}
-#explain {
   display: inline-block;
   float: left;
   clear: left;
-  width: 37em;
+  width: 100%;
   font-size: 1.5em;
   border: 1px solid black;
+}
+.line3 {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 3em;
+  border: 1px solid black;
+  z-index: 10;
+  background-color: #fff;
+}
+.explain {
+  display: inline-block;
+  float: left;
+  text-align: left;
+  width: 100%;
+  font-size: 1em;
 }
 .smaller {
   font-size: .8em;

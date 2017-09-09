@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
+// import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 // import * as THREE from 'three'
 // import axios from 'axios'
@@ -85,9 +85,6 @@ export default {
     console.log('TNV3D', this.size, this.top)
     this.base = this.top
     this.top3d = this.top
-    Vue.nextTick(() => {
-      this.animate()
-    })
     this.animate()
   },
 
@@ -169,10 +166,16 @@ export default {
     gridFunc () {
       return this.grid
     },
+    tick () {
+      let self = this
+      setTimeout(function () {
+        requestAnimationFrame(self.tick)
+      }, 1000 / 30)
+      this.animate()
+    },
+
     animate () {
-//      requestAnimationFrame(this.animate)
       requestAnimationFrame(this.render)
-//      this.render()
     },
     render () {
 //      console.log(this.renderer, this.scene, this.camera)

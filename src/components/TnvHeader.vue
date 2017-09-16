@@ -1,6 +1,7 @@
 <template>
   <header class="tnvheader">
     <div id="tophead">
+      <img class="logo" src="../assets/tnv-logo.svg"></img>
       <div id="name">
         <span>{{ name }}</span>
       </div>
@@ -16,7 +17,7 @@
         <span>{{ header }}</span><br>
         <span style="font-size: .4em;">{{ moreText }}</span>
       </div>
-      <div v-if="more" class="line3">
+      <div v-if="more" class="line3" @click="expand">
         <div class="explain" v-html="explain0"></div>
         <div class="explain" v-html="explain1"></div>
       </div>
@@ -77,6 +78,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.logo {
+  width: 4em;
+  height: 3em;
+}
 #tnvheader {
   display: block;
   flex-direction: column;
@@ -113,7 +118,7 @@ export default {
   display: inline-block;
   position: absolute;
   left: 0;
-  top: 3em;
+  top: 5em;
   border: 1px solid black;
   z-index: 10;
   background-color: #fff;
@@ -123,7 +128,7 @@ export default {
   float: left;
   text-align: left;
   width: 100%;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 .smaller {
   font-size: .8em;

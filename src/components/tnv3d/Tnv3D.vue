@@ -86,6 +86,7 @@ export default {
     this.base = this.top
     this.top3d = this.top
     this.animate()
+    this.tick(0)
   },
 
   mounted () {
@@ -166,8 +167,11 @@ export default {
     gridFunc () {
       return this.grid
     },
-    tick () {
+    tick (ts) {
       let self = this
+      if (this.wormhole && this.camera) {
+        this.wormhole.update(this.camera.curObj)
+      }
       setTimeout(function () {
         requestAnimationFrame(self.tick)
       }, 1000 / 30)
@@ -179,9 +183,6 @@ export default {
     },
     render () {
 //      console.log(this.renderer, this.scene, this.camera)
-      if (this.wormhole && this.camera) {
-        this.wormhole.update(this.camera.curObj)
-      }
       if (this.orbit) {
         this.orbit.animate()
       }

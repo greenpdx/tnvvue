@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import TnvVote from '@/components/TnvVote'
 import TnvInfo from '@/components/TnvInfo'
 import TnvHelp from '@/components/TnvHelp'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/help',
       name: 'help',
       component: TnvHelp
+    },
+    {
+      path: '/login',
+      name: 'login',
+      Component: Login
     }
   ]
 })

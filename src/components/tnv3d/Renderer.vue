@@ -162,7 +162,6 @@ export default {
       return rslt
     },
     onMouseMove (evt) {
-      evt.preventDefault()
       let intersect = this._getIntersect(evt)
       let obj = null
       if (intersect.length > 0) {  // this app the selection is group
@@ -170,6 +169,7 @@ export default {
         while (obj.vue === null) {
           obj = obj.parent
         }
+        evt.preventDefault()
         obj = obj.vue.node
         obj.hover = true
       }
@@ -186,7 +186,7 @@ export default {
         console.log('select', node)
         this.setSelect(node)
       } else {    // change mode
-//        console.log('Change Mode', this.orbit.enabled())
+        console.log('select out', evt)
       }
       this.animate()
     },

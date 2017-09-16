@@ -3,13 +3,14 @@
     <div class="split">
       <div v-if="webglEnabled" id="three3d" class="three3d" ref="three3d">
         <div>
-          <span>{{ showWhat }}</span>
+          <span style="font-weight: bold;">{{ showWhat }}</span>
           <div class="help3d">
             <div
-              @click="popHelp">
+              @click="popHelp"
+              class="helptext">
               <span>{{ helpLabel }}</span>
             </div>
-            <div v-if="showHelp" id="popHelp">
+            <div v-if="showHelp" id="popHelp" @click="popHelp">
               <div v-for="line in helpLines">
                 <span>
                   {{ line }}
@@ -90,7 +91,7 @@ export default {
       },
       helpLabel: '3D Navigation Help',
       showHelp: false,
-      showWhat: '97 Agencies in the US government budget',
+      showWhat: 'US government 2016 discretionary budget',
       helpLines: [
         '> Move MouseDown to rotate view',
         '> ScrollWheel to zoom',
@@ -421,12 +422,18 @@ export default {
   pointer-events: none;
 }
 .help3d {
-  display: inline-block;
+  display: inline;
   float: right;
+  width: 80%;
+  margin-left: -50%;
+  position: relative;
+}
+.helptext {
+  float: right;
+  display: inline-block;
   cursor: pointer;
   border: 1 solid #000;
   background-color: #c88;
-  position: relative;
 }
 #popHelp {
   position: absolute;

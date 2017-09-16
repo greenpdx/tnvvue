@@ -8,7 +8,7 @@
         <text x="300" y="60" >{{ hex1.name }}</text>
         <polygon v-for="edge in hex1.edges" :points="edge" fill="black" stroke="black"/>
       </g>
-      <g v-if="hex0.show">
+      <g v-if="hex0.show" @click="click0">
         <polygon :points="hex0.hex" fill-opacity="0" stroke="black"/>
         <polygon :points="hex0.top" :fill="red" />
         <polygon :points="hex0.bot" :fill="red" />
@@ -111,11 +111,20 @@ export default {
     this.edgePts = e.pts
     this.animate = this.tnv3d.animate()
   },
+  mounted () {
+  },
 
   methods: {
     ...mapActions([
       'setActive'
     ]),
+    onClick (evt) {
+      console.log('svg click', evt)
+    },
+    click0 (evt) {
+//      zoomOut()
+      console.log('click0')
+    },
     zoomIn (hex) {
       let cnt = 0.05
       let self = this

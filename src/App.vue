@@ -4,8 +4,9 @@
     <div id="main">
       <div id="navtab">
         <!-- router-link :to="{ name: '', params: {} }"></router-link -->
-        <router-link :to="{ name: 'vote', params: {} }">Home</router-link>
-        <router-link :to="{ name: 'info', params: {} }">Info</router-link>
+        <router-link :to="{ name: 'vote', params: {} }">Vote</router-link>
+        <router-link :to="{ name: 'info', params: {} }">About</router-link>
+        <router-link :to="{ name: 'login', params: {} }">Login</router-link>
       </div>
       <section>
         <router-view></router-view>

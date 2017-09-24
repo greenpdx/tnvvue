@@ -66,6 +66,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 // import * as THREE from 'three'
+import Rpc from './Rpc'
 import axios from 'axios'
 import Node from '@/lib/Node'
 
@@ -76,7 +77,9 @@ import TestData from '@/assets/TestData'
 
 export default {
   name: 'TnvVote',
-
+  mixins: [
+    Rpc
+  ],
   components: {
     'tnv3d': Tnv3D,
     'tree-view': TreeView

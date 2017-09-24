@@ -4,9 +4,9 @@
     <div id="main">
       <div id="navtab">
         <!-- router-link :to="{ name: '', params: {} }"></router-link -->
-        <router-link :to="{ name: 'vote', params: {} }">Vote</router-link>
-        <router-link :to="{ name: 'info', params: {} }">About</router-link>
-        <router-link :to="{ name: 'login', params: {} }">Login</router-link>
+        <router-link :to="{ name: 'vote', params: {} }" replace>Vote</router-link>
+        <router-link :to="{ name: 'info', params: {} }" replace>About</router-link>
+        <router-link :to="{ name: 'login', params: {share: share }}" :crypt="share" replace>Login</router-link>
       </div>
       <section>
         <router-view></router-view>
@@ -23,7 +23,7 @@ import Rpc from '@/components/Rpc'
 
 import TnvFooter from '@/components/TnvFooter'
 import TnvHeader from '@/components/TnvHeader'
-
+/*
 function rdSession () {
   let pkey = sessionStorage.getItem('pkey')
   let skey = sessionStorage.getItem('skey')
@@ -34,15 +34,15 @@ function rdSession () {
     console.log('new')
   }
 
-  let key = {publicKey: '', secretKey: ''}
+  let key = {sess: '', key: ''}
   if (!skey) {
     key = nacl.box.keyPair()
     console.log(key.secretKey.length)
     wrSession({key: key})
   } else {
     console.log(pkey, skey)
-    key.publicKey = base64.toByteArray(pkey)
-    key.secretKey = base64.toByteArray(skey)
+    key.sess = base64.toByteArray(pkey)
+    key.key = base64.toByteArray(skey)
   }
   return key
 }
@@ -53,17 +53,18 @@ function wrSession (conf) {
   sessionStorage.setItem('pkey', pkey)
   sessionStorage.setItem('skey', skey)
   sessionStorage.setItem('ts', Date.now())
-}
-
+} */
+/*
 const share = {
   key: '',
+  sess: '',
   nonce: '',
   salt: '',
   pkey: '',
   pnonce: '',
   email: ''
 }
-
+*/
 export default {
   name: 'tnvapp',
   mixins: [
@@ -73,22 +74,28 @@ export default {
     'tnv-header': TnvHeader,
     'tnv-footer': TnvFooter
   },
+  data () {
+    return {
+      share: null
+    }
+  },
   beforeCreate () {
-    this.share = share
-    let conf = rdSession()
-    this.share.key = conf
-    this.share.nonce = nacl.randomBytes(nacl.box.nonceLength)
   },
   created () {
-    console.log('HELLO>', this.nonce)
+    let conf = this.rdSession()
+    this.share.key = conf.secretKey
+    this.share.sess = conf.publicKey
+    this.share.nonce = nacl.randomBytes(nacl.box.nonceLength)
+
+    console.log('APP>', this.share.nonce)
     this.sendRpc('hello', {
       hello: base64.fromByteArray(this.share.nonce)
     }, (rslt, error) => {
       if (!error) { // rslt is just json data
         if (rslt.hello.length === 44) {
           this.share.pkey = base64.toByteArray(rslt.hello)
-          this.share.fast = nacl.box.before(this.share.pkey, this.share.key.secretKey)
-          console.log('HELLO<', rslt, this.share.pkey, this.share.fast)
+          this.share.fast = nacl.box.before(this.share.pkey, this.share.key)
+          console.log('APP<', rslt, this.share.pkey, this.share.fast)
         } else {
           alert('Stop Hacking')
           window.location.assign('/hacking?trys=many')
@@ -97,6 +104,9 @@ export default {
         console.log('HELLO!', rslt)
       }
     })
+  },
+  methods: {
+
   }
 
 }

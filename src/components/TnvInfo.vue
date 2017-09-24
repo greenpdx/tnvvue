@@ -1,7 +1,7 @@
 <template>
   <div id="tnvinfo">
     <div style="float: left;">
-      <img src="/static/tnv-flow.svg"></img>
+      <tnv-flow></tnv-flow>
     </div>
     <div>
       <div class="infotext" v-html="infoHtml"></div>
@@ -10,8 +10,13 @@
 </template>
 
 <script>
+import TnvFlow from './TnvFlow'
+
 export default {
   name: 'TnvInfo',
+  components: {
+    'tnv-flow': TnvFlow
+  },
   data () {
     return {
       infoHtml: `

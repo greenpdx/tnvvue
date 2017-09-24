@@ -6,7 +6,57 @@ Vue.use(Vuex)
 
 // import three3d from './modules/three3d'
 // import nodes from './modules/nodes'
-
+const modLogin = {
+  state: {
+    email: '',
+    key: '',
+    sess: '',
+    nonce: '',
+    salt: '',
+    pkey: '',
+    pnonce: ''
+  },
+  getters: {
+    email: state => state.email,
+    nonce: state => state.nonce,
+    sess: state => state.sess,
+    key: state => state.key,
+    pkey: state => state.pkey,
+    salt: state => state.salt,
+    pnonce: state => state.pnonce
+  },
+  mutations: {
+    EMAIL (state, em) {
+      state.email = em
+    },
+    KEY (state, k) {
+      state.key = k
+    },
+    SESS (state, s) {
+      state.sess = s
+    },
+    NONCE (state, n) {
+      state.nonce = n
+    },
+    SALT (state, s) {
+      state.salt = s
+    },
+    PKEY (state, p) {
+      state.pkey = p
+    },
+    PNONCE (state, pn) {
+      state.pnonce = pn
+    }
+  },
+  actions: {
+    email ({commit}, em) {
+      commit('EMAIL', em)
+    },
+    sess ({commit}, s) {
+      commit('SESS', s)
+    }
+  }
+}
 // const debug = process.env.NODE_ENV !== 'production'
 
 const state = {
@@ -122,6 +172,7 @@ const actions = {
 }
 
 const modules = {
+  modLogin: modLogin
 //  three3d: three3d,
 //  nodes: nodes
 }

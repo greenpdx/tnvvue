@@ -36,7 +36,7 @@ import Register from './login/Register'
 // const ^[A-Z0-9._%+-]++@[A-Z0-9.-]++\.[A-Z]{2,}+$
 // const regexEmail = '/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/'
 // const regexEmail2 = '^(?=[A-Z0-9][A-Z0-9@._%+-]{5,253}+$)[A-Z0-9._%+-]{1,64}+@(?:(?=[A-Z0-9-]{1,63}+\.)[A-Z0-9]++(?:-[A-Z0-9]++)*+\.){1,8}+[A-Z]{2,63}+
-
+/*
 const share = {
   key: '',
   nonce: '',
@@ -44,8 +44,8 @@ const share = {
   pkey: '',
   pnonce: '',
   email: ''
-}
-
+} */
+/*
 function rdSession () {
   let pkey = sessionStorage.getItem('tnv-pkey')
   let skey = sessionStorage.getItem('tnv-skey')
@@ -76,7 +76,7 @@ function wrSession (conf) {
   sessionStorage.setItem('tnv-skey', skey)
   sessionStorage.setItem('tnv-ts', Date.now())
 }
-
+*/
 export default {
   name: 'Login',
   mixins: [
@@ -85,36 +85,45 @@ export default {
   components: {
     'register': Register
   },
+  props: {
+    share: null,
+    crypt: null,
+    bob: null
+  },
   data () {
     return {
       login: true,
-      msg: 'Welcome to Your Vue.js PWA',
+      msg: 'Login or Register for Tax N Vote',
       data: '',
-      email: 'ss@ss.cc',
+      email: '',
       salt: false,
       lpasswd: '',
       token: null,
       sess: null,
       create: false,
-      error: null,
-      share: share
+      error: null
+//      share: share
     }
   },
   beforeCreate () {
-    this.share = share
-    let conf = rdSession()
-    this.share.key = conf
-    this.share.nonce = nacl.randomBytes(nacl.box.nonceLength)
+//    this.share = share
+//    let conf = rdSession()
+//    this.share.key = conf
+//    this.share.nonce = nacl.randomBytes(nacl.box.nonceLength)
   },
   created () {
-    console.log('HELLO>', this.nonce)
+    let rt = this.$route
+    let share = rt.params
+    console.log('LI', share, this.share)
+    console.log('HELLO>', this.share.nonce)
     this.sendRpc('hello', {
       hello: base64.fromByteArray(this.share.nonce)
     }, (rslt, error) => {
       if (!error) { // rslt is just json data
+        console.log(rslt, this.share)
         if (rslt.hello.length === 44) {
           this.share.pkey = base64.toByteArray(rslt.hello)
-          this.share.fast = nacl.box.before(this.share.pkey, this.share.key.secretKey)
+          this.share.fast = nacl.box.before(this.share.pkey, this.share.key)
           console.log('HELLO<', rslt, this.share.pkey, this.share.fast)
         } else {
           alert('Stop Hacking')

@@ -32,7 +32,9 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      Component: Login
+      component: Login,
+      props: {other: {}, crypt: {}}
+
     }
   ]
 })

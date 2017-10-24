@@ -3,7 +3,7 @@
     <div id="tophead">
       <img class="logo" src="../assets/tnv-logo.svg"></img>
       <div id="name">
-        <span>{{ name }}</span>
+        <router-link to="/home"><span>{{ name }}</span></router-link>
       </div>
       <div id="motto">
         <span>{{ motto }}</span>
@@ -98,6 +98,7 @@ export default {
   width: 6em;
   font-size: 3em;
   font-weight: bold;
+  white-space: nowrap;
 }
 #motto {
   font-size: 2em;

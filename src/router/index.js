@@ -16,8 +16,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'vote',
-      component: TnvVote
+      name: 'home',
+      component: Home
     },
     {
       path: '/home',

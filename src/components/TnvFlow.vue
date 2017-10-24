@@ -464,7 +464,7 @@ export default {
        y="174.98265"
        x="23.46594"
        height="231.0383"
-       width="638.92102"
+       width="745"
        id="newtnv"
        style="opacity:0.306;fill:#00dbfe;fill-opacity:1;stroke:#ff0000;stroke-width:0.96094829;stroke-opacity:1" />
     <rect
@@ -472,9 +472,9 @@ export default {
        @mouseover="hover"
        @click="click"
        ref="thepeople"
-       y="61.241642"
+       y="20"
        x="71.939392"
-       height="42.701321"
+       height="120"
        width="105.76038"
        id="thepeople"
        style="opacity:1;fill:#0002ff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
@@ -587,10 +587,10 @@ export default {
        id="thePeopleT"
        y="90.843033"
        x="79.079178"
-       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:bold;font-size:25px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="90.843033"
-         x="79.079178"
+         y="90"
+         x="70"
          id="thepeople">People</tspan></text>
     <text
        @mouseout="hover"
@@ -685,8 +685,8 @@ export default {
          id="govb">Budget</tspan></text>
     <path
        id="path5994"
-       d="m 146.62324,104.48806 -0.54502,73.49761"
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6002)" />
+       d="m 146.62324,140 0,40"
+       style="fill:none;fill-rule:evenodd;stroke:#000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6002)" />
     <text
        @mouseout="hover"
        @mouseover="hover"
@@ -703,7 +703,7 @@ export default {
     <path
        id="path6086"
        d="m 177.15163,363.01012 121.02431,1.00671"
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6094)" />
+       style="fill:none;fill-rule:evenodd;stroke:#000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6094)" />
     <text
        @mouseout="hover"
        @mouseover="hover"
@@ -828,7 +828,7 @@ export default {
     <path
        id="path13945"
        d="m 141.17177,235.5766 -2.18053,93.66513"
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker13953)" />
+       style="fill:none;fill-rule:evenodd;stroke:#000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker13953)" />
     <rect
        @mouseout="hover"
        @mouseover="hover"
@@ -883,14 +883,14 @@ export default {
        id="peoplesBudget"
        y="252.14107"
        x="441.57248"
-       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:bold;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:#fff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="252.14107"
-         x="441.57248"
+         x="550"
          id="peoplesbudget">People's</tspan><tspan
          id="peoplesbudget"
-         y="282.17072"
-         x="441.57248">Budget</tspan></text>
+         y="290"
+         x="550">Budget</tspan></text>
     <text
        @mouseout="hover"
        @mouseover="hover"
@@ -898,16 +898,16 @@ export default {
        ref="ideasdata"
        transform="scale(1.0406967,0.96089475)"
        id="ideasData"
-       y="134.23232"
+       y="150"
        x="57.094604"
        style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          id="ideasdata"
-         y="134.23232"
-         x="57.094604">Ideas to</tspan><tspan
+         y="170"
+         x="70">Ideas to</tspan><tspan
          id="ideasdata"
-         y="155.25305"
-         x="57.094604">hard-data</tspan></text>
+         y="170"
+         x="145">hard-data</tspan></text>
     <path
        id="path4435"
        d="m 112.32331,361.22059 -67.596344,-0.54512 1.635373,-280.287341 16.900125,0 7.086614,-0.545124"

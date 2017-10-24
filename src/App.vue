@@ -10,11 +10,13 @@
         <router-link :to="{ name: 'revolt', params: {} }" replace>Revolt</router-link>
         <router-link :to="{ name: 'login', params: {share: share }}" :crypt="share" replace>Login</router-link>
       </div>
-      <section>
+      <section style="margin-bottom: 2em;">
         <router-view></router-view>
       </section>
     </div>
-    <tnv-footer></tnv-footer>
+    <div style="margin-top: 1em;">
+      <tnv-footer></tnv-footer>
+    </div>
   </div>
 </template>
 

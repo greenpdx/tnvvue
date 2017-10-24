@@ -21,7 +21,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .tnvfooter {
-  position: fixed;
+  display: block;
+  position: relative;
   bottom: 0;
   width: 100%;
 }

@@ -19,11 +19,12 @@ export default {
     sendRpc (cmd, args, cb) {
       let params = args
       let id = base64.fromByteArray(nacl.randomBytes(8))
+      console.log(this.share)
       axios.post(url, {
     //        jsonrpc: '2.0',
         cmd: cmd,
         id: id,
-        sess: base64.fromByteArray(this.share.key.publicKey),
+        sess: base64.fromByteArray(this.share.pkey),
         params: params
       }, {
         headers: {

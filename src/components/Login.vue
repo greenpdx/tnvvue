@@ -113,7 +113,8 @@ export default {
   },
   created () {
     let rt = this.$route
-    let share = rt.params
+    let share = rt.params.share
+//    this.share = share
     console.log('LI', share, this.share)
     console.log('HELLO>', this.share.nonce)
     this.sendRpc('hello', {
@@ -198,6 +199,7 @@ export default {
         this.tryAgain()
         return
       }
+      console.log('REG', this.share)
       this.share.email = tgt.value
       let args = {
         email: tgt.value

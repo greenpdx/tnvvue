@@ -4,6 +4,11 @@ import TnvVote from '@/components/TnvVote'
 import TnvInfo from '@/components/TnvInfo'
 import TnvHelp from '@/components/TnvHelp'
 import Login from '@/components/Login'
+import Revolt from '@/components/Revolt'
+import Contact from '@/components/Contact'
+import PPCancel from '@/components/PPCancel'
+import PPThankYou from '@/components/PPThankYou'
+import Home from '@/components/Home'
 
 Vue.use(Router)
 
@@ -13,6 +18,11 @@ export default new Router({
       path: '/',
       name: 'vote',
       component: TnvVote
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
     },
     {
       path: '/vote',
@@ -25,6 +35,16 @@ export default new Router({
       component: TnvInfo
     },
     {
+      path: '/contact',
+      name: 'contact',
+      component: Contact
+    },
+    {
+      path: '/revolt',
+      name: 'revolt',
+      component: Revolt
+    },
+    {
       path: '/help',
       name: 'help',
       component: TnvHelp
@@ -35,6 +55,16 @@ export default new Router({
       component: Login,
       props: {other: {}, crypt: {}}
 
+    },
+    {
+      path: '/cancel',
+      name: 'cancel',
+      component: PPCancel
+    },
+    {
+      path: '/thankyou',
+      name: 'thankyou',
+      component: PPThankYou
     }
   ]
 })

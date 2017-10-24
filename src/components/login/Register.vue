@@ -31,6 +31,9 @@
       </table>
       <reg-options ref="options"></reg-options>
       <div class="btnclass">
+        <vue-recaptcha sitekey="">
+          <button>Register</button>
+        </vue-recaptcha>
         <button
           class="btns"
           @click="regNow">Register</button>

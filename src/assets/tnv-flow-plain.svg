@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   id="svg2"
+   viewBox="0 0 746.61093 394.57966"
+   height="111.35915mm"
+   width="210.71019mm">
+  <defs
+     id="defs4">
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lend"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path4507" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path4504" />
+    </marker>
+    <linearGradient
+       id="linearGradient4472">
+      <stop
+         id="stop4474"
+         offset="0"
+         style="stop-color:#ffff00;stop-opacity:1;" />
+      <stop
+         id="stop4476"
+         offset="1"
+         style="stop-color:#ffff00;stop-opacity:0;" />
+    </linearGradient>
+    <marker
+       style="overflow:visible"
+       id="DotM"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,2.96,0.4)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path4603" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotL"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path4796" />
+    </marker>
+    <linearGradient
+       id="linearGradient4777">
+      <stop
+         id="stop4779"
+         offset="0"
+         style="stop-color:#ff0100;stop-opacity:1" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.40000001"
+         id="stop4787" />
+      <stop
+         id="stop4789"
+         offset="0.60000002"
+         style="stop-color:#ffffff;stop-opacity:1" />
+      <stop
+         id="stop4781"
+         offset="1"
+         style="stop-color:#0000ff;stop-opacity:1" />
+    </linearGradient>
+    <marker
+       style="overflow:visible"
+       id="marker4767"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path4769" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Mend"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="scale(-0.6,-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path4468" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4699"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path4444" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path4441" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker14295"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path14297" />
+    </marker>
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker14243"
+       style="overflow:visible">
+      <path
+         id="path14245"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker13953"
+       style="overflow:visible">
+      <path
+         id="path13955"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7667"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path7669" />
+    </marker>
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6094"
+       style="overflow:visible">
+      <path
+         id="path6096"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6002"
+       style="overflow:visible">
+      <path
+         id="path6004"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker5920"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path5922" />
+    </marker>
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker5856"
+       style="overflow:visible">
+      <path
+         id="path5858"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4598"
+       style="overflow:visible">
+      <path
+         id="path4600"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4528"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path4530" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4494"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path4496" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path4197" />
+    </marker>
+    <linearGradient
+       gradientTransform="matrix(1.0000557,0,0,0.92337014,12.51763,-13.161487)"
+       gradientUnits="userSpaceOnUse"
+       y2="207.5762"
+       x2="92.171112"
+       y1="265.35938"
+       x1="91.080864"
+       id="linearGradient4785"
+       xlink:href="#linearGradient4777" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="79.341896"
+       x2="838.57428"
+       y1="79.341896"
+       x1="761.04376"
+       id="linearGradient4478"
+       xlink:href="#linearGradient4472" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-22.985466,-11.921772)"
+     id="layer1">
+    <rect
+       onclick="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       y="12.402231"
+       x="249.70497"
+       height="149.99872"
+       width="519.41095"
+       id="processNow"
+       style="opacity:1;fill:#35cf38;fill-opacity:1;stroke:#006800;stroke-width:0.96094829;stroke-opacity:1" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="174.98265"
+       x="23.46594"
+       height="231.0383"
+       width="638.92102"
+       id="newtnv"
+       style="opacity:0.306;fill:#00dbfe;fill-opacity:1;stroke:#ff0000;stroke-width:0.96094829;stroke-opacity:1" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="61.241642"
+       x="71.939392"
+       height="42.701321"
+       width="105.76038"
+       id="thePeople"
+       style="opacity:1;fill:#0002ff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       onclick="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       ry="0"
+       y="30.798216"
+       x="307.44321"
+       height="122.81773"
+       width="111.75668"
+       id="electionProcess"
+       style="opacity:1;fill:#c84740;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="106.71867"
+       x="314.53021"
+       height="39.261398"
+       width="95.947151"
+       id="parties"
+       style="opacity:1;fill:#ff9300;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="26.587381"
+       x="432.02267"
+       height="133.41991"
+       width="165.3802"
+       id="gov"
+       style="opacity:1;fill:#8dffff;fill-opacity:0.54545456;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="43.701332"
+       x="448.92245"
+       height="22.650826"
+       width="137.9241"
+       id="pres"
+       style="opacity:1;fill:#ff04ff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="102.0901"
+       x="449.46762"
+       height="47.315041"
+       width="140.10474"
+       id="congress"
+       style="opacity:1;fill:#1affff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="331.33865"
+       x="113.91364"
+       height="56.878712"
+       width="62.692776"
+       id="irs"
+       style="opacity:1;fill:#ff006d;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="258.77362"
+       x="300.35648"
+       height="138.92497"
+       width="129.74673"
+       id="censusBureau"
+       style="opacity:1;fill:#ff9a28;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="178.61542"
+       x="59.400909"
+       height="55.997326"
+       width="168.99356"
+       id="TaxNVote"
+       style="opacity:1;fill:url(#linearGradient4785);fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       id="path4184"
+       d="m 177.15463,83.5144 71.96031,-0.04178"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4598)" />
+    <path
+       id="path4186"
+       d="m 418.10972,56.091098 32.39313,-0.277559"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4528)" />
+    <path
+       id="path4188"
+       d="m 418.65478,126.09872 30.08045,-1.12204"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4494)" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="thePeopleT"
+       y="90.843033"
+       x="79.079178"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="90.843033"
+         x="79.079178"
+         id="tspan4820">People</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="ideasVote"
+       y="78.925224"
+       x="176.51285"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="78.925224"
+         x="176.51285"
+         id="tspan4824">Ideas</tspan><tspan
+         id="tspan15030"
+         y="107.05022"
+         x="176.51285">vote</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="partiest"
+       y="137.60352"
+       x="313.75482"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-size:19.21896553px"
+         y="137.60352"
+         x="313.75482"
+         id="tspan4828">Parties</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="electionProcessT"
+       y="61.51685"
+       x="300.13531"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="61.51685"
+         x="300.13531"
+         id="tspan4832">Election</tspan><tspan
+         id="tspan4834"
+         y="91.546486"
+         x="300.13531">process</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="prest"
+       y="64.861771"
+       x="442.8916"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="64.861771"
+         x="442.8916"
+         id="tspan4924">President</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="congresst"
+       y="139.24649"
+       x="442.36774"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="139.24649"
+         x="442.36774"
+         id="tspan4928">Congress</tspan></text>
+    <path
+       id="path5848"
+       d="m 574.53344,67.091268 -1.09031,33.221192"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5920)" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="govb"
+       y="96.291946"
+       x="443.35208"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="96.291946"
+         x="443.35208"
+         id="tspan5992">Budget</tspan></text>
+    <path
+       id="path5994"
+       d="m 146.62324,104.48806 -0.54502,73.49761"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6002)" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="text6078"
+       y="392.49213"
+       x="117.31656"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="392.49213"
+         x="117.31656"
+         id="tspan6080">IRS</tspan></text>
+    <path
+       id="path6086"
+       d="m 177.15163,363.01012 121.02431,1.00671"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6094)" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="budgetdata"
+       y="314.87311"
+       x="173.18622"
+       style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="314.87311"
+         x="173.18622"
+         id="tspan6178">budget</tspan><tspan
+         id="tspan6180"
+         y="335.89386"
+         x="173.18622">data</tspan></text>
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="194.26105"
+       x="311.2562"
+       height="25.16757"
+       width="88.315018"
+       id="templates"
+       style="opacity:1;fill:#ff93ff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="taxNVoteT"
+       y="222.29108"
+       x="74.888474"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="222.29108"
+         x="74.888474"
+         id="tspan6703">Tax N Vote</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="templatet"
+       y="221.81071"
+       x="302.22757"
+       style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="221.81071"
+         x="302.22757"
+         id="tspan7757">template</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="anonData"
+       y="371.88388"
+       x="225.71617"
+       style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="371.88388"
+         x="225.71617"
+         id="tspan6178-9">anonymous</tspan><tspan
+         id="tspan6180-3"
+         y="392.90463"
+         x="225.71617">data</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="censusBureauT"
+       y="373.28622"
+       x="310.61209"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="373.28622"
+         x="310.61209"
+         id="tspan9827">census</tspan><tspan
+         id="tspan9829"
+         y="403.31586"
+         x="310.61209">bureau</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="aggData"
+       y="370.97354"
+       x="462.96426"
+       style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="370.97354"
+         x="462.96426"
+         id="tspan9899">aggregate</tspan><tspan
+         id="tspan14881"
+         y="391.99429"
+         x="462.96426">data</tspan></text>
+    <path
+       id="path12085"
+       d="m 308.53051,204.41267 -78.50065,0.0835"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker7667)" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="irsv"
+       y="359.49045"
+       x="116.79272"
+       style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="359.49045"
+         x="116.79272"
+         id="tspan13385">verify</tspan></text>
+    <path
+       id="path13945"
+       d="m 141.17177,235.5766 -2.18053,93.66513"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker13953)" />
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="337.60889"
+       x="538.31909"
+       height="59.395466"
+       width="69.779739"
+       id="cbo"
+       style="opacity:1;fill:#37ff66;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="text9825-0"
+       y="405.56543"
+       x="525.12555"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         id="tspan9829-2"
+         y="405.56543"
+         x="525.12555">CBO</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="cbop"
+       y="369.48901"
+       x="521.72058"
+       style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="369.48901"
+         x="521.72058"
+         id="tspan14081">Publish</tspan></text>
+    <path
+       id="path14235"
+       d="m 573.48165,337.9261 0.77091,-187.16989"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker14243)" />
+    <path
+       id="path14287"
+       d="m 430.64836,364.01682 105.76279,0.0836"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker14295)" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="peoplesBudget"
+       y="252.14107"
+       x="441.57248"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="252.14107"
+         x="441.57248"
+         id="tspan14885">People's</tspan><tspan
+         id="tspan14887"
+         y="282.17072"
+         x="441.57248">Budget</tspan></text>
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="ideasData"
+       y="134.23232"
+       x="57.094604"
+       style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         id="tspan4800"
+         y="134.23232"
+         x="57.094604">Ideas to</tspan><tspan
+         id="tspan4802"
+         y="155.25305"
+         x="57.094604">hard-data</tspan></text>
+    <path
+       id="path4435"
+       d="m 112.32331,361.22059 -67.596344,-0.54512 1.635373,-280.287341 16.900125,0 7.086614,-0.545124"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4699)" />
+    <text
+       transform="scale(1.0406967,0.96089475)"
+       id="text4702"
+       y="141.24681"
+       x="49.263851"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:tb-rl;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="49.263851"
+         x="141.24681"
+         id="tspan4710" /></text>
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="263.19653"
+       x="305.30795"
+       height="69.462486"
+       width="120.47916"
+       id="voteData"
+       style="opacity:1;fill:#eee838;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-opacity:1" />
+    <path
+       id="path4722"
+       d="m 305.30795,274.27027 121.02431,0 0,0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path4722-4"
+       d="m 305.30795,293.90097 121.02431,0 0,0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path4722-3"
+       d="m 305.85311,268.7334 121.02431,0 0,0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path4722-0"
+       d="m 305.30795,287.86076 121.02431,0 0,0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path4722-30"
+       d="m 304.21764,280.81384 121.02431,0 0,0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path4757"
+       d="m 320.02713,263.19654 0.54515,69.46249"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="receipt"
+       y="289.48376"
+       x="45.603977"
+       style="font-style:normal;font-weight:normal;font-size:14.41422367px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-size:17.5px"
+         y="289.48376"
+         x="45.603977"
+         id="tspan4761">receipt #</tspan></text>
+    <path
+       id="path4763"
+       d="m 45.282236,283.90917 265.477294,0.17127"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96100003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DotM);marker-end:url(#marker4767)" />
+    <text
+       transform="scale(1.0406967,0.96089475)"
+       id="electionMoney"
+       y="112.74014"
+       x="237.32791"
+       style="font-style:normal;font-weight:normal;font-size:90px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:90px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         y="112.74014"
+         x="237.32791"
+         id="tspan4773">$</tspan></text>
+    <path
+       id="path4480"
+       d="M 669.40852,79.381794 600.79646,78.610872"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.39999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend)" />
+    <text
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(1.0406967,0.96089475)"
+       id="lobbyistMoney"
+       y="115.00183"
+       x="584.05005"
+       style="font-style:normal;font-weight:normal;font-size:90px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:90px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3.79999995;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         y="115.00183"
+         x="584.05005"
+         id="tspan4773-6">$</tspan></text>
+    <rect
+       onclick="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       y="60.108746"
+       x="669.40857"
+       height="47.026237"
+       width="96.36525"
+       id="lobbyist"
+       style="opacity:1;fill:#006d00;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       onclick="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       id="lobbyistT"
+       y="90.945633"
+       x="671.72131"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffff00;fill-opacity:1;stroke:#ff0000;stroke-opacity:1"
+         y="90.945633"
+         x="671.72131"
+         id="tspan4470">Lobyist</tspan></text>
+  </g>
+</svg>

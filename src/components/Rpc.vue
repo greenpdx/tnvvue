@@ -3,7 +3,7 @@ import axios from 'axios'
 import nacl from 'tweetnacl'
 import base64 from 'base64-js'
 
-let url = 'http://10.0.42.104:3030'
+let url = '/tnvsrv'
 
 function rdSession () {
   let pkey = sessionStorage.getItem('pkey')

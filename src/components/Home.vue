@@ -1,11 +1,12 @@
 <template>
   <div id="tnvhome">
-    <div class="injrev">
-      <span style="color: #00c">When Injustice is Law</span><br>
-      <span style="color: #c00">Revolution is Necessary</span>
-    </div>
-    <div class="tnvwhat">Tax N Vote fundamentally changes the political system in a non-violent way to give
-      the People of America more feedback to Congress using hard data.
+    <div class="tnvwhat">
+      <span style="font-size: 1.5em; font-weight: bold;">Vote with your Tax Dollar, Create the People's Budget</span><br> When
+       a person files their taxes, they have a Tax Dollar to divide into the
+       U.S. discretionary budget. At the end of the tax season, all the votes are
+       aggregated to create the People's Budget.<br>
+       Every person is heard, with verifiable blockchain secure documented data, not fake news or alt facts.
+
     </div>
     <div>
       <h4 style="margin-bottom: 0in;">Benefits of Tax N Vote:</h4>
@@ -69,9 +70,10 @@ export default {
   -2px 2px #000,
   2px 2px #000;
   border: 2px solid #000;
+  text-decoration: none;
 }
 .tnvwhat {
-  font-size: 2em;
+  font-size: 1.4em;
   margin-top: 1em;
 }
 .tnvbenefits li {

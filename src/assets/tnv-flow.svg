@@ -1,133 +1,4 @@
-<script>
-
-export default {
-  name: 'TnvVote',
-  data () {
-    return {
-      popup: false,
-      trgt: '',
-      popStyle: {
-        top: '450px',
-        left: '600px'
-      },
-      info: {
-        'cbo': 'Congressional Budget Office processes the aggregate data to publish the People\'s Budget',
-        'newtnv': 'The new process created by using Tax N Vote',
-        'processnow': 'The existing process of elections and lobbyist',
-        'lobbyist': 'Lobbyist spend $3 billion a year to influance government',
-        'gov': 'The government',
-        'pres': 'President submits a budget to Congress',
-        'electionprocess': 'Election process that filters the People\'s ideas into votes',
-        'budgetdata': 'Data from Tax N Vote that is the budget the person wants',
-        'congress': 'Congress that listens to money',
-        'censusbureau': 'Census Bureau stores the data until after the tax season',
-        'thepeople': 'The People and tax payers of America',
-        'taxnvote': 'Tax N Vote web application that converts peoples ideas in to hard budget data',
-        'ideasvote': 'All the ads tells you what you your ideas are',
-        'parties': 'Political parties try to influance what you think',
-        'govb': 'Budget the President gives to Congress',
-        'irs': 'Internal Revenue Service, verifies and anonymize the data',
-        'anondata': 'Anonymous vote woth receipt number',
-        'aggdata': 'Aggergate all the data making everybody\'s vote count',
-        'template': 'Pre-configured budgets that can be used to as a base for personal budgets',
-        'peoplesbudget': 'Every person\'s budget vote added together telling Congerss what American wants',
-        'ideasdata': 'People\'s idea turned into budget data',
-        'votedata': 'Everybody\'s vote stored and accesable',
-        'receipt': 'The receipt that can identifies you vote at the Census Bureau',
-        'electionmoney': 'The Billions of dollars between the people and the government',
-        'lobbyistmoney': 'The Billions of dollars that lobbyist use to influnce the government'
-      }
-    }
-  },
-  created () {
-  },
-  mounted () {
-    console.log(this.$el)
-  },
-  methods: {
-    hover (evt) {
-      let id = evt.target.id
-      let info = this.info[id]
-      let ele = this.$refs[id]
-      let blink = ''
-      switch (ele.tagName) {
-        case 'rect':
-          blink = 'blinkframe'
-          break
-        case 'text':
-        case 'tspan':
-          blink = 'blinkspan'
-          break
-        default:
-      }
-      console.log(id, ele.tagName)
-      switch (evt.type) {
-        case 'mouseover':
-          this.trgt = info
-          this.popStyle.top = (evt.offsetY + 20.0) + 'px'
-          this.popStyle.left = evt.offsetX + 'px'
-          this.popup = true
-          ele.classList = [blink]
-          break
-        case 'mouseout':
-          this.popup = false
-          ele.classList = []
-          break
-        default:
-          this.popup = false
-      }
-    },
-    click (evt) {
-
-    }
-  },
-  computed: {
-    blinkRect: function () {
-      return {
-//        if () {
-//        }
-      }
-    }
-  }
-}
-</script>
-<style scoped>
-@keyframes blinkrect {
-  50% {
-    stroke: #f00;
-    stroke-width: 5;
-  }
-}
-@keyframes blinktext {
-  50% {
-    stroke: #f00;
-    stroke-width: 1;
-    fill: #000
-  }
-}
-#flowimage {
-  position: relative;
-}
-.blinkframe {
-  animation: blinkrect .5s step-end infinite alternate;
-}
-.blinkspan {
-  animation: blinktext .5s step-end infinite alternate;
-}
-.popup {
-  position: absolute;
-  z-index: 10;
-  width: 200px;
-  height: 100px;
-  background-color: #ccf;
-  font-weight: bold;
-}
-</style>
-<template>
-  <div id="flowimage">
-    <div v-if="popup" class="popup" v-bind:style="popStyle">
-      {{ trgt }}
-    </div>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -137,11 +8,30 @@ export default {
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.1"
    id="svg2"
-   viewBox="0 0 746.61093 394.57966"
-   height="111.35915mm"
-   width="210.71019mm">
+   viewBox="0 0 772.82224 396.12151"
+   height="111.7943mm"
+   width="218.1076mm">
   <defs
      id="defs4">
+    <linearGradient
+       id="linearGradient5650">
+      <stop
+         style="stop-color:#ff0100;stop-opacity:1"
+         offset="0"
+         id="stop5652" />
+      <stop
+         id="stop5654"
+         offset="0.28561234"
+         style="stop-color:#ffffff;stop-opacity:1" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.64166665"
+         id="stop5656" />
+      <stop
+         style="stop-color:#0000ff;stop-opacity:1"
+         offset="1"
+         id="stop5658" />
+    </linearGradient>
     <marker
        style="overflow:visible"
        id="Arrow2Lend"
@@ -429,6 +319,26 @@ export default {
        x1="761.04376"
        id="linearGradient4478"
        xlink:href="#linearGradient4472" />
+    <marker
+       style="overflow:visible"
+       id="marker7667-3"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path7669-6" />
+    </marker>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="206.26648"
+       x2="711.95593"
+       y1="276.49542"
+       x1="711.86505"
+       id="linearGradient5648"
+       xlink:href="#linearGradient5650" />
   </defs>
   <metadata
      id="metadata7">
@@ -443,102 +353,94 @@ export default {
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-22.985466,-11.921772)"
+     transform="translate(-22.985467,-11.921759)"
      id="layer1">
     <rect
-       @click="click"
-       @mouseout="hover"
-       @mouseover="hover"
-       ref="processnow"
+       onclick="click"
+       onmouseout="hover"
+       onmouseover="hover"
        y="12.402231"
        x="249.70497"
-       height="149.99872"
-       width="519.41095"
+       height="157.70795"
+       width="545.62225"
        id="processnow"
-       style="opacity:1;fill:#35cf38;fill-opacity:1;stroke:#006800;stroke-width:0.96094829;stroke-opacity:1" />
+       style="opacity:1;fill:#816f2b;fill-opacity:1;stroke:#006800;stroke-width:0.96094829;stroke-opacity:1" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="newtnv"
-       y="174.98265"
-       x="23.46594"
-       height="231.0383"
-       width="745"
-       id="newtnv"
-       style="opacity:0.306;fill:#00dbfe;fill-opacity:1;stroke:#ff0000;stroke-width:0.96094829;stroke-opacity:1" />
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="175.02046"
+       x="23.503756"
+       height="232.50453"
+       width="770.6731"
+       id="rect4429"
+       style="opacity:1;fill:#00dafe;fill-opacity:1;stroke:#ff0000;stroke-width:1.03657687;stroke-opacity:1" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="thepeople"
-       y="20"
-       x="71.939392"
-       height="120"
-       width="105.76038"
-       id="thepeople"
-       style="opacity:1;fill:#0002ff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       onmousemove="mmove"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="29.881334"
+       x="72.18689"
+       height="112.36024"
+       width="113.74555"
+       id="thePeople"
+       style="opacity:1;fill:#0002ff;fill-opacity:1;stroke:#000000;stroke-width:1.45593739;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
-       @click="click"
-       @mouseout="hover"
-       @mouseover="hover"
-       ref="electionprocess"
+       onclick="click"
+       onmouseout="hover"
+       onmouseover="hover"
        ry="0"
        y="30.798216"
        x="307.44321"
        height="122.81773"
        width="111.75668"
-       id="electionprocess"
-       style="opacity:1;fill:#c84740;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       id="electionProcess"
+       style="opacity:1;fill:#ffd7b7;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="parties"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        y="106.71867"
        x="314.53021"
        height="39.261398"
        width="95.947151"
-       id="parties"
-       style="opacity:1;fill:#ff9300;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       id="rect4140"
+       style="opacity:1;fill:#e59900;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="gov"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        y="26.587381"
        x="432.02267"
        height="133.41991"
        width="165.3802"
-       id="gov"
-       style="opacity:1;fill:#8dffff;fill-opacity:0.54545456;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       id="rect4142"
+       style="opacity:1;fill:#8dffff;fill-opacity:0.92857139;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="pres"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        y="43.701332"
        x="448.92245"
        height="22.650826"
        width="137.9241"
-       id="pres"
-       style="opacity:1;fill:#ff04ff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       id="rect4144"
+       style="opacity:1;fill:#620e7a;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="congress"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        y="102.0901"
        x="449.46762"
        height="47.315041"
        width="140.10474"
-       id="congress"
-       style="opacity:1;fill:#1affff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       id="rect4146"
+       style="opacity:1;fill:#92ff00;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="irs"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        y="331.33865"
        x="113.91364"
        height="56.878712"
@@ -546,30 +448,28 @@ export default {
        id="irs"
        style="opacity:1;fill:#ff006d;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="censusbureau"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        y="258.77362"
        x="300.35648"
        height="138.92497"
        width="129.74673"
-       id="censusbureau"
+       id="censusBureau"
        style="opacity:1;fill:#ff9a28;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="taxnvote"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        y="178.61542"
        x="59.400909"
        height="55.997326"
        width="168.99356"
-       id="taxnvote"
+       id="TaxNVote"
        style="opacity:1;fill:url(#linearGradient4785);fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <path
        id="path4184"
-       d="m 177.15463,83.5144 71.96031,-0.04178"
+       d="m 188.71846,82.743478 60.39648,0.729142"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4598)" />
     <path
        id="path4186"
@@ -580,41 +480,44 @@ export default {
        d="m 418.65478,126.09872 30.08045,-1.12204"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4494)" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
-       id="thePeopleT"
-       y="90.843033"
-       x="79.079178"
-       style="font-style:normal;font-weight:bold;font-size:25px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text4818"
+       y="78.006294"
+       x="123.2218"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="90"
-         x="70"
-         id="thepeople">People</tspan></text>
+         id="tspan5636"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, ';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1"
+         y="78.006294"
+         x="123.2218">The</tspan><tspan
+         id="tspan5640"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, ';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1"
+         y="108.03593"
+         x="123.2218">People</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
        id="ideasVote"
        y="78.925224"
-       x="176.51285"
-       ref="ideasvote"
+       x="180.95749"
        style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.5px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
          y="78.925224"
-         x="176.51285"
-         id="ideasvote">Ideas</tspan><tspan
-         id="ideasvote"
-         y="107.05022"
-         x="176.51285">vote</tspan></text>
+         x="180.95749"
+         id="tspan4824">Ideas</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.5px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+         id="tspan15030"
+         y="100.80022"
+         x="180.95749">vote</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
        transform="scale(1.0406967,0.96089475)"
-       id="partiest"
+       id="text4826"
        y="137.60352"
        x="313.75482"
        style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -622,75 +525,71 @@ export default {
          style="font-size:19.21896553px"
          y="137.60352"
          x="313.75482"
-         id="parties">Parties</tspan></text>
+         id="tspan4828">Parties</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
-       id="electionProcessT"
+       id="text4830"
        y="61.51685"
        x="300.13531"
        style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="61.51685"
          x="300.13531"
-         id="electionprocess">Election</tspan><tspan
-         id="electionprocess"
+         id="tspan4832">Election</tspan><tspan
+         id="tspan4834"
          y="91.546486"
          x="300.13531">process</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
-       id="prest"
+       id="text4922"
        y="64.861771"
        x="442.8916"
-       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#e9e970;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="64.861771"
          x="442.8916"
-         id="pres">President</tspan></text>
+         id="tspan4924">President</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
-       id="congresst"
+       id="text4926"
        y="139.24649"
        x="442.36774"
        style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="139.24649"
          x="442.36774"
-         id="congress">Congress</tspan></text>
+         id="tspan4928">Congress</tspan></text>
     <path
        id="path5848"
        d="m 574.53344,67.091268 -1.09031,33.221192"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5920)" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="govb"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
-       id="govb"
+       id="text5990"
        y="96.291946"
        x="443.35208"
        style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="96.291946"
          x="443.35208"
-         id="govb">Budget</tspan></text>
+         id="tspan5992">Budget</tspan></text>
     <path
        id="path5994"
-       d="m 146.62324,140 0,40"
-       style="fill:none;fill-rule:evenodd;stroke:#000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6002)" />
+       d="m 145.85232,142.26324 0.2259,35.72243"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6002)" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
        transform="scale(1.0406967,0.96089475)"
        id="text6078"
        y="392.49213"
@@ -699,70 +598,68 @@ export default {
        xml:space="preserve"><tspan
          y="392.49213"
          x="117.31656"
-         id="irs">IRS</tspan></text>
+         id="tspan6080">IRS</tspan></text>
     <path
        id="path6086"
        d="m 177.15163,363.01012 121.02431,1.00671"
-       style="fill:none;fill-rule:evenodd;stroke:#000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6094)" />
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker6094)" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="budgetdata"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
-       id="budgetdata"
+       id="text6176"
        y="314.87311"
        x="173.18622"
        style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="314.87311"
          x="173.18622"
-         id="budgetdata">budget</tspan><tspan
-         id="budgetdata"
+         id="tspan6178">budget</tspan><tspan
+         id="tspan6180"
          y="335.89386"
          x="173.18622">data</tspan></text>
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="template"
-       y="194.26105"
-       x="311.2562"
-       height="25.16757"
-       width="88.315018"
-       id="template"
-       style="opacity:1;fill:#ff93ff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="186.55182"
+       x="260.37534"
+       height="47.524307"
+       width="99.107941"
+       id="templates"
+       style="opacity:1;fill:#dcddff;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       transform="scale(1.0406967,0.96089475)"
-       id="taxNVoteT"
-       y="222.29108"
-       x="74.888474"
-       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       onmouseout="hoveer"
+       onmouseover="hover"
+       onclick="click"
+       transform="scale(0.88313819,1.1323256)"
+       id="text6701"
+       y="193.28589"
+       x="76.028053"
+       style="font-style:normal;font-weight:normal;font-size:28.30971718px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="222.29108"
-         x="74.888474"
-         id="taxnvote">Tax N Vote</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:29.46018982px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+         y="193.28589"
+         x="76.028053"
+         id="tspan6703">Tax N Vote</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
-       id="templatet"
-       y="221.81071"
-       x="302.22757"
+       id="text7755"
+       y="223.4153"
+       x="256.29953"
        style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="221.81071"
-         x="302.22757"
-         id="template">template</tspan></text>
+         y="223.4153"
+         x="256.29953"
+         id="tspan7757">templates</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="anondata"
+       onmouseout="nover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
        id="anonData"
        y="371.88388"
@@ -771,31 +668,30 @@ export default {
        xml:space="preserve"><tspan
          y="371.88388"
          x="225.71617"
-         id="anondata">anonymous</tspan><tspan
-         id="anondata"
+         id="tspan6178-9">anonymous</tspan><tspan
+         id="tspan6180-3"
          y="392.90463"
          x="225.71617">data</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
-       id="censusBureauT"
+       id="text9825"
        y="373.28622"
        x="310.61209"
        style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="373.28622"
          x="310.61209"
-         id="censusbureau">census</tspan><tspan
-         id="censusbureau"
+         id="tspan9827">census</tspan><tspan
+         id="tspan9829"
          y="403.31586"
          x="310.61209">bureau</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="aggdata"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
        id="aggData"
        y="370.97354"
@@ -804,36 +700,32 @@ export default {
        xml:space="preserve"><tspan
          y="370.97354"
          x="462.96426"
-         id="aggdata">aggregate</tspan><tspan
-         id="aggdata"
+         id="tspan9899">aggregate</tspan><tspan
+         id="tspan14881"
          y="391.99429"
          x="462.96426">data</tspan></text>
     <path
        id="path12085"
-       d="m 308.53051,204.41267 -78.50065,0.0835"
+       d="m 260.73335,209.80913 -32.24533,0.85442"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker7667)" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
-       id="irsv"
+       id="text13383"
        y="359.49045"
        x="116.79272"
        style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="359.49045"
          x="116.79272"
-         id="irs">verify</tspan></text>
+         id="tspan13385">verify</tspan></text>
     <path
        id="path13945"
        d="m 141.17177,235.5766 -2.18053,93.66513"
-       style="fill:none;fill-rule:evenodd;stroke:#000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker13953)" />
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker13953)" />
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="cbo"
        y="337.60889"
        x="538.31909"
        height="59.395466"
@@ -841,31 +733,28 @@ export default {
        id="cbo"
        style="opacity:1;fill:#37ff66;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
        id="text9825-0"
        y="405.56543"
        x="525.12555"
        style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         id="cbo"
+         id="tspan9829-2"
          y="405.56543"
          x="525.12555">CBO</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
        transform="scale(1.0406967,0.96089475)"
-       id="cbop"
+       id="text14079"
        y="369.48901"
        x="521.72058"
        style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="369.48901"
          x="521.72058"
-         id="cbo">Publish</tspan></text>
+         id="tspan14081">Publish</tspan></text>
     <path
        id="path14235"
        d="m 573.48165,337.9261 0.77091,-187.16989"
@@ -875,53 +764,57 @@ export default {
        d="m 430.64836,364.01682 105.76279,0.0836"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker14295)" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="peoplesbudget"
-       transform="scale(1.0406967,0.96089475)"
+       transform="scale(0.94893072,1.0538177)"
        id="peoplesBudget"
-       y="252.14107"
-       x="441.57248"
-       style="font-style:normal;font-weight:bold;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:#fff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       y="227.15453"
+       x="717.48206"
+       style="font-style:normal;font-weight:normal;font-size:26.34691048px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient5648);fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="252.14107"
-         x="550"
-         id="peoplesbudget">People's</tspan><tspan
-         id="peoplesbudget"
-         y="290"
-         x="550">Budget</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, ';text-anchor:middle;text-align:center;fill-opacity:1;fill:url(#linearGradient5648)"
+         y="227.15453"
+         x="605.32385"
+         id="tspan14885">People's</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, ';text-anchor:middle;text-align:center;fill-opacity:1;fill:url(#linearGradient5648)"
+         id="tspan14887"
+         y="289.65454"
+         x="605.32385">Budget</tspan></text>
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="ideasdata"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
        id="ideasData"
-       y="150"
-       x="57.094604"
+       y="165.52185"
+       x="61.539253"
        style="font-style:normal;font-weight:normal;font-size:16.81659508px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         id="ideasdata"
-         y="170"
-         x="70">Ideas to</tspan><tspan
-         id="ideasdata"
-         y="170"
-         x="145">hard-data</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+         id="tspan4802"
+         y="165.52185"
+         x="61.539253">Ideas to hard-data</tspan></text>
     <path
        id="path4435"
        d="m 112.32331,361.22059 -67.596344,-0.54512 1.635373,-280.287341 16.900125,0 7.086614,-0.545124"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker4699)" />
+    <text
+       transform="scale(1.0406967,0.96089475)"
+       id="text4702"
+       y="141.24681"
+       x="49.263851"
+       style="font-style:normal;font-weight:normal;font-size:24.02370644px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:tb-rl;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="49.263851"
+         x="141.24681"
+         id="tspan4710" /></text>
     <rect
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="votedata"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        y="263.19653"
        x="305.30795"
        height="69.462486"
        width="120.47916"
-       id="votedata"
+       id="voteData"
        style="opacity:1;fill:#eee838;fill-opacity:1;stroke:#000000;stroke-width:0.96094829;stroke-opacity:1" />
     <path
        id="path4722"
@@ -948,10 +841,9 @@ export default {
        d="m 320.02713,263.19654 0.54515,69.46249"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
-       ref="receipt"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
        id="receipt"
        y="289.48376"
@@ -961,15 +853,15 @@ export default {
          style="font-size:17.5px"
          y="289.48376"
          x="45.603977"
-         id="receipt">receipt #</tspan></text>
+         id="tspan4761">receipt #</tspan></text>
     <path
        id="path4763"
        d="m 45.282236,283.90917 265.477294,0.17127"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96100003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DotM);marker-end:url(#marker4767)" />
     <text
-      @mouseout="hover"
-      @mouseover="hover"
-      @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
        id="electionMoney"
        y="112.74014"
@@ -977,18 +869,17 @@ export default {
        style="font-style:normal;font-weight:normal;font-size:90px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:90px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         ref="electionmoney"
          y="112.74014"
          x="237.32791"
-         id="electionmoney">$</tspan></text>
+         id="tspan4773">$</tspan></text>
     <path
        id="path4480"
        d="M 669.40852,79.381794 600.79646,78.610872"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.39999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend)" />
     <text
-       @mouseout="hover"
-       @mouseover="hover"
-       @click="click"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        transform="scale(1.0406967,0.96089475)"
        id="lobbyistMoney"
        y="115.00183"
@@ -996,35 +887,54 @@ export default {
        style="font-style:normal;font-weight:normal;font-size:90px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:90px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:3.79999995;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         ref="lobbyistmoney"
          y="115.00183"
          x="584.05005"
-         id="lobbyistmoney">$</tspan></text>
+         id="tspan4773-6">$</tspan></text>
     <rect
-       @click="click"
-       @mouseout="hover"
-       @mouseover="hover"
-       ref="lobbyist"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
        y="60.108746"
        x="669.40857"
-       height="47.026237"
-       width="96.36525"
+       height="50.109921"
+       width="113.32552"
        id="lobbyist"
        style="opacity:1;fill:#006d00;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <text
-       @click="click"
-       @mouseout="hover"
-       @mouseover="hover"
-       id="lobbyistT"
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       id="text4468"
        y="90.945633"
        x="671.72131"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#c2ff1d;fill-opacity:1;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffff00;fill-opacity:1;stroke:#ff0000;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#c2ff1d;fill-opacity:1;stroke:#ff0000;stroke-opacity:1"
          y="90.945633"
          x="671.72131"
-         id="lobbyist">Lobbyist</tspan></text>
+         id="tspan4470">Lobbyist</tspan></text>
+    <rect
+       onmouseout="hover"
+       onmouseover="hover"
+       onclick="click"
+       y="184.47589"
+       x="388.4025"
+       height="51.651768"
+       width="160.35175"
+       id="rect4602"
+       style="opacity:1;fill:#8786ad;fill-opacity:1;stroke:#504f4f;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       id="text4608"
+       y="216.85463"
+       x="391.48624"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="216.85463"
+         x="391.48624"
+         id="tspan4610">Organizations</tspan></text>
+    <path
+       id="path12085-7"
+       d="m 389.2036,210.2329 -28.39072,-0.68742"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.96094829px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker7667-3)" />
   </g>
 </svg>
-</div>
-</template>

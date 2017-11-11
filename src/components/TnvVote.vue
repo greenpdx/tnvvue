@@ -20,6 +20,8 @@
           </div>
         </div>
         <div class="render-area">
+          <span class="wait">Please wait<br>Requires 3D</span><br>
+          <span style="font-size: 2em;"> {{ showWhat }} </span>
         <tnv-3d v-if="top"
           :top="top"
           :size="threeSize"
@@ -337,10 +339,10 @@ export default {
     getData () {
       let self = this
 //      axios.get('http://localhost:8181/budget/full/_find?batch_size=5000')
-//      axios.get('/mongodb')
+      axios.get('/mongodb')
 //      axios.get('http://10.0.42.104:8181/mongodb')
 //      axios.get(process.dbURL)
-      axios.get('http://10.0.42.126/full.json')
+//      axios.get('http://10.0.42.126/full.json')
 
         .then(response => {
           console.log(response)
@@ -362,7 +364,16 @@ export default {
 .tnvvote {
   display: inline-block;
 }
-
+.wait {
+  font-size: 4em;
+  color: #080;
+  text-decoration: blink;
+  font-weight: bold;
+  animation: blinker 1s ease-out 5;
+}
+@keyframes blinker {
+  50% { opacity: 0; }
+}
 .split {
   display: flex;
 }

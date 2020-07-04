@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": ">=0.18.1",
     "babel-polyfill": "^6.23.0",
     "three": "^0.86.0",
     "three-orbitcontrols": "^1.2.1",

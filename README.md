@@ -1,3 +1,9 @@
+#DEPRICATED!!
+
+See [Tax N Vote](http://TaxNVote.org) for web site
+[New Tax N Vote repo](https://github.com/greenpdx/tnvvue-2)
+(New Vue3D repo)[https://github.com/greenpdx/vue3d)
+
 # tnvvue
 > Tax N Vote App
 This web application allows the people of America to "vote" where their Tax Dollar should go. The main site is at [Tax N Vote](https://taxnvote.org) and [github TNV](https://github.com/greenpdx/taxnvote)

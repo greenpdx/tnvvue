@@ -1,8 +1,9 @@
-#DEPRICATED!!
+# DEPRICATED!!
 
-See [Tax N Vote](http://TaxNVote.org) for web site
-[New Tax N Vote repo](https://github.com/greenpdx/tnvvue-2)
-(New Vue3D repo)[https://github.com/greenpdx/vue3d)
+# See [Tax N Vote](http://TaxNVote.org) for web site
+# [New Tax N Vote repo](https://github.com/greenpdx/tnvvue-2)
+# [New Vue3D repo](https://github.com/greenpdx/vue3d)
+
 
 # tnvvue
 > Tax N Vote App
